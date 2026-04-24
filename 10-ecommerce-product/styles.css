@@ -1,0 +1,151 @@
+/* Custom styles layered on top of Tailwind CDN */
+
+:root {
+  --bg: #fafafa;
+  --ink: #0a0a0a;
+  --accent: #c03928;
+  --line: #e7e7e7;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Focus rings — consistent, accessible */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+/* Thumbnails — active state override */
+.thumb {
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.thumb:hover {
+  transform: translateY(-1px);
+}
+
+/* Size buttons */
+.size-btn[aria-pressed="true"] {
+  background: #0a0a0a;
+  color: #fff;
+  border-color: #0a0a0a;
+}
+
+/* Color swatches */
+.swatch {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+.swatch:hover:not([aria-pressed="true"]) {
+  transform: scale(1.08);
+}
+.swatch[aria-pressed="true"] {
+  box-shadow: 0 0 0 2px #fafafa, 0 0 0 4px #0a0a0a;
+}
+
+/* Zoom image on hover (desktop) */
+.zoom-img {
+  transition: transform 0.5s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+@media (min-width: 768px) {
+  #mainImageWrap:hover .zoom-img {
+    transform: scale(1.06);
+  }
+}
+
+.fade-out {
+  opacity: 0 !important;
+}
+
+/* Accordion animation */
+.acc-body {
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.3s ease, opacity 0.2s ease;
+}
+.acc-body.hidden {
+  display: block;
+  max-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  opacity: 0;
+}
+.acc-body:not(.hidden) {
+  max-height: 400px;
+  opacity: 1;
+}
+
+/* Add-to-cart success animation */
+.btn-success {
+  background: #16a34a !important;
+}
+.btn-success::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.15);
+  animation: shine 0.6s ease;
+}
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Cart counter pulse */
+.counter-pulse {
+  animation: pulse 0.4s ease;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.35); }
+}
+
+/* Toast */
+#toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Small tweak: numbers look better tabular in price */
+.font-display {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}

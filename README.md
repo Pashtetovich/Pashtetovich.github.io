@@ -17,6 +17,8 @@ Self-initiated landing pages and small apps across different industries. Built f
 | 07 | **Старт в продуктовом дизайне** | Онлайн-курс · Лендинг (RU) | [07-course-ru](./07-course-ru/) |
 | 08 | **Currency Converter** | SPA app · live API + cache | [08-currency-converter](./08-currency-converter/) |
 | 09 | **Pomodoro Timer** | SPA app · task tracker + stats | [09-pomodoro-timer](./09-pomodoro-timer/) |
+| 10 | **КЛЫК · Север Зима** | Карточка товара · E-commerce (RU) | [10-ecommerce-product](./10-ecommerce-product/) |
+| 11 | **Поток** | Telegram Mini App · Лендинг (RU) | [11-telegram-miniapp](./11-telegram-miniapp/) |
 
 ## Stack
 

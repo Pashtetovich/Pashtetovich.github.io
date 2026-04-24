@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Поток — Telegram Mini App для трекинга привычек и целей. Работает прямо внутри Telegram, без установки и регистрации." />
+  <meta name="theme-color" content="#2AABEE" />
+  <title>Поток — привычки в Telegram</title>
+    <!-- Open Graph / social preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pashtetovich.github.io/11-telegram-miniapp/">
+    <meta property="og:title" content="Поток — Telegram Mini App">
+    <meta property="og:description" content="Трекер привычек прямо в Telegram. Без установки, без регистрации. Открывается за 5 секунд.">
+    <meta property="og:image" content="https://pashtetovich.github.io/11-telegram-miniapp/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Поток — Telegram Mini App">
+    <meta name="twitter:description" content="Трекер привычек прямо в Telegram. Без установки, без регистрации. Открывается за 5 секунд.">
+    <meta name="twitter:image" content="https://pashtetovich.github.io/11-telegram-miniapp/og.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tg: {
+              blue: '#2AABEE',
+              bluedark: '#229ED9',
+              softblue: '#e9f5fc',
+              slate: '#0f172a',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui'],
+            display: ['Unbounded', 'Inter', 'ui-sans-serif'],
+          },
+          boxShadow: {
+            soft: '0 10px 40px -12px rgba(15, 23, 42, 0.15)',
+            phone: '0 40px 80px -20px rgba(15, 23, 42, 0.35), 0 0 0 2px rgba(15,23,42,0.06)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-white text-tg-slate font-sans antialiased">
+
+  <!-- ========== NAV ========== -->
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-100">
+    <nav class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 group" aria-label="Поток — главная">
+        <span class="w-8 h-8 rounded-xl bg-tg-blue text-white grid place-items-center font-display font-bold text-lg" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5h7L10 22l8.5-11.5h-7L13 2z"/></svg>
+        </span>
+        <span class="font-display font-bold text-lg tracking-tight">Поток</span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-8 text-sm text-slate-600">
+        <li><a href="#features" class="hover:text-tg-slate transition">Возможности</a></li>
+        <li><a href="#pricing" class="hover:text-tg-slate transition">Тарифы</a></li>
+        <li><a href="#faq" class="hover:text-tg-slate transition">FAQ</a></li>
+      </ul>
+
+      <a href="https://t.me/potok_bot" class="cta-btn inline-flex items-center gap-2 text-sm">
+        <svg class="plane" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M21.426 2.574a1.2 1.2 0 0 0-1.274-.158L2.79 10.07c-.9.38-.86 1.68.06 2.01l4.73 1.68 2.08 6.53c.22.69 1.08.9 1.58.39l2.89-2.94 4.95 3.63c.63.46 1.53.12 1.69-.64l3.01-16.36a1.2 1.2 0 0 0-.35-1.04zM9.85 14.2l-.5 4.06-1.51-4.74 9.02-6.77-7.01 7.45z"/></svg>
+        <span>Открыть в Telegram</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="relative overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-tg-softblue/60 via-white to-white" aria-hidden="true"></div>
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 pt-12 pb-16 md:pt-20 md:pb-24 grid md:grid-cols-2 gap-12 md:gap-10 items-center">
+      <div class="reveal">
+        <p class="eyebrow">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.426 2.574a1.2 1.2 0 0 0-1.274-.158L2.79 10.07c-.9.38-.86 1.68.06 2.01l4.73 1.68 2.08 6.53c.22.69 1.08.9 1.58.39l2.89-2.94 4.95 3.63c.63.46 1.53.12 1.69-.64l3.01-16.36a1.2 1.2 0 0 0-.35-1.04z"/></svg>
+          TELEGRAM MINI APP
+        </p>
+        <h1 class="font-display font-bold text-4xl sm:text-5xl md:text-6xl leading-[1.05] tracking-tight mt-5">
+          Привычки, которые <span class="text-tg-blue">действительно</span> приживаются
+        </h1>
+        <p class="text-lg text-slate-600 mt-6 max-w-xl leading-relaxed">
+          Отслеживай цели и привычки прямо в Telegram — без установки, без регистрации, без лишних уведомлений.
+        </p>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href="https://t.me/potok_bot" class="cta-btn cta-btn--lg inline-flex items-center gap-2">
+            <svg class="plane" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21.426 2.574a1.2 1.2 0 0 0-1.274-.158L2.79 10.07c-.9.38-.86 1.68.06 2.01l4.73 1.68 2.08 6.53c.22.69 1.08.9 1.58.39l2.89-2.94 4.95 3.63c.63.46 1.53.12 1.69-.64l3.01-16.36a1.2 1.2 0 0 0-.35-1.04z"/></svg>
+            Открыть в Telegram
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a href="#demo" class="cta-btn--ghost inline-flex items-center gap-2">
+            Посмотреть демо
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+
+        <p class="mt-6 text-sm text-slate-500 flex flex-wrap items-center gap-x-4 gap-y-1">
+          <span class="inline-flex items-center gap-1.5"><span class="text-emerald-500">✓</span> 0₽ за базовую версию</span>
+          <span aria-hidden="true" class="text-slate-300">·</span>
+          <span>Работает в любом Telegram</span>
+        </p>
+      </div>
+
+      <!-- Phone Mockup -->
+      <div class="reveal flex justify-center md:justify-end">
+        <div class="phone phone--hero" role="img" aria-label="Превью мини-приложения Поток внутри Telegram">
+          <div class="phone__notch"></div>
+          <div class="phone__screen">
+            <!-- Telegram chrome -->
+            <div class="tg-statusbar">
+              <span class="tg-time">9:41</span>
+              <span class="tg-status-icons" aria-hidden="true">
+                <svg width="14" height="10" viewBox="0 0 18 12"><path fill="currentColor" d="M1 1h2v10H1zM5 3h2v8H5zM9 5h2v6H9zM13 2h2v9h-2z"/></svg>
+                <svg width="14" height="10" viewBox="0 0 18 12"><path fill="currentColor" d="M9 3c2.5 0 4.7.9 6.3 2.4l1.4-1.4C14.9 2.1 12.1 1 9 1S3.1 2.1 1.3 4l1.4 1.4C4.3 3.9 6.5 3 9 3zm0 4c1.4 0 2.6.4 3.5 1.1l1.4-1.4C12.7 5.6 10.9 5 9 5s-3.7.6-4.9 1.7l1.4 1.4C6.4 7.4 7.6 7 9 7zm0 4l2.5-2.5C10.8 8.2 9.9 8 9 8s-1.8.2-2.5.5L9 11z"/></svg>
+                <svg width="22" height="10" viewBox="0 0 26 12"><rect x="1" y="2" width="20" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1"/><rect x="3" y="4" width="16" height="4" rx="1" fill="currentColor"/><rect x="22" y="4" width="2" height="4" rx="0.5" fill="currentColor"/></svg>
+              </span>
+            </div>
+
+            <div class="tg-header">
+              <button class="tg-back" aria-label="Назад">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <div class="tg-avatar" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5h7L10 22l8.5-11.5h-7L13 2z"/></svg>
+              </div>
+              <div class="tg-title">
+                <div class="tg-title__name">Поток</div>
+                <div class="tg-title__meta">mini app · бот</div>
+              </div>
+              <button class="tg-menu" aria-label="Меню">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+              </button>
+            </div>
+
+            <!-- Mini App content -->
+            <div class="mini-app">
+              <div class="mini-app__greeting">
+                <p class="text-xs text-slate-500">Вторник, 24 апреля</p>
+                <h3 class="font-display font-bold text-[17px] mt-0.5">Доброе утро, Павел</h3>
+                <p class="text-[13px] text-slate-500 mt-0.5">Сегодня 3 привычки. Ты в потоке 🔥</p>
+              </div>
+
+              <ul class="mini-app__habits">
+                <li class="habit">
+                  <div class="habit__ring habit__ring--80" aria-hidden="true"><span>80%</span></div>
+                  <div class="habit__body">
+                    <div class="habit__title">✅ Медитация</div>
+                    <div class="habit__meta">🔥 12 дней подряд</div>
+                  </div>
+                  <button class="habit__check habit__check--done" aria-label="Медитация отмечена">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </button>
+                </li>
+                <li class="habit">
+                  <div class="habit__ring habit__ring--60" aria-hidden="true"><span>60%</span></div>
+                  <div class="habit__body">
+                    <div class="habit__title">💧 Вода</div>
+                    <div class="habit__meta">🔥 7 дней · 6 из 8 стаканов</div>
+                  </div>
+                  <button class="habit__check" aria-label="Отметить выполнение: Вода"></button>
+                </li>
+                <li class="habit">
+                  <div class="habit__ring habit__ring--40" aria-hidden="true"><span>40%</span></div>
+                  <div class="habit__body">
+                    <div class="habit__title">📚 Чтение</div>
+                    <div class="habit__meta">🔥 4 дня · 20 мин</div>
+                  </div>
+                  <button class="habit__check" aria-label="Отметить выполнение: Чтение"></button>
+                </li>
+              </ul>
+
+              <button class="mini-app__cta">Отметить выполнение</button>
+            </div>
+
+            <!-- Telegram bottom bar -->
+            <div class="tg-bottombar">
+              <div class="tg-bottombar__pill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SOCIAL PROOF ========== -->
+  <section class="border-y border-slate-100 bg-white">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-slate-600">
+      <div class="flex items-center gap-3">
+        <div class="flex -space-x-2" aria-hidden="true">
+          <span class="av av--1">А</span>
+          <span class="av av--2">С</span>
+          <span class="av av--3">М</span>
+          <span class="av av--4">Д</span>
+        </div>
+        <span><strong class="text-tg-slate">14 000+</strong> человек уже используют</span>
+      </div>
+      <span aria-hidden="true" class="text-slate-300 hidden sm:block">·</span>
+      <div class="flex items-center gap-2">
+        <span class="text-amber-400 text-base" aria-hidden="true">★</span>
+        <span><strong class="text-tg-slate">4.9</strong> в Telegram Store</span>
+      </div>
+      <span aria-hidden="true" class="text-slate-300 hidden sm:block">·</span>
+      <div class="flex items-center gap-2">
+        <span class="text-emerald-500" aria-hidden="true">●</span>
+        <span>Работает в iOS, Android, Desktop</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== HOW IT WORKS ========== -->
+  <section id="how" class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="max-w-2xl reveal">
+        <p class="kicker">Как это работает</p>
+        <h2 class="h2 mt-3">Три шага — и привычка уже трекается</h2>
+        <p class="text-slate-600 mt-4 text-lg">Никакого онбординга на 10 экранов. Открыл — и поехали.</p>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-3 gap-6 md:gap-4 relative">
+        <div class="step reveal">
+          <div class="step__num">1</div>
+          <div class="step__icon bg-tg-softblue text-tg-blue">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.426 2.574a1.2 1.2 0 0 0-1.274-.158L2.79 10.07c-.9.38-.86 1.68.06 2.01l4.73 1.68 2.08 6.53c.22.69 1.08.9 1.58.39l2.89-2.94 4.95 3.63c.63.46 1.53.12 1.69-.64l3.01-16.36a1.2 1.2 0 0 0-.35-1.04z"/></svg>
+          </div>
+          <h3 class="step__title">Открой Поток в Telegram</h3>
+          <p class="step__text">Нажми на кнопку — мини-апп откроется прямо в чате. Скачивать ничего не нужно.</p>
+        </div>
+
+        <span class="step__arrow" aria-hidden="true">
+          <svg viewBox="0 0 40 10" width="40" height="10"><path d="M0 5 H34 M30 1 L38 5 L30 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+
+        <div class="step reveal">
+          <div class="step__num">2</div>
+          <div class="step__icon bg-tg-softblue text-tg-blue">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <h3 class="step__title">Добавь привычки за 30 секунд</h3>
+          <p class="step__text">Выбери из шаблонов или создай свою. Укажи, когда напомнить — и готово.</p>
+        </div>
+
+        <span class="step__arrow" aria-hidden="true">
+          <svg viewBox="0 0 40 10" width="40" height="10"><path d="M0 5 H34 M30 1 L38 5 L30 9" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+
+        <div class="step reveal">
+          <div class="step__num">3</div>
+          <div class="step__icon bg-tg-softblue text-tg-blue">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <h3 class="step__title">Получай аккуратные напоминания</h3>
+          <p class="step__text">Сообщения от бота приходят вовремя и не сыпятся. Отметил — закрыл — забыл.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY MINI APP ========== -->
+  <section id="features" class="py-20 md:py-28 bg-tg-softblue/60">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="max-w-2xl reveal">
+        <p class="kicker">Почему именно мини-апп</p>
+        <h2 class="h2 mt-3">Преимущества, которых нет у обычных приложений</h2>
+        <p class="text-slate-600 mt-4 text-lg">Telegram уже у тебя. Мы просто встраиваемся рядом с перепиской.</p>
+      </div>
+
+      <div class="mt-14 grid sm:grid-cols-2 gap-5">
+        <article class="why-card reveal">
+          <div class="why-card__icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3 class="why-card__title">Ничего не устанавливать</h3>
+          <p class="why-card__text">Работает внутри Telegram. Не нужно тянуть ещё одно приложение и занимать место на телефоне.</p>
+        </article>
+
+        <article class="why-card reveal">
+          <div class="why-card__icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          </div>
+          <h3 class="why-card__title">Синхронизация без аккаунта</h3>
+          <p class="why-card__text">Ты уже в Telegram — этого достаточно. Никаких паролей, почт и подтверждений.</p>
+        </article>
+
+        <article class="why-card reveal">
+          <div class="why-card__icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </div>
+          <h3 class="why-card__title">Не забывается</h3>
+          <p class="why-card__text">Напоминания приходят как обычные сообщения от бота. Ты их точно увидишь в общем списке чатов.</p>
+        </article>
+
+        <article class="why-card reveal">
+          <div class="why-card__icon">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13"/></svg>
+          </div>
+          <h3 class="why-card__title">Легко делиться</h3>
+          <p class="why-card__text">Кинул ссылку другу — он открыл у себя за секунду. Всё в той же сети, что и переписка.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHAT'S INSIDE ========== -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="max-w-2xl reveal">
+        <p class="kicker">Что внутри</p>
+        <h2 class="h2 mt-3">Всё нужное, и ничего лишнего</h2>
+        <p class="text-slate-600 mt-4 text-lg">Шесть ключевых возможностей, которые закрывают большинство сценариев.</p>
+      </div>
+
+      <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="feat reveal">
+          <div class="feat__icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <h3 class="feat__title">Трекер привычек</h3>
+          <p class="feat__text">Ежедневные, недельные и гибкие расписания. Серии и «мягкие» пропуски без потери стрика.</p>
+        </div>
+
+        <div class="feat reveal">
+          <div class="feat__icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg></div>
+          <h3 class="feat__title">Дневник настроения</h3>
+          <p class="feat__text">Одно касание в день — и ты видишь, как меняется самочувствие вместе с привычками.</p>
+        </div>
+
+        <div class="feat reveal">
+          <div class="feat__icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 4 5-8"/></svg></div>
+          <h3 class="feat__title">Статистика по неделям и месяцам</h3>
+          <p class="feat__text">Понятные графики. Сразу видно, какие привычки «идут», а какие пора переосмыслить.</p>
+        </div>
+
+        <div class="feat reveal">
+          <div class="feat__icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
+          <h3 class="feat__title">Напоминания</h3>
+          <p class="feat__text">Настрой время и дни. Бот напишет ровно тогда, когда это полезно — и ни минутой чаще.</p>
+        </div>
+
+        <div class="feat reveal">
+          <div class="feat__icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+          <h3 class="feat__title">Общие цели с друзьями</h3>
+          <p class="feat__text">Читаем по 30 минут вместе? Бегаем 3 раза в неделю? Следите за прогрессом друг друга.</p>
+        </div>
+
+        <div class="feat reveal">
+          <div class="feat__icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+          <h3 class="feat__title">Экспорт данных</h3>
+          <p class="feat__text">В CSV и JSON в любой момент. Твои данные — твои, без замков и вендор-локов.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SCREENSHOTS ========== -->
+  <section id="demo" class="py-20 md:py-28 bg-gradient-to-b from-white via-tg-softblue/40 to-white">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="max-w-2xl reveal">
+        <p class="kicker">Как выглядит</p>
+        <h2 class="h2 mt-3">Посмотри изнутри</h2>
+        <p class="text-slate-600 mt-4 text-lg">Три основных экрана мини-приложения.</p>
+      </div>
+
+      <div class="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-6 justify-items-center">
+        <!-- Screen 1: habits -->
+        <div class="phone phone--sm reveal">
+          <div class="phone__notch"></div>
+          <div class="phone__screen">
+            <div class="mock-head">
+              <span class="mock-head__title">Мои привычки</span>
+              <span class="mock-head__date">24 апр</span>
+            </div>
+            <div class="mock-list">
+              <div class="mock-row"><span>✅ Медитация</span><span class="mock-row__streak">🔥 12</span></div>
+              <div class="mock-row"><span>💧 Вода</span><span class="mock-row__streak">🔥 7</span></div>
+              <div class="mock-row"><span>📚 Чтение</span><span class="mock-row__streak">🔥 4</span></div>
+              <div class="mock-row"><span>🏃 Бег</span><span class="mock-row__streak">🔥 22</span></div>
+              <div class="mock-row"><span>🌙 Сон до 23:00</span><span class="mock-row__streak">🔥 3</span></div>
+            </div>
+            <div class="mock-cta">+ Добавить привычку</div>
+          </div>
+        </div>
+
+        <!-- Screen 2: stats -->
+        <div class="phone phone--sm reveal">
+          <div class="phone__notch"></div>
+          <div class="phone__screen">
+            <div class="mock-head">
+              <span class="mock-head__title">Статистика</span>
+              <span class="mock-head__date">апрель</span>
+            </div>
+            <div class="mock-stats">
+              <div class="mock-stat-big"><div class="mock-stat-big__num">87<span>%</span></div><div class="mock-stat-big__lbl">выполнения за месяц</div></div>
+              <div class="mock-bars">
+                <span style="--h:40%"></span><span style="--h:65%"></span><span style="--h:80%"></span>
+                <span style="--h:55%"></span><span style="--h:90%"></span><span style="--h:70%"></span>
+                <span style="--h:95%"></span>
+              </div>
+              <div class="mock-stats-row">
+                <div><b>12</b><small>макс. стрик</small></div>
+                <div><b>5</b><small>привычек</small></div>
+                <div><b>148</b><small>отметок</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screen 3: friends -->
+        <div class="phone phone--sm reveal">
+          <div class="phone__notch"></div>
+          <div class="phone__screen">
+            <div class="mock-head">
+              <span class="mock-head__title">Друзья</span>
+              <span class="mock-head__date">неделя</span>
+            </div>
+            <div class="mock-board">
+              <div class="mock-board__row mock-board__row--1"><span>1</span><span class="av av--1">А</span><span>Анна К.</span><b>92%</b></div>
+              <div class="mock-board__row mock-board__row--2"><span>2</span><span class="av av--2">С</span><span>Сергей М.</span><b>88%</b></div>
+              <div class="mock-board__row mock-board__row--3"><span>3</span><span class="av av--3">М</span><span>Марина Л.</span><b>81%</b></div>
+              <div class="mock-board__row"><span>4</span><span class="av av--4">Д</span><span>Дмитрий О.</span><b>74%</b></div>
+              <div class="mock-board__row"><span>5</span><span class="av av--1">П</span><span>Полина Н.</span><b>69%</b></div>
+            </div>
+            <div class="mock-cta">Пригласить друга</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRICING ========== -->
+  <section id="pricing" class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="max-w-2xl reveal">
+        <p class="kicker">Тарифы</p>
+        <h2 class="h2 mt-3">Честно, без подписок на всё подряд</h2>
+        <p class="text-slate-600 mt-4 text-lg">Бесплатного тарифа большинству хватает надолго. Платный — если нужен размах.</p>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-2 gap-6 max-w-4xl">
+        <div class="plan reveal">
+          <div class="plan__head">
+            <h3 class="plan__name">Бесплатно</h3>
+            <div class="plan__price">0 ₽<span class="plan__per">навсегда</span></div>
+          </div>
+          <ul class="plan__list">
+            <li>До 3 привычек</li>
+            <li>Базовая статистика</li>
+            <li>Напоминания в Telegram</li>
+            <li>Без ограничений по времени</li>
+          </ul>
+          <a href="https://t.me/potok_bot" class="cta-btn cta-btn--ghost w-full justify-center">Открыть в Telegram</a>
+        </div>
+
+        <div class="plan plan--pro reveal">
+          <span class="plan__badge">Популярный</span>
+          <div class="plan__head">
+            <h3 class="plan__name">Про</h3>
+            <div class="plan__price">149 ₽<span class="plan__per">/ мес</span></div>
+          </div>
+          <ul class="plan__list">
+            <li>Безлимит привычек</li>
+            <li>Глубокая статистика и тренды</li>
+            <li>Экспорт в CSV / JSON</li>
+            <li>Командные цели с друзьями</li>
+            <li>Приоритетная поддержка</li>
+          </ul>
+          <a href="https://t.me/potok_bot?start=pro" class="cta-btn w-full justify-center">Попробовать 7 дней</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="py-20 md:py-28 bg-tg-softblue/60">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="max-w-2xl reveal">
+        <p class="kicker">Отзывы</p>
+        <h2 class="h2 mt-3">Что говорят бета-тестеры</h2>
+      </div>
+
+      <div class="mt-14 grid md:grid-cols-3 gap-6">
+        <figure class="quote reveal">
+          <blockquote class="quote__text">«Удобно, что не надо держать отдельное приложение. Открыл Telegram — там и привычки, и переписка. За месяц собрала стрик в 28 дней на утренней зарядке.»</blockquote>
+          <figcaption class="quote__who">
+            <span class="av av--1 av--lg">А</span>
+            <div>
+              <div class="quote__name">Анна К.</div>
+              <div class="quote__role">Участница бета-теста</div>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="quote reveal">
+          <blockquote class="quote__text">«Пробовал кучу трекеров. Бросал каждый раз, потому что лень открывать приложение. Тут — просто свайпнул чат, отметил, закрыл. Работает.»</blockquote>
+          <figcaption class="quote__who">
+            <span class="av av--2 av--lg">С</span>
+            <div>
+              <div class="quote__name">Сергей М.</div>
+              <div class="quote__role">Участник бета-теста</div>
+            </div>
+          </figcaption>
+        </figure>
+
+        <figure class="quote reveal">
+          <blockquote class="quote__text">«Командные цели — топ. С подругой договорились читать по 20 минут в день, видим прогресс друг друга, и мотивация совсем другая.»</blockquote>
+          <figcaption class="quote__who">
+            <span class="av av--3 av--lg">М</span>
+            <div>
+              <div class="quote__name">Марина Л.</div>
+              <div class="quote__role">Участница бета-теста</div>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
+  <section id="faq" class="py-20 md:py-28">
+    <div class="max-w-3xl mx-auto px-5 sm:px-8">
+      <div class="reveal text-center">
+        <p class="kicker">FAQ</p>
+        <h2 class="h2 mt-3">Частые вопросы</h2>
+      </div>
+
+      <div class="mt-12 space-y-3" id="faq-list">
+        <div class="faq reveal">
+          <button class="faq__q" aria-expanded="false">
+            <span>Нужно ли скачивать приложение?</span>
+            <svg class="faq__chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__a"><p>Нет. «Поток» — это Telegram Mini App. Он открывается прямо внутри Telegram, как обычный чат. Ничего скачивать из App Store или Google Play не нужно.</p></div>
+        </div>
+
+        <div class="faq reveal">
+          <button class="faq__q" aria-expanded="false">
+            <span>Работает ли на iPhone и Android?</span>
+            <svg class="faq__chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__a"><p>Да, и на десктопе тоже. Везде, где работает Telegram, работает и Поток — iOS, Android, macOS, Windows, Linux, веб-версия.</p></div>
+        </div>
+
+        <div class="faq reveal">
+          <button class="faq__q" aria-expanded="false">
+            <span>Насколько безопасны мои данные?</span>
+            <svg class="faq__chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__a"><p>Данные хранятся на защищённых серверах, передача идёт по HTTPS. Мы не продаём данные третьим сторонам и не используем рекламные трекеры. В любой момент можно сделать экспорт или удалить аккаунт одной командой боту.</p></div>
+        </div>
+
+        <div class="faq reveal">
+          <button class="faq__q" aria-expanded="false">
+            <span>Нужен ли ВПН?</span>
+            <svg class="faq__chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__a"><p>Нет. Если у тебя работает Telegram, работает и Поток — никаких дополнительных настроек.</p></div>
+        </div>
+
+        <div class="faq reveal">
+          <button class="faq__q" aria-expanded="false">
+            <span>А если у меня нет Telegram?</span>
+            <svg class="faq__chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__a"><p>Установи Telegram — это 30 секунд и бесплатно. Потом просто перейди по ссылке на Поток, и мини-апп сразу откроется.</p></div>
+        </div>
+
+        <div class="faq reveal">
+          <button class="faq__q" aria-expanded="false">
+            <span>Как отменить подписку?</span>
+            <svg class="faq__chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__a"><p>В один клик прямо в мини-приложении: «Настройки → Подписка → Отменить». Деньги за неизрасходованный период возвращаются автоматически.</p></div>
+        </div>
+
+        <div class="faq reveal">
+          <button class="faq__q" aria-expanded="false">
+            <span>Есть ли оффлайн-доступ?</span>
+            <svg class="faq__chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__a"><p>Основные действия — отметить привычку, посмотреть сегодняшний список — работают и в оффлайне. Синхронизация произойдёт, как только появится сеть.</p></div>
+        </div>
+
+        <div class="faq reveal">
+          <button class="faq__q" aria-expanded="false">
+            <span>Можно ли использовать в команде?</span>
+            <svg class="faq__chev" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq__a"><p>Да. На тарифе «Про» можно создавать командные цели и приглашать друзей или коллег по ссылке. Никаких отдельных аккаунтов заводить не нужно.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FINAL CTA ========== -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="final-cta reveal">
+        <div class="final-cta__glow" aria-hidden="true"></div>
+        <p class="kicker kicker--on-dark">TELEGRAM MINI APP</p>
+        <h2 class="final-cta__title">Открой Поток в Telegram за 5 секунд</h2>
+        <p class="final-cta__sub">Нажми кнопку — дальше всё сделает Telegram.</p>
+        <a href="https://t.me/potok_bot" class="cta-btn cta-btn--lg cta-btn--on-dark inline-flex items-center gap-2 mt-8">
+          <svg class="plane" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21.426 2.574a1.2 1.2 0 0 0-1.274-.158L2.79 10.07c-.9.38-.86 1.68.06 2.01l4.73 1.68 2.08 6.53c.22.69 1.08.9 1.58.39l2.89-2.94 4.95 3.63c.63.46 1.53.12 1.69-.64l3.01-16.36a1.2 1.2 0 0 0-.35-1.04z"/></svg>
+          Открыть в Telegram
+          <span aria-hidden="true">↗</span>
+        </a>
+        <p class="final-cta__micro">Бесплатно · без установки · без регистрации</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="border-t border-slate-100 py-12">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 grid md:grid-cols-4 gap-10">
+      <div class="md:col-span-2">
+        <a href="#" class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-xl bg-tg-blue text-white grid place-items-center" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4.5 13.5h7L10 22l8.5-11.5h-7L13 2z"/></svg>
+          </span>
+          <span class="font-display font-bold text-lg tracking-tight">Поток</span>
+        </a>
+        <p class="text-sm text-slate-500 mt-4 max-w-sm">Привычки и цели прямо в Telegram. Без установки, без регистрации, без рекламы.</p>
+        <div class="mt-5 flex items-center gap-3">
+          <a href="https://t.me/potok_bot" aria-label="Telegram" class="social">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M21.426 2.574a1.2 1.2 0 0 0-1.274-.158L2.79 10.07c-.9.38-.86 1.68.06 2.01l4.73 1.68 2.08 6.53c.22.69 1.08.9 1.58.39l2.89-2.94 4.95 3.63c.63.46 1.53.12 1.69-.64l3.01-16.36a1.2 1.2 0 0 0-.35-1.04z"/></svg>
+          </a>
+          <a href="https://vk.com/potok" aria-label="VK" class="social">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M2 6.5h3.1c.4 3.9 2.1 6.1 3.4 6.5V6.5h2.9v4.4c1.4-.2 2.8-1.8 3.3-4.4h2.9c-.4 2.3-1.6 4.4-3.2 5.3 1.6.8 2.9 2.7 3.5 5.2h-3.1c-.4-1.7-1.6-3.2-3.4-3.4V17H8.9c-4.2 0-6.7-3.1-6.9-10.5z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer__title">Продукт</h4>
+        <ul class="footer__list">
+          <li><a href="#features">Возможности</a></li>
+          <li><a href="#pricing">Тарифы</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer__title">Компания</h4>
+        <ul class="footer__list">
+          <li><a href="#">Политика конфиденциальности</a></li>
+          <li><a href="#">Условия использования</a></li>
+          <li><a href="mailto:hello@potok.app">hello@potok.app</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 mt-10 pt-6 border-t border-slate-100 text-xs text-slate-500 flex flex-wrap justify-between gap-3">
+      <span>© 2026 Поток. Все права защищены.</span>
+      <span>Сделано с ❤ для Telegram-сообщества</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

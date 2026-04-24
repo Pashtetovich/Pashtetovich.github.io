@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Север · Зима — КЛЫК | Кроссовки зимние</title>
+    <!-- Open Graph / social preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pashtetovich.github.io/10-ecommerce-product/">
+    <meta property="og:title" content="КЛЫК · Север Зима — Кроссовки">
+    <meta property="og:description" content="Карточка товара для российского streetwear-бренда — галерея, размеры, отзывы, корзина.">
+    <meta property="og:image" content="https://pashtetovich.github.io/10-ecommerce-product/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="КЛЫК · Север Зима — Кроссовки">
+    <meta name="twitter:description" content="Карточка товара для российского streetwear-бренда — галерея, размеры, отзывы, корзина.">
+    <meta name="twitter:image" content="https://pashtetovich.github.io/10-ecommerce-product/og.png">
+  <meta name="description" content="Зимние кроссовки КЛЫК «Север · Зима». Мембрана до -25°C, водоотталкивающая замша, сплит-пенная подошва. Сделано в России." />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts (Cyrillic) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#fafafa',
+            ink: '#0a0a0a',
+            muted: '#6b6b6b',
+            line: '#e7e7e7',
+            accent: '#c03928',
+            accentDark: '#a42f21'
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Unbounded', 'Inter', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-bg text-ink font-sans antialiased">
+
+  <!-- Topbar -->
+  <div class="bg-neutral-100 border-b border-line text-[12px] text-neutral-600">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center text-center">
+      <span>🚚 Бесплатная доставка от 5 000 ₽ · Примерка дома</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-bg/90 backdrop-blur border-b border-line">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between gap-4">
+      <a href="#" class="font-display font-extrabold tracking-[0.12em] text-xl md:text-2xl">КЛЫК</a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#" class="hover:text-accent transition">Мужское</a>
+        <a href="#" class="hover:text-accent transition">Женское</a>
+        <a href="#" class="hover:text-accent transition">Коллекции</a>
+        <a href="#" class="hover:text-accent transition">Скидки</a>
+      </nav>
+
+      <div class="flex items-center gap-2 md:gap-4">
+        <button class="p-2 hover:bg-neutral-100 rounded-full transition" aria-label="Поиск">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <button class="p-2 hover:bg-neutral-100 rounded-full transition" aria-label="Избранное">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+        <button class="p-2 hover:bg-neutral-100 rounded-full transition relative" aria-label="Корзина">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span id="cartCount" class="absolute -top-0.5 -right-0.5 bg-accent text-white text-[10px] font-semibold w-[18px] h-[18px] flex items-center justify-center rounded-full">2</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="max-w-7xl mx-auto px-4 pt-6 text-xs text-muted">
+    <nav aria-label="Хлебные крошки">
+      <ol class="flex flex-wrap items-center gap-1.5">
+        <li><a href="#" class="hover:text-ink transition">Главная</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="#" class="hover:text-ink transition">Мужское</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="#" class="hover:text-ink transition">Кроссовки</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-ink font-medium">Север · Зима</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Product -->
+  <main class="max-w-7xl mx-auto px-4 py-8 md:py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14">
+
+      <!-- Gallery -->
+      <section aria-label="Фото товара" class="reveal">
+        <div class="relative group">
+          <div id="mainImageWrap" class="relative aspect-square bg-neutral-100 rounded-2xl overflow-hidden">
+            <img id="mainImage" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&q=80" alt="Кроссовки Север · Зима — основной вид" class="w-full h-full object-cover transition-opacity duration-300 zoom-img" />
+          </div>
+
+          <!-- Arrows -->
+          <button id="prevBtn" class="absolute top-1/2 -translate-y-1/2 left-3 w-10 h-10 bg-white/90 hover:bg-white border border-line rounded-full flex items-center justify-center shadow-sm transition opacity-0 group-hover:opacity-100 focus:opacity-100" aria-label="Предыдущее фото">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button id="nextBtn" class="absolute top-1/2 -translate-y-1/2 right-3 w-10 h-10 bg-white/90 hover:bg-white border border-line rounded-full flex items-center justify-center shadow-sm transition opacity-0 group-hover:opacity-100 focus:opacity-100" aria-label="Следующее фото">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+
+          <!-- Badge -->
+          <span class="absolute top-4 left-4 bg-accent text-white text-[11px] font-semibold px-2.5 py-1 rounded-full tracking-wider">-22%</span>
+        </div>
+
+        <!-- Thumbnails -->
+        <div class="mt-4 grid grid-cols-4 gap-3" id="thumbs">
+          <button class="thumb aspect-square bg-neutral-100 rounded-xl overflow-hidden border-2 border-ink" data-index="0" aria-label="Фото 1">
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="Боковой вид" class="w-full h-full object-cover" />
+          </button>
+          <button class="thumb aspect-square bg-neutral-100 rounded-xl overflow-hidden border-2 border-transparent" data-index="1" aria-label="Фото 2">
+            <img src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28?w=400&q=80" alt="Вид сверху" class="w-full h-full object-cover" />
+          </button>
+          <button class="thumb aspect-square bg-neutral-100 rounded-xl overflow-hidden border-2 border-transparent" data-index="2" aria-label="Фото 3">
+            <img src="https://images.unsplash.com/photo-1520256862855-398228c41684?w=400&q=80" alt="Крупный план" class="w-full h-full object-cover" />
+          </button>
+          <button class="thumb aspect-square bg-neutral-100 rounded-xl overflow-hidden border-2 border-transparent" data-index="3" aria-label="Фото 4">
+            <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=400&q=80" alt="Деталь подошвы" class="w-full h-full object-cover" />
+          </button>
+        </div>
+      </section>
+
+      <!-- Product info -->
+      <section aria-label="Описание и покупка" class="reveal">
+        <p class="text-xs font-semibold tracking-[0.2em] text-muted uppercase">КЛЫК</p>
+        <h1 class="font-display text-3xl md:text-5xl font-bold leading-[1.05] mt-2">Север&nbsp;·&nbsp;Зима</h1>
+
+        <!-- Rating -->
+        <div class="mt-4 flex items-center gap-3 text-sm">
+          <div class="flex items-center gap-0.5 text-amber-500" aria-label="Рейтинг 4.8 из 5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <span class="font-semibold">4.8</span>
+          <span class="text-muted">· 127 отзывов</span>
+        </div>
+
+        <!-- Price -->
+        <div class="mt-6 flex items-end gap-3 flex-wrap">
+          <span class="font-display text-4xl md:text-5xl font-bold tracking-tight">12 490 ₽</span>
+          <span class="text-muted line-through text-lg mb-1">15 990 ₽</span>
+          <span class="bg-accent/10 text-accent text-sm font-semibold px-2 py-1 rounded-md mb-1">−22%</span>
+        </div>
+        <p class="mt-2 text-xs text-muted">или 4 платежа по 3 122 ₽ · Без переплат</p>
+
+        <!-- Color -->
+        <div class="mt-8">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-semibold">Цвет: <span id="colorLabel" class="font-normal text-muted">чёрный</span></h3>
+          </div>
+          <div class="mt-3 flex items-center gap-3" role="radiogroup" aria-label="Выбор цвета">
+            <button class="swatch w-10 h-10 rounded-full border-2 border-ink ring-2 ring-offset-2 ring-ink" data-color="чёрный" style="background:#0a0a0a" aria-pressed="true" aria-label="Чёрный"></button>
+            <button class="swatch w-10 h-10 rounded-full border-2 border-line" data-color="белый" style="background:#f5f5f5" aria-pressed="false" aria-label="Белый"></button>
+            <button class="swatch w-10 h-10 rounded-full border-2 border-line" data-color="графитовый" style="background:#4a4e55" aria-pressed="false" aria-label="Графитовый"></button>
+            <button class="swatch w-10 h-10 rounded-full border-2 border-line" data-color="оливковый" style="background:#5c6b3a" aria-pressed="false" aria-label="Оливковый"></button>
+          </div>
+        </div>
+
+        <!-- Size -->
+        <div class="mt-8">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-semibold">Размер (RU)</h3>
+            <button class="text-xs text-muted underline hover:text-ink transition">Таблица размеров</button>
+          </div>
+          <div class="mt-3 grid grid-cols-7 gap-2" role="radiogroup" aria-label="Выбор размера" id="sizes">
+            <button class="size-btn border border-line rounded-lg py-3 text-sm font-medium hover:border-ink transition" data-size="39" aria-pressed="false">39</button>
+            <button class="size-btn border border-line rounded-lg py-3 text-sm font-medium hover:border-ink transition" data-size="40" aria-pressed="false">40</button>
+            <button class="size-btn border border-line rounded-lg py-3 text-sm font-medium hover:border-ink transition" data-size="41" aria-pressed="false">41</button>
+            <button class="size-btn border border-line rounded-lg py-3 text-sm font-medium text-muted bg-neutral-100 line-through cursor-not-allowed" data-size="42" disabled aria-disabled="true">42</button>
+            <button class="size-btn border border-line rounded-lg py-3 text-sm font-medium hover:border-ink transition" data-size="43" aria-pressed="false">43</button>
+            <button class="size-btn border border-line rounded-lg py-3 text-sm font-medium text-muted bg-neutral-100 line-through cursor-not-allowed" data-size="44" disabled aria-disabled="true">44</button>
+            <button class="size-btn border border-line rounded-lg py-3 text-sm font-medium hover:border-ink transition" data-size="45" aria-pressed="false">45</button>
+          </div>
+          <p id="sizeHint" class="mt-2 text-xs text-muted" aria-live="polite">Выберите размер перед добавлением в корзину</p>
+        </div>
+
+        <!-- Quantity -->
+        <div class="mt-8">
+          <h3 class="text-sm font-semibold mb-3">Количество</h3>
+          <div class="inline-flex items-center border border-line rounded-lg overflow-hidden">
+            <button id="qtyMinus" class="w-11 h-11 flex items-center justify-center hover:bg-neutral-100 transition" aria-label="Уменьшить количество">−</button>
+            <span id="qtyValue" class="w-12 text-center font-medium select-none" aria-live="polite">1</span>
+            <button id="qtyPlus" class="w-11 h-11 flex items-center justify-center hover:bg-neutral-100 transition" aria-label="Увеличить количество">+</button>
+          </div>
+        </div>
+
+        <!-- CTAs -->
+        <div class="mt-8 flex flex-col gap-3">
+          <button id="addToCart" class="w-full bg-ink text-white font-semibold py-4 rounded-xl hover:bg-black active:scale-[0.99] transition relative overflow-hidden">
+            <span id="addToCartText">В корзину · 12 490 ₽</span>
+          </button>
+          <button class="w-full border border-ink font-semibold py-4 rounded-xl hover:bg-ink hover:text-white transition">
+            Купить в 1 клик
+          </button>
+        </div>
+
+        <!-- Guarantees -->
+        <ul class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-muted">
+          <li class="flex items-center gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Гарантия 30 дней
+          </li>
+          <li class="flex items-center gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.3L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.3L3 16"/><path d="M3 21v-5h5"/></svg>
+            Возврат 14 дней
+          </li>
+          <li class="flex items-center gap-2">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+            Оплата при получении
+          </li>
+        </ul>
+
+        <!-- Accordion -->
+        <div class="mt-10 border-t border-line" id="accordion">
+          <div class="acc-item border-b border-line">
+            <button class="acc-head w-full flex items-center justify-between py-4 text-left" aria-expanded="true">
+              <span class="font-semibold">Описание</span>
+              <svg class="acc-icon transition-transform rotate-180" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="acc-body pb-5 text-sm text-neutral-700 leading-relaxed">
+              «Север · Зима» — флагманские зимние кроссовки КЛЫК для города и лёгкого офф-роуда. Трёхслойная мембрана сохраняет тепло до −25°C, а водоотталкивающая замша защищает от слякоти и реагентов. Силуэт вдохновлён архитектурой Русского Севера: лаконичные линии, плотная посадка, уверенная подошва.
+            </div>
+          </div>
+          <div class="acc-item border-b border-line">
+            <button class="acc-head w-full flex items-center justify-between py-4 text-left" aria-expanded="false">
+              <span class="font-semibold">Состав и уход</span>
+              <svg class="acc-icon transition-transform" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="acc-body pb-5 text-sm text-neutral-700 leading-relaxed hidden">
+              Верх: натуральная замша с водоотталкивающей пропиткой (80%), текстиль (20%). Подкладка: искусственный мех. Подошва: сплит-пенная EVA + резиновая вставка. Уход: чистить мягкой щёткой в сухом виде, периодически обновлять DWR-пропитку.
+            </div>
+          </div>
+          <div class="acc-item border-b border-line">
+            <button class="acc-head w-full flex items-center justify-between py-4 text-left" aria-expanded="false">
+              <span class="font-semibold">Доставка и возврат</span>
+              <svg class="acc-icon transition-transform" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="acc-body pb-5 text-sm text-neutral-700 leading-relaxed hidden">
+              Бесплатная доставка по России от 5 000 ₽. По Москве и СПб — курьером в день заказа. Примерка до оплаты в пунктах СДЭК и Boxberry. Возврат без вопросов в течение 14 дней — забираем курьером за наш счёт.
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Key features -->
+  <section class="max-w-7xl mx-auto px-4 py-12 md:py-20">
+    <h2 class="font-display text-2xl md:text-3xl font-bold text-center mb-10 reveal">Почему «Север · Зима»</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="reveal bg-white border border-line rounded-2xl p-6 hover:border-ink transition">
+        <div class="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center mb-4">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93 4.93 19.07"/></svg>
+        </div>
+        <h3 class="font-semibold">Мембрана до −25°C</h3>
+        <p class="text-sm text-muted mt-1">Трёхслойная защита от холода и ветра</p>
+      </div>
+      <div class="reveal bg-white border border-line rounded-2xl p-6 hover:border-ink transition">
+        <div class="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center mb-4">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h4l3-9 4 18 3-9h6"/></svg>
+        </div>
+        <h3 class="font-semibold">Сплит-пенная подошва</h3>
+        <p class="text-sm text-muted mt-1">Амортизация без усталости при ходьбе</p>
+      </div>
+      <div class="reveal bg-white border border-line rounded-2xl p-6 hover:border-ink transition">
+        <div class="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center mb-4">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s6 7 6 12a6 6 0 0 1-12 0c0-5 6-12 6-12z"/></svg>
+        </div>
+        <h3 class="font-semibold">Водоотталкивающая замша</h3>
+        <p class="text-sm text-muted mt-1">DWR-пропитка от слякоти и реагентов</p>
+      </div>
+      <div class="reveal bg-white border border-line rounded-2xl p-6 hover:border-ink transition">
+        <div class="w-10 h-10 rounded-full bg-neutral-100 flex items-center justify-center mb-4">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg>
+        </div>
+        <h3 class="font-semibold">Сделано в России</h3>
+        <p class="text-sm text-muted mt-1">Производство в Санкт-Петербурге</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="max-w-7xl mx-auto px-4 py-12 md:py-20 border-t border-line">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <!-- Summary -->
+      <div class="reveal">
+        <h2 class="font-display text-2xl md:text-3xl font-bold">Отзывы покупателей</h2>
+        <div class="mt-4 flex items-baseline gap-3">
+          <span class="font-display text-5xl font-bold">4.8</span>
+          <div>
+            <div class="flex items-center gap-0.5 text-amber-500">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <p class="text-xs text-muted mt-1">127 отзывов</p>
+          </div>
+        </div>
+
+        <div class="mt-6 space-y-2 text-sm">
+          <div class="flex items-center gap-3">
+            <span class="w-4 text-muted">5</span>
+            <div class="flex-1 h-2 bg-neutral-100 rounded-full overflow-hidden"><div class="h-full bg-ink" style="width:82%"></div></div>
+            <span class="w-10 text-right text-muted text-xs">82%</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-4 text-muted">4</span>
+            <div class="flex-1 h-2 bg-neutral-100 rounded-full overflow-hidden"><div class="h-full bg-ink" style="width:12%"></div></div>
+            <span class="w-10 text-right text-muted text-xs">12%</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-4 text-muted">3</span>
+            <div class="flex-1 h-2 bg-neutral-100 rounded-full overflow-hidden"><div class="h-full bg-ink" style="width:4%"></div></div>
+            <span class="w-10 text-right text-muted text-xs">4%</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-4 text-muted">2</span>
+            <div class="flex-1 h-2 bg-neutral-100 rounded-full overflow-hidden"><div class="h-full bg-ink" style="width:1%"></div></div>
+            <span class="w-10 text-right text-muted text-xs">1%</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-4 text-muted">1</span>
+            <div class="flex-1 h-2 bg-neutral-100 rounded-full overflow-hidden"><div class="h-full bg-ink" style="width:1%"></div></div>
+            <span class="w-10 text-right text-muted text-xs">1%</span>
+          </div>
+        </div>
+
+        <button class="mt-6 border border-ink rounded-xl px-5 py-3 text-sm font-semibold hover:bg-ink hover:text-white transition">Написать отзыв</button>
+      </div>
+
+      <!-- List -->
+      <div class="lg:col-span-2 space-y-6">
+        <article class="reveal bg-white border border-line rounded-2xl p-6">
+          <header class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-neutral-200 to-neutral-400 flex items-center justify-center font-semibold text-ink">А</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2">
+                <span class="font-semibold">Алексей К.</span>
+                <span class="inline-flex items-center gap-1 text-[11px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  Проверенная покупка
+                </span>
+              </div>
+              <p class="text-xs text-muted">Москва · 12 марта 2026</p>
+            </div>
+            <div class="flex items-center gap-0.5 text-amber-500" aria-label="5 из 5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+          </header>
+          <p class="mt-4 text-sm leading-relaxed">Отходил всю зиму в −20 по Москве — ноги сухие, тепло, подошва не дубеет. Замша не побелела после реагентов, выглядит как новая. Ремень очень хорошо облегает стопу, размер в размер.</p>
+        </article>
+
+        <article class="reveal bg-white border border-line rounded-2xl p-6">
+          <header class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-rose-200 to-rose-400 flex items-center justify-center font-semibold text-ink">М</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2">
+                <span class="font-semibold">Мария В.</span>
+                <span class="inline-flex items-center gap-1 text-[11px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  Проверенная покупка
+                </span>
+              </div>
+              <p class="text-xs text-muted">Санкт-Петербург · 3 февраля 2026</p>
+            </div>
+            <div class="flex items-center gap-0.5 text-amber-500" aria-label="5 из 5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+          </header>
+          <p class="mt-4 text-sm leading-relaxed">Брала мужу на день рождения — в восторге. В Питере с его лужами и снегом — идеальная пара. Курьер привёз на следующий день, примерил, оставил. Спасибо КЛЫК за сервис!</p>
+        </article>
+
+        <article class="reveal bg-white border border-line rounded-2xl p-6">
+          <header class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-sky-200 to-sky-400 flex items-center justify-center font-semibold text-ink">Д</div>
+            <div class="flex-1">
+              <div class="flex items-center gap-2">
+                <span class="font-semibold">Дмитрий С.</span>
+                <span class="inline-flex items-center gap-1 text-[11px] bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                  Проверенная покупка
+                </span>
+              </div>
+              <p class="text-xs text-muted">Екатеринбург · 18 января 2026</p>
+            </div>
+            <div class="flex items-center gap-0.5 text-amber-500" aria-label="4 из 5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+          </header>
+          <p class="mt-4 text-sm leading-relaxed">В Екб −30 держат уверенно, проверено. По ощущениям чуть жмут в подъёме — советую брать на размер больше, если стопа полная. В остальном отличная вещь, качество чувствуется.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related -->
+  <section class="max-w-7xl mx-auto px-4 py-12 md:py-20 border-t border-line">
+    <div class="flex items-end justify-between mb-8 reveal">
+      <h2 class="font-display text-2xl md:text-3xl font-bold">Похожие товары</h2>
+      <a href="#" class="text-sm font-medium hover:text-accent transition hidden sm:inline-flex items-center gap-1">
+        Смотреть все
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+      <a href="#" class="reveal group">
+        <div class="aspect-square bg-neutral-100 rounded-2xl overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600&q=80" alt="Утро · Бег" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+        </div>
+        <div class="mt-3">
+          <p class="text-[11px] tracking-[0.15em] text-muted uppercase">КЛЫК</p>
+          <h3 class="font-semibold mt-0.5">Утро · Бег</h3>
+          <p class="mt-1 text-sm"><span class="font-semibold">8 990 ₽</span></p>
+        </div>
+      </a>
+      <a href="#" class="reveal group">
+        <div class="aspect-square bg-neutral-100 rounded-2xl overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1595341888016-a392ef81b7de?w=600&q=80" alt="Белый · Лёд" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+        </div>
+        <div class="mt-3">
+          <p class="text-[11px] tracking-[0.15em] text-muted uppercase">КЛЫК</p>
+          <h3 class="font-semibold mt-0.5">Белый · Лёд</h3>
+          <p class="mt-1 text-sm"><span class="font-semibold">10 490 ₽</span></p>
+        </div>
+      </a>
+      <a href="#" class="reveal group">
+        <div class="aspect-square bg-neutral-100 rounded-2xl overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=600&q=80" alt="Минимал · 01" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+        </div>
+        <div class="mt-3">
+          <p class="text-[11px] tracking-[0.15em] text-muted uppercase">КЛЫК</p>
+          <h3 class="font-semibold mt-0.5">Минимал · 01</h3>
+          <p class="mt-1 text-sm"><span class="font-semibold">7 990 ₽</span></p>
+        </div>
+      </a>
+      <a href="#" class="reveal group">
+        <div class="aspect-square bg-neutral-100 rounded-2xl overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1556906781-9a412961c28c?w=600&q=80" alt="Тропа · Осень" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+        </div>
+        <div class="mt-3">
+          <p class="text-[11px] tracking-[0.15em] text-muted uppercase">КЛЫК</p>
+          <h3 class="font-semibold mt-0.5">Тропа · Осень</h3>
+          <p class="mt-1 text-sm"><span class="font-semibold">9 490 ₽</span> <span class="text-muted line-through text-xs">11 990 ₽</span></p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="max-w-7xl mx-auto px-4 py-12 md:py-20">
+    <div class="reveal bg-ink text-white rounded-3xl p-8 md:p-14 relative overflow-hidden">
+      <div class="relative z-10 max-w-xl">
+        <h2 class="font-display text-2xl md:text-4xl font-bold leading-tight">Подпишись на&nbsp;новинки и&nbsp;получи −10% на&nbsp;первый заказ</h2>
+        <p class="mt-3 text-sm text-neutral-300">Раз в две недели — только коллекции, без спама.</p>
+        <form id="newsletterForm" class="mt-6 flex flex-col sm:flex-row gap-3" novalidate>
+          <input
+            id="emailInput"
+            type="email"
+            required
+            placeholder="you@example.com"
+            class="flex-1 bg-white/5 border border-white/20 rounded-xl px-4 py-3 placeholder:text-neutral-500 focus:outline-none focus:border-white transition"
+            aria-label="Ваш email"
+          />
+          <button type="submit" class="bg-white text-ink font-semibold px-6 py-3 rounded-xl hover:bg-neutral-200 transition whitespace-nowrap">
+            Получить скидку
+          </button>
+        </form>
+        <p id="nlMessage" class="mt-3 text-sm min-h-[1.25rem]" aria-live="polite"></p>
+      </div>
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-accent/20 blur-3xl"></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-line">
+    <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-2 md:grid-cols-5 gap-8 text-sm">
+      <div class="col-span-2">
+        <div class="font-display font-extrabold tracking-[0.12em] text-xl">КЛЫК</div>
+        <p class="mt-3 text-muted max-w-xs">Российский streetwear-бренд. Производство в Санкт-Петербурге с 2019 года.</p>
+        <div class="mt-5 flex items-center gap-3">
+          <a href="#" aria-label="Telegram" class="w-10 h-10 rounded-full border border-line flex items-center justify-center hover:bg-ink hover:text-white hover:border-ink transition">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+          </a>
+          <a href="#" aria-label="ВКонтакте" class="w-10 h-10 rounded-full border border-line flex items-center justify-center hover:bg-ink hover:text-white hover:border-ink transition">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M13.162 18.994c.609 0 .858-.406.851-.915-.031-1.917.714-2.949 2.059-1.604 1.488 1.488 1.796 2.519 3.603 2.519h3.2c.771 0 1.125-.242 1.125-.754 0-1.083-1.785-2.968-3.357-4.432-2.172-2.032-2.265-2.103.239-5.389 1.48-1.942 2.962-3.843 2.981-4.999 0-.396-.22-.629-.759-.629h-3.202c-.792 0-1.115.49-1.305.919 0 0-1.594 3.313-3.387 5.415-.582.647-.862.861-1.177.861-.168 0-.425-.213-.425-.638V3.543c0-.489-.164-.76-.542-.76H8.043c-.388 0-.534.273-.534.55 0 .464.529.568.653 1.571l.072 1.692-.056 4.234c-.017.32-.152.498-.344.498-.296 0-.58-.224-1.216-1.113-1.02-1.428-1.828-3.025-2.398-4.672-.149-.39-.37-.721-1.033-.721H.038c-.355 0-.425.19-.425.444 0 .524 1.004 3.342 3.294 6.623C4.834 15.153 7.043 17.28 9.89 18.07c1.66.46 3.27.924 3.27.924z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Компания</h4>
+        <ul class="space-y-2 text-muted">
+          <li><a href="#" class="hover:text-ink transition">О бренде</a></li>
+          <li><a href="#" class="hover:text-ink transition">Производство</a></li>
+          <li><a href="#" class="hover:text-ink transition">Магазины</a></li>
+          <li><a href="#" class="hover:text-ink transition">Вакансии</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Покупателям</h4>
+        <ul class="space-y-2 text-muted">
+          <li><a href="#" class="hover:text-ink transition">Таблица размеров</a></li>
+          <li><a href="#" class="hover:text-ink transition">Как ухаживать</a></li>
+          <li><a href="#" class="hover:text-ink transition">Подарочные карты</a></li>
+          <li><a href="#" class="hover:text-ink transition">Программа лояльности</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-3">Помощь</h4>
+        <ul class="space-y-2 text-muted">
+          <li><a href="#" class="hover:text-ink transition">Доставка</a></li>
+          <li><a href="#" class="hover:text-ink transition">Возврат и обмен</a></li>
+          <li><a href="#" class="hover:text-ink transition">Оплата</a></li>
+          <li><a href="#" class="hover:text-ink transition">Контакты</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-line">
+      <div class="max-w-7xl mx-auto px-4 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted">
+        <p>© 2026 КЛЫК · Сделано в России</p>
+        <p class="flex items-center gap-4">
+          <a href="#" class="hover:text-ink transition">Политика конфиденциальности</a>
+          <a href="#" class="hover:text-ink transition">Оферта</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-ink text-white text-sm px-5 py-3 rounded-full shadow-lg opacity-0 pointer-events-none translate-y-2 transition-all duration-300 z-50">
+    <span id="toastText">Добавлено в корзину</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
