@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Fast, clean currency converter. Live exchange rates for 25+ currencies." />
+  <title>Currency Converter</title>
+
+  <!-- Prevent dark-mode FOUC: apply class before Tailwind paints -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('cc.theme');
+        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var dark = stored ? stored === 'dark' : prefersDark;
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (_) {}
+    })();
+  </script>
+
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          boxShadow: {
+            card: '0 10px 40px -12px rgba(15, 23, 42, 0.12), 0 4px 12px -6px rgba(15, 23, 42, 0.08)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Google Fonts: Inter with Cyrillic subset -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap&subset=latin,cyrillic"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="min-h-full bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-indigo-200 dark:selection:bg-indigo-900/60">
+
+  <main class="min-h-screen px-4 py-8 sm:py-12 flex flex-col items-center">
+    <!-- Header -->
+    <header class="w-full max-w-xl flex items-center justify-between mb-6 sm:mb-8">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-indigo-700 flex items-center justify-center text-white shadow-md">
+          <!-- Logo SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true">
+            <path d="M17 3l4 4-4 4" />
+            <path d="M21 7H8a4 4 0 00-4 4v1" />
+            <path d="M7 21l-4-4 4-4" />
+            <path d="M3 17h13a4 4 0 004-4v-1" />
+          </svg>
+        </div>
+        <h1 class="text-lg sm:text-xl font-bold tracking-tight">Currency Converter</h1>
+      </div>
+
+      <button
+        id="themeToggle"
+        type="button"
+        class="w-10 h-10 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 flex items-center justify-center transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-950"
+        aria-label="Toggle dark mode"
+        aria-pressed="false"
+      >
+        <!-- Sun icon (shown in dark mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 hidden dark:block" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        </svg>
+        <!-- Moon icon (shown in light mode) -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 block dark:hidden" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
+      </button>
+    </header>
+
+    <!-- Converter Card -->
+    <section
+      class="w-full max-w-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-card p-5 sm:p-8"
+      aria-labelledby="converterHeading"
+    >
+      <h2 id="converterHeading" class="sr-only">Currency converter</h2>
+
+      <!-- Error banner -->
+      <div
+        id="errorBanner"
+        class="hidden mb-5 p-4 rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 text-rose-800 dark:text-rose-200 flex items-start gap-3"
+        role="alert"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 flex-shrink-0 mt-0.5" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="8" x2="12" y2="12" />
+          <line x1="12" y1="16" x2="12.01" y2="16" />
+        </svg>
+        <div class="flex-1 text-sm">
+          <p class="font-semibold" id="errorTitle">Couldn't fetch rates</p>
+          <p id="errorMessage" class="opacity-90">Check your connection and try again.</p>
+        </div>
+        <button
+          id="retryBtn"
+          type="button"
+          class="text-sm font-semibold px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-700 text-white transition focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900"
+        >Retry</button>
+      </div>
+
+      <!-- Amount -->
+      <div class="mb-4">
+        <label for="amountInput" class="block text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+          Amount
+        </label>
+        <div class="relative">
+          <input
+            id="amountInput"
+            type="text"
+            inputmode="decimal"
+            autocomplete="off"
+            spellcheck="false"
+            value="1.00"
+            class="w-full text-3xl sm:text-4xl font-bold tabular-nums tracking-tight bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 rounded-2xl px-4 py-4 sm:py-5 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition"
+            aria-describedby="amountHelp"
+          />
+          <span id="amountHelp" class="sr-only">Enter the amount you want to convert</span>
+        </div>
+      </div>
+
+      <!-- From / Swap / To -->
+      <div class="relative grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+        <!-- From selector -->
+        <div>
+          <label for="fromBtn" class="block text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+            From
+          </label>
+          <div class="relative" data-selector="from">
+            <button
+              id="fromBtn"
+              type="button"
+              class="currency-btn w-full flex items-center justify-between gap-2 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 rounded-2xl px-4 py-3.5 hover:bg-slate-100 dark:hover:bg-slate-800 transition focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
+              <span class="flex items-center gap-2.5 min-w-0">
+                <span class="text-2xl leading-none" data-role="flag">🇺🇸</span>
+                <span class="text-left min-w-0">
+                  <span class="block font-semibold text-sm" data-role="code">USD</span>
+                  <span class="block text-xs text-slate-500 dark:text-slate-400 truncate" data-role="name">US Dollar</span>
+                </span>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-slate-500 dark:text-slate-400 flex-shrink-0" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <!-- Dropdown -->
+            <div
+              class="dropdown hidden absolute left-0 right-0 mt-2 z-20 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-card overflow-hidden"
+              role="listbox"
+              aria-label="Select source currency"
+            >
+              <div class="p-2 border-b border-slate-200 dark:border-slate-800">
+                <div class="relative">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                  <input
+                    type="text"
+                    class="dropdown-search w-full text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg pl-9 pr-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    placeholder="Search currency..."
+                    aria-label="Search currency"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+              <ul class="dropdown-list max-h-64 overflow-y-auto py-1" role="presentation"></ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- To selector -->
+        <div>
+          <label for="toBtn" class="block text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+            To
+          </label>
+          <div class="relative" data-selector="to">
+            <button
+              id="toBtn"
+              type="button"
+              class="currency-btn w-full flex items-center justify-between gap-2 bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 rounded-2xl px-4 py-3.5 hover:bg-slate-100 dark:hover:bg-slate-800 transition focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              aria-haspopup="listbox"
+              aria-expanded="false"
+            >
+              <span class="flex items-center gap-2.5 min-w-0">
+                <span class="text-2xl leading-none" data-role="flag">🇪🇺</span>
+                <span class="text-left min-w-0">
+                  <span class="block font-semibold text-sm" data-role="code">EUR</span>
+                  <span class="block text-xs text-slate-500 dark:text-slate-400 truncate" data-role="name">Euro</span>
+                </span>
+              </span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 text-slate-500 dark:text-slate-400 flex-shrink-0" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div
+              class="dropdown hidden absolute left-0 right-0 mt-2 z-20 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-card overflow-hidden"
+              role="listbox"
+              aria-label="Select target currency"
+            >
+              <div class="p-2 border-b border-slate-200 dark:border-slate-800">
+                <div class="relative">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  </svg>
+                  <input
+                    type="text"
+                    class="dropdown-search w-full text-sm bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg pl-9 pr-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    placeholder="Search currency..."
+                    aria-label="Search currency"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+              <ul class="dropdown-list max-h-64 overflow-y-auto py-1" role="presentation"></ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Swap button (absolutely positioned over the gap) -->
+        <button
+          id="swapBtn"
+          type="button"
+          class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 shadow-md hover:border-indigo-500 dark:hover:border-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 text-slate-700 dark:text-slate-200 flex items-center justify-center transition-transform duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-slate-900 hidden sm:flex"
+          aria-label="Swap currencies"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true">
+            <path d="M7 16V4M7 4L3 8M7 4l4 4" />
+            <path d="M17 8v12M17 20l4-4M17 20l-4-4" />
+          </svg>
+        </button>
+
+        <!-- Mobile swap button (inline, full width row) -->
+        <button
+          id="swapBtnMobile"
+          type="button"
+          class="sm:hidden mt-1 mx-auto w-11 h-11 rounded-full bg-white dark:bg-slate-900 border-2 border-slate-200 dark:border-slate-700 shadow-md hover:border-indigo-500 text-slate-700 dark:text-slate-200 flex items-center justify-center transition-transform duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+          aria-label="Swap currencies"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true">
+            <path d="M7 16V4M7 4L3 8M7 4l4 4" />
+            <path d="M17 8v12M17 20l4-4M17 20l-4-4" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Result -->
+      <div class="mt-6 sm:mt-8 p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-indigo-50 to-white dark:from-indigo-950/40 dark:to-slate-900 border border-indigo-100 dark:border-indigo-900/50">
+        <p class="text-xs font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
+          Converted amount
+        </p>
+        <div
+          id="resultDisplay"
+          class="text-3xl sm:text-4xl font-bold tabular-nums tracking-tight text-slate-900 dark:text-white transition-all"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <span class="inline-block w-40 h-10 rounded-lg bg-slate-200 dark:bg-slate-800 animate-pulse" aria-hidden="true"></span>
+          <span class="sr-only">Loading conversion...</span>
+        </div>
+        <p
+          id="rateInfo"
+          class="mt-2 text-sm text-slate-600 dark:text-slate-400 tabular-nums"
+          aria-live="polite"
+        >&nbsp;</p>
+      </div>
+
+      <!-- Status / Refresh -->
+      <div class="mt-4 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+        <span id="lastUpdated" aria-live="polite">Loading rates...</span>
+        <button
+          id="refreshBtn"
+          type="button"
+          class="inline-flex items-center gap-1.5 font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded px-1"
+          aria-label="Refresh rates"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-3.5 h-3.5 refresh-icon" aria-hidden="true">
+            <polyline points="23 4 23 10 17 10" />
+            <polyline points="1 20 1 14 7 14" />
+            <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15" />
+          </svg>
+          Refresh
+        </button>
+      </div>
+    </section>
+
+    <!-- History -->
+    <section
+      id="historySection"
+      class="w-full max-w-xl mt-6 hidden"
+      aria-labelledby="historyHeading"
+    >
+      <div class="flex items-center justify-between mb-3 px-1">
+        <h2 id="historyHeading" class="text-sm font-semibold text-slate-700 dark:text-slate-300">Recent conversions</h2>
+        <button
+          id="clearHistoryBtn"
+          type="button"
+          class="text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 rounded px-1"
+        >Clear</button>
+      </div>
+      <ul id="historyList" class="space-y-2" role="list"></ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full max-w-xl mt-auto pt-10 pb-2 text-center text-xs text-slate-500 dark:text-slate-500">
+      <p>
+        Rates from
+        <a href="https://www.exchangerate-api.com" target="_blank" rel="noopener noreferrer" class="underline hover:text-indigo-600 dark:hover:text-indigo-400">exchangerate-api.com</a>
+        &middot; For informational purposes only
+      </p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

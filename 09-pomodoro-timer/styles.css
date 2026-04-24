@@ -1,0 +1,261 @@
+/* ============================================================
+   Pomodoro Timer — styles.css
+   Tailwind handles layout/utility; this file carries the
+   theming (per-mode accents) and a couple of small components.
+   ============================================================ */
+
+:root {
+  /* Default: focus mode accent */
+  --accent: #e11d48;          /* rose-600  */
+  --accent-soft: #fecdd3;     /* rose-200  */
+  --accent-ring: #fb7185;     /* rose-400  */
+  --bg-tint: #fff1f2;         /* rose-50   */
+  --bg-tint-dark: #1e1014;    /* rose-950-ish */
+}
+
+html.mode-focus {
+  --accent: #e11d48;
+  --accent-soft: #fecdd3;
+  --accent-ring: #fb7185;
+  --bg-tint: #fff1f2;
+  --bg-tint-dark: #1e1014;
+}
+
+html.mode-short {
+  --accent: #0d9488;          /* teal-600 */
+  --accent-soft: #99f6e4;     /* teal-200 */
+  --accent-ring: #2dd4bf;     /* teal-400 */
+  --bg-tint: #f0fdfa;         /* teal-50  */
+  --bg-tint-dark: #0a1b1a;
+}
+
+html.mode-long {
+  --accent: #d97706;          /* amber-600 */
+  --accent-soft: #fde68a;     /* amber-200 */
+  --accent-ring: #fbbf24;     /* amber-400 */
+  --bg-tint: #fffbeb;         /* amber-50  */
+  --bg-tint-dark: #1f1810;
+}
+
+/* Body tint per mode -- subtle gradient background */
+body {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, var(--bg-tint) 0%, transparent 70%),
+    #f8fafc; /* slate-50 */
+  transition: background 0.6s ease;
+}
+html.dark body {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, var(--bg-tint-dark) 0%, transparent 70%),
+    #020617; /* slate-950 */
+}
+
+/* ---- Progress ring ---- */
+#progress-ring {
+  stroke: var(--accent);
+  transition: stroke 0.5s ease, stroke-dashoffset 0.1s linear;
+}
+
+/* ---- Mode tabs ---- */
+.mode-tab {
+  color: #64748b;              /* slate-500 */
+  background: transparent;
+}
+.mode-tab:hover {
+  background: rgba(148, 163, 184, 0.12); /* slate-400/12 */
+}
+html.dark .mode-tab {
+  color: #94a3b8;              /* slate-400 */
+}
+html.dark .mode-tab:hover {
+  background: rgba(148, 163, 184, 0.15);
+}
+.mode-tab.active {
+  color: var(--accent);
+  background: var(--bg-tint);
+}
+html.dark .mode-tab.active {
+  background: var(--bg-tint-dark);
+}
+
+/* ---- Primary button (play/pause) ---- */
+.primary-btn {
+  background-color: var(--accent);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15),
+              0 8px 10px -6px color-mix(in srgb, var(--accent) 40%, transparent);
+  transition: background-color 0.4s ease, box-shadow 0.3s ease, transform 0.15s ease;
+}
+.primary-btn:hover {
+  filter: brightness(1.05);
+}
+
+/* ---- Mode label color ---- */
+#mode-label {
+  color: var(--accent);
+  transition: color 0.4s ease;
+}
+
+/* ---- Task list item ---- */
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.75rem;
+  border-radius: 0.625rem;
+  border: 1px solid rgb(226 232 240); /* slate-200 */
+  background: #fff;
+  transition: all 0.2s ease;
+  animation: slide-in 0.3s ease;
+}
+html.dark .task-item {
+  background: rgb(15 23 42 / 0.5); /* slate-900/50 */
+  border-color: rgb(30 41 59);     /* slate-800 */
+}
+.task-item:hover {
+  border-color: rgb(203 213 225);  /* slate-300 */
+}
+html.dark .task-item:hover {
+  border-color: rgb(51 65 85);     /* slate-700 */
+}
+.task-item.active {
+  border-color: var(--accent);
+  background: var(--bg-tint);
+}
+html.dark .task-item.active {
+  background: var(--bg-tint-dark);
+  border-color: var(--accent);
+}
+.task-item.completed .task-title {
+  text-decoration: line-through;
+  color: rgb(148 163 184); /* slate-400 */
+}
+
+.task-checkbox {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgb(203 213 225); /* slate-300 */
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: #fff;
+}
+html.dark .task-checkbox {
+  border-color: rgb(71 85 105); /* slate-600 */
+}
+.task-checkbox.checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.task-checkbox svg { width: 12px; height: 12px; opacity: 0; transition: opacity 0.2s; }
+.task-checkbox.checked svg { opacity: 1; }
+
+.task-title {
+  flex: 1;
+  font-size: 0.875rem;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.task-pomos {
+  font-size: 0.7rem;
+  color: rgb(100 116 139); /* slate-500 */
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+html.dark .task-pomos {
+  color: rgb(148 163 184); /* slate-400 */
+}
+
+.task-delete {
+  opacity: 0;
+  color: rgb(148 163 184);
+  padding: 2px;
+  border-radius: 4px;
+  transition: opacity 0.2s, color 0.2s, background 0.2s;
+}
+.task-item:hover .task-delete { opacity: 1; }
+.task-delete:hover { color: #e11d48; background: rgb(254 226 226); }
+html.dark .task-delete:hover { background: rgb(69 10 10); }
+
+@keyframes slide-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---- Custom toggle switches ---- */
+.toggle {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 38px;
+  height: 22px;
+  background: rgb(203 213 225); /* slate-300 */
+  border-radius: 9999px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+html.dark .toggle {
+  background: rgb(51 65 85); /* slate-700 */
+}
+.toggle::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-radius: 9999px;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+.toggle:checked {
+  background: var(--accent);
+}
+.toggle:checked::before {
+  transform: translateX(16px);
+}
+
+/* ---- Settings modal visible state ---- */
+#settings-modal.open {
+  display: flex;
+  animation: fade-in 0.2s ease;
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ---- Scrollbar polish ---- */
+#task-list::-webkit-scrollbar { width: 6px; }
+#task-list::-webkit-scrollbar-thumb {
+  background: rgb(203 213 225);
+  border-radius: 9999px;
+}
+html.dark #task-list::-webkit-scrollbar-thumb {
+  background: rgb(51 65 85);
+}
+
+/* ---- Number input: hide browser spin buttons ---- */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none; margin: 0;
+}
+input[type=number] { -moz-appearance: textfield; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

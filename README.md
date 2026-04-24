@@ -15,6 +15,8 @@ Self-initiated landing pages and small apps across different industries. Built f
 | 05 | **Designing for Impact** | Online course landing (EN) | [05-course-landing](./05-course-landing/) |
 | 06 | **Верба** | Ресторан · Лендинг (RU) | [06-restaurant-ru](./06-restaurant-ru/) |
 | 07 | **Старт в продуктовом дизайне** | Онлайн-курс · Лендинг (RU) | [07-course-ru](./07-course-ru/) |
+| 08 | **Currency Converter** | SPA app · live API + cache | [08-currency-converter](./08-currency-converter/) |
+| 09 | **Pomodoro Timer** | SPA app · task tracker + stats | [09-pomodoro-timer](./09-pomodoro-timer/) |
 
 ## Stack
 

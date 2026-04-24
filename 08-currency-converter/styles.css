@@ -1,0 +1,108 @@
+/* ============================================================
+   Currency Converter — custom styles
+   Tailwind handles the bulk of the design; this file provides:
+   - small animations that are awkward in utility classes
+   - flag emoji rendering fallbacks
+   - fine-grained scrollbar styling in dropdowns
+   ============================================================ */
+
+/* Smooth color transitions between light & dark mode */
+html {
+  color-scheme: light;
+}
+html.dark {
+  color-scheme: dark;
+}
+body {
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+/* Use tabular figures wherever numbers matter */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+/* Force emoji font for flag spans — some systems render "US" text
+   instead of a flag when Inter is loaded first */
+[data-role='flag'] {
+  font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji', 'EmojiOne Color', 'Android Emoji', sans-serif;
+}
+
+/* ---------- Swap button rotation ---------- */
+#swapBtn.rotating,
+#swapBtnMobile.rotating {
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+#swapBtnMobile.rotating {
+  transform: rotate(180deg);
+}
+
+/* ---------- Result fade pulse on update ---------- */
+@keyframes resultPulse {
+  0% { opacity: 0.4; transform: translateY(2px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+#resultDisplay.updated {
+  animation: resultPulse 200ms ease-out;
+}
+
+/* ---------- Refresh icon spin ---------- */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.refresh-icon.spinning {
+  animation: spin 800ms linear infinite;
+}
+
+/* ---------- History item fade-in ---------- */
+@keyframes historyFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.history-item {
+  animation: historyFadeIn 180ms ease-out;
+}
+
+/* ---------- Dropdown list styling ---------- */
+.dropdown-list::-webkit-scrollbar {
+  width: 8px;
+}
+.dropdown-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.dropdown-list::-webkit-scrollbar-thumb {
+  background-color: rgba(148, 163, 184, 0.4);
+  border-radius: 999px;
+}
+.dropdown-list::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(148, 163, 184, 0.7);
+}
+html.dark .dropdown-list::-webkit-scrollbar-thumb {
+  background-color: rgba(71, 85, 105, 0.6);
+}
+
+/* Disable awkward focus ring on mouse click, keep for keyboard */
+button:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ---------- Small hover lift on cards ---------- */
+.history-item-btn {
+  transition: transform 120ms ease, background-color 120ms ease,
+    border-color 120ms ease;
+}
+.history-item-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
