@@ -406,7 +406,11 @@
                 }
             });
         }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-        document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+        const revealEls = document.querySelectorAll('.reveal');
+        revealEls.forEach((el) => revealObserver.observe(el));
+        // Safety fallback: guarantee reveal after 2s in case the observer
+        // never fires (some mobile browsers, reduced-motion edge cases, etc.)
+        setTimeout(() => revealEls.forEach((el) => el.classList.add('is-visible')), 2000);
     </script>
 </body>
 </html>
