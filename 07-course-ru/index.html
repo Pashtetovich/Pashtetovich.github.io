@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="6-недельный курс по продуктовому дизайну для начинающих. Научитесь проектировать интерфейсы, которые решают задачи бизнеса и пользователей." />
+  <title>Старт в продуктовом дизайне — 6-недельный курс</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Inter:wght@300..700&display=swap&subset=cyrillic,cyrillic-ext,latin" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#fef9f3',
+            'cream-2': '#f8f0e3',
+            plum: '#4a1d3d',
+            'plum-2': '#632751',
+            'plum-soft': '#6a3159',
+            peach: '#f4a261',
+            'peach-deep': '#e8894a',
+            ink: '#1c1016',
+            muted: '#6b5a62'
+          },
+          fontFamily: {
+            serif: ['Lora', 'Georgia', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-cream text-ink font-sans antialiased">
+
+  <!-- Announcement bar -->
+  <div id="announcement" class="bg-plum text-cream text-sm md:text-[15px] px-4 py-2.5">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-center gap-x-3 gap-y-1 text-center">
+      <span class="flex items-center gap-2">
+        <span aria-hidden="true">🎓</span>
+        <span>До закрытия набора на поток №12 осталось</span>
+      </span>
+      <span id="announcement-countdown" class="font-mono font-semibold tabular-nums tracking-wider text-peach">— : — : — : —</span>
+      <span class="hidden sm:inline text-cream/50">·</span>
+      <span>Скидка 20% по промокоду <span class="font-semibold text-peach">СТАРТ20</span></span>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="sticky top-0 z-40 bg-cream/85 backdrop-blur-md border-b border-plum/10">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2 group">
+        <span class="w-8 h-8 rounded-full bg-plum flex items-center justify-center text-cream font-serif text-lg group-hover:bg-plum-2 transition">С</span>
+        <span class="font-serif text-xl text-plum tracking-tight">Старт</span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-8 text-sm text-ink/80">
+        <li><a href="#programma" class="hover:text-plum transition">Программа</a></li>
+        <li><a href="#prepodavatel" class="hover:text-plum transition">Преподаватель</a></li>
+        <li><a href="#otzyvy" class="hover:text-plum transition">Отзывы</a></li>
+        <li><a href="#faq" class="hover:text-plum transition">FAQ</a></li>
+      </ul>
+
+      <a href="#zapis" class="inline-flex items-center gap-1.5 bg-plum text-cream px-4 sm:px-5 py-2.5 rounded-full text-sm font-medium hover:bg-plum-2 transition">
+        Записаться
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-peach/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-32 -right-24 w-[28rem] h-[28rem] bg-plum/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-24 pb-20 md:pb-28 text-center">
+        <p class="reveal text-xs md:text-sm tracking-[0.22em] text-plum/80 uppercase font-medium mb-6">
+          6-недельный курс · Старт 3 июня
+        </p>
+
+        <h1 class="reveal font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-plum leading-[1.05] tracking-tight mb-6">
+          Продуктовый дизайн,<br class="hidden sm:block"/> <em class="italic font-normal">за который платят</em>
+        </h1>
+
+        <p class="reveal text-lg md:text-xl text-ink/75 max-w-2xl mx-auto leading-relaxed mb-10">
+          За 6 недель научитесь мыслить как продуктовый дизайнер: исследовать, проектировать и защищать решения, которые влияют на метрики бизнеса.
+        </p>
+
+        <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-3 mb-14">
+          <a href="#zapis" class="w-full sm:w-auto bg-plum text-cream px-7 py-4 rounded-full font-medium hover:bg-plum-2 transition inline-flex items-center justify-center gap-2">
+            Записаться на поток
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="#programma" class="w-full sm:w-auto border border-plum/30 text-plum px-7 py-4 rounded-full font-medium hover:bg-plum/5 transition inline-flex items-center justify-center gap-2">
+            Смотреть программу
+          </a>
+        </div>
+
+        <!-- Social proof -->
+        <div class="reveal flex flex-col items-center gap-3">
+          <div class="flex items-center gap-1.5 text-peach" aria-label="Рейтинг 5 из 5">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="text-sm md:text-base text-ink/70">
+            С нами уже <span class="font-semibold text-plum">2 400+</span> дизайнеров из Яндекса, Т-Банка, Авито, ВКонтакте
+          </p>
+        </div>
+      </div>
+
+      <!-- Logo row -->
+      <div class="border-y border-plum/10 bg-cream-2/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <p class="text-[11px] tracking-[0.2em] text-ink/50 uppercase text-center mb-4">Выпускники работают в</p>
+          <div class="flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-10 gap-y-3 text-ink/60 font-serif text-base sm:text-lg md:text-xl">
+            <span>Яндекс</span>
+            <span class="text-ink/20">·</span>
+            <span>Т-Банк</span>
+            <span class="text-ink/20">·</span>
+            <span>Авито</span>
+            <span class="text-ink/20">·</span>
+            <span>ВКонтакте</span>
+            <span class="text-ink/20">·</span>
+            <span>Озон</span>
+            <span class="text-ink/20">·</span>
+            <span>Wildberries</span>
+            <span class="text-ink/20">·</span>
+            <span>Сбер</span>
+            <span class="text-ink/20">·</span>
+            <span>Самокат</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What you'll learn -->
+    <section class="py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal text-center mb-14 md:mb-20">
+          <p class="text-xs tracking-[0.22em] text-plum/70 uppercase font-medium mb-4">Что вы освоите</p>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-plum leading-tight tracking-tight max-w-3xl mx-auto">
+            Навыки, которые <em class="italic font-normal">реально</em> нужны в продуктовых командах
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-plum/10 rounded-3xl overflow-hidden border border-plum/10">
+          <!-- 1 -->
+          <div class="reveal bg-cream p-8 md:p-10">
+            <div class="w-11 h-11 rounded-full bg-peach/15 text-peach-deep flex items-center justify-center mb-5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <h3 class="font-serif text-xl text-plum mb-3">Формулировать задачу до того, как открывать Figma</h3>
+            <p class="text-ink/70 leading-relaxed text-[15px]">Брифы, гипотезы, метрики. Определять, что именно решаем, — и перестать рисовать ради картинок.</p>
+          </div>
+          <!-- 2 -->
+          <div class="reveal bg-cream p-8 md:p-10">
+            <div class="w-11 h-11 rounded-full bg-peach/15 text-peach-deep flex items-center justify-center mb-5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 21l-4.35-4.35"/><circle cx="11" cy="11" r="8"/></svg>
+            </div>
+            <h3 class="font-serif text-xl text-plum mb-3">Проводить исследования, влияющие на решения</h3>
+            <p class="text-ink/70 leading-relaxed text-[15px]">Интервью, юзабилити-тесты, анализ данных. Делать выводы, которые команда действительно применяет.</p>
+          </div>
+          <!-- 3 -->
+          <div class="reveal bg-cream p-8 md:p-10">
+            <div class="w-11 h-11 rounded-full bg-peach/15 text-peach-deep flex items-center justify-center mb-5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            </div>
+            <h3 class="font-serif text-xl text-plum mb-3">Собирать дизайн-систему, которая масштабируется</h3>
+            <p class="text-ink/70 leading-relaxed text-[15px]">Компоненты, токены, документация. Работать в команде без бесконечных правок одного и того же.</p>
+          </div>
+          <!-- 4 -->
+          <div class="reveal bg-cream p-8 md:p-10">
+            <div class="w-11 h-11 rounded-full bg-peach/15 text-peach-deep flex items-center justify-center mb-5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h3 class="font-serif text-xl text-plum mb-3">Защищать свои решения перед бизнесом</h3>
+            <p class="text-ink/70 leading-relaxed text-[15px]">Аргументация, storytelling, работа с возражениями менеджеров и разработчиков. Говорить на языке задач.</p>
+          </div>
+          <!-- 5 -->
+          <div class="reveal bg-cream p-8 md:p-10">
+            <div class="w-11 h-11 rounded-full bg-peach/15 text-peach-deep flex items-center justify-center mb-5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 14 4-4 4 4 5-5"/></svg>
+            </div>
+            <h3 class="font-serif text-xl text-plum mb-3">Измерять эффект дизайна в бизнес-метриках</h3>
+            <p class="text-ink/70 leading-relaxed text-[15px]">A/B-тесты, конверсии, retention. Превращать дизайн из «красиво» в «принесло Х рублей выручки».</p>
+          </div>
+          <!-- 6 -->
+          <div class="reveal bg-cream p-8 md:p-10">
+            <div class="w-11 h-11 rounded-full bg-peach/15 text-peach-deep flex items-center justify-center mb-5">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6"/><path d="M9 17h4"/></svg>
+            </div>
+            <h3 class="font-serif text-xl text-plum mb-3">Собирать портфолио, которое зовут на собеседование</h3>
+            <p class="text-ink/70 leading-relaxed text-[15px]">Кейсы по структуре FAANG и российских продуктовых компаний. Пишем, оформляем, публикуем на Behance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pull quote -->
+    <section class="py-16 md:py-20 px-4 sm:px-6 lg:px-8 bg-cream-2/60">
+      <div class="max-w-4xl mx-auto text-center reveal">
+        <svg class="mx-auto mb-6 text-peach" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1zM15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.85c.44 0 .7.26.7.7v1.3c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/></svg>
+        <blockquote class="font-serif text-2xl md:text-3xl lg:text-4xl text-plum italic leading-snug tracking-tight">
+          «Дизайн — это не про красивые экраны. Это про то, как изменить поведение пользователя и сдвинуть метрику бизнеса».
+        </blockquote>
+        <p class="mt-6 text-sm tracking-wider uppercase text-ink/60">Мария Соколова · Автор курса</p>
+      </div>
+    </section>
+
+    <!-- Curriculum -->
+    <section id="programma" class="py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="reveal text-center mb-14 md:mb-20">
+          <p class="text-xs tracking-[0.22em] text-plum/70 uppercase font-medium mb-4">Программа</p>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-plum leading-tight tracking-tight max-w-3xl mx-auto mb-5">
+            Шесть недель, шесть шагов к первому офферу
+          </h2>
+          <p class="text-ink/70 max-w-2xl mx-auto text-lg">
+            24 урока, 6 воркшопов, финальный кейс. Каждую неделю — новая тема и практика с обратной связью от преподавателя.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Week 1 -->
+          <details class="reveal curriculum-item group border border-plum/15 rounded-2xl bg-cream-2/40 overflow-hidden">
+            <summary class="flex items-start md:items-center justify-between gap-4 p-6 md:p-7 cursor-pointer list-none">
+              <div class="flex items-start md:items-center gap-5 flex-1">
+                <span class="font-serif text-2xl md:text-3xl text-peach-deep/90 font-semibold tabular-nums w-10 md:w-14 flex-shrink-0">01</span>
+                <div class="flex-1">
+                  <p class="text-xs uppercase tracking-wider text-plum/60 mb-1">Неделя 1 · 4 часа</p>
+                  <h3 class="font-serif text-xl md:text-2xl text-plum">Мышление продуктового дизайнера</h3>
+                </div>
+              </div>
+              <span class="curriculum-icon mt-1 md:mt-0 text-plum/50 flex-shrink-0" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="px-6 md:px-7 pb-7 md:pl-[6.5rem]">
+              <ul class="space-y-2 text-ink/75">
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Что такое продуктовый дизайн и чем отличается от UI/UX</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Фреймворк Double Diamond, Jobs To Be Done</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Работа с брифом: правильные вопросы заказчику</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Практика: разбор реального кейса из Т-Банка</span></li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Week 2 -->
+          <details class="reveal curriculum-item group border border-plum/15 rounded-2xl bg-cream-2/40 overflow-hidden">
+            <summary class="flex items-start md:items-center justify-between gap-4 p-6 md:p-7 cursor-pointer list-none">
+              <div class="flex items-start md:items-center gap-5 flex-1">
+                <span class="font-serif text-2xl md:text-3xl text-peach-deep/90 font-semibold tabular-nums w-10 md:w-14 flex-shrink-0">02</span>
+                <div class="flex-1">
+                  <p class="text-xs uppercase tracking-wider text-plum/60 mb-1">Неделя 2 · 5 часов</p>
+                  <h3 class="font-serif text-xl md:text-2xl text-plum">Исследования и пользователи</h3>
+                </div>
+              </div>
+              <span class="curriculum-icon mt-1 md:mt-0 text-plum/50 flex-shrink-0" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="px-6 md:px-7 pb-7 md:pl-[6.5rem]">
+              <ul class="space-y-2 text-ink/75">
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Проблемные и решенческие интервью</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Юзабилити-тестирование: сценарии и анализ</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Customer Journey Map: когда нужна, когда мешает</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Воркшоп: проведите интервью и защитите инсайты</span></li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Week 3 -->
+          <details class="reveal curriculum-item group border border-plum/15 rounded-2xl bg-cream-2/40 overflow-hidden">
+            <summary class="flex items-start md:items-center justify-between gap-4 p-6 md:p-7 cursor-pointer list-none">
+              <div class="flex items-start md:items-center gap-5 flex-1">
+                <span class="font-serif text-2xl md:text-3xl text-peach-deep/90 font-semibold tabular-nums w-10 md:w-14 flex-shrink-0">03</span>
+                <div class="flex-1">
+                  <p class="text-xs uppercase tracking-wider text-plum/60 mb-1">Неделя 3 · 5 часов</p>
+                  <h3 class="font-serif text-xl md:text-2xl text-plum">Проектирование интерфейсов в Figma</h3>
+                </div>
+              </div>
+              <span class="curriculum-icon mt-1 md:mt-0 text-plum/50 flex-shrink-0" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="px-6 md:px-7 pb-7 md:pl-[6.5rem]">
+              <ul class="space-y-2 text-ink/75">
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Информационная архитектура и пользовательские сценарии</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Wireframes → High-fidelity: от скетча до финала</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Auto-layout, variants, интерактивные прототипы</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Гайдлайны iOS, Android и веб — когда ломать правила</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Воркшоп: проектируем фичу для fintech-продукта</span></li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Week 4 -->
+          <details class="reveal curriculum-item group border border-plum/15 rounded-2xl bg-cream-2/40 overflow-hidden">
+            <summary class="flex items-start md:items-center justify-between gap-4 p-6 md:p-7 cursor-pointer list-none">
+              <div class="flex items-start md:items-center gap-5 flex-1">
+                <span class="font-serif text-2xl md:text-3xl text-peach-deep/90 font-semibold tabular-nums w-10 md:w-14 flex-shrink-0">04</span>
+                <div class="flex-1">
+                  <p class="text-xs uppercase tracking-wider text-plum/60 mb-1">Неделя 4 · 4 часа</p>
+                  <h3 class="font-serif text-xl md:text-2xl text-plum">Дизайн-системы и командная работа</h3>
+                </div>
+              </div>
+              <span class="curriculum-icon mt-1 md:mt-0 text-plum/50 flex-shrink-0" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="px-6 md:px-7 pb-7 md:pl-[6.5rem]">
+              <ul class="space-y-2 text-ink/75">
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Дизайн-токены, компоненты, паттерны</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Как работают дизайн-системы в Яндексе и Avito</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Взаимодействие с разработкой: передача макетов</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Практика: собираем мини-систему в Figma</span></li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Week 5 -->
+          <details class="reveal curriculum-item group border border-plum/15 rounded-2xl bg-cream-2/40 overflow-hidden">
+            <summary class="flex items-start md:items-center justify-between gap-4 p-6 md:p-7 cursor-pointer list-none">
+              <div class="flex items-start md:items-center gap-5 flex-1">
+                <span class="font-serif text-2xl md:text-3xl text-peach-deep/90 font-semibold tabular-nums w-10 md:w-14 flex-shrink-0">05</span>
+                <div class="flex-1">
+                  <p class="text-xs uppercase tracking-wider text-plum/60 mb-1">Неделя 5 · 4 часа</p>
+                  <h3 class="font-serif text-xl md:text-2xl text-plum">Метрики, A/B-тесты и защита решений</h3>
+                </div>
+              </div>
+              <span class="curriculum-icon mt-1 md:mt-0 text-plum/50 flex-shrink-0" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="px-6 md:px-7 pb-7 md:pl-[6.5rem]">
+              <ul class="space-y-2 text-ink/75">
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Продуктовые метрики: CR, retention, LTV, NPS</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Постановка гипотез и запуск A/B-тестов</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Презентация решения продакту и команде</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Воркшоп: защищаем свой кейс перед приглашённым экспертом</span></li>
+              </ul>
+            </div>
+          </details>
+
+          <!-- Week 6 -->
+          <details class="reveal curriculum-item group border border-plum/15 rounded-2xl bg-cream-2/40 overflow-hidden">
+            <summary class="flex items-start md:items-center justify-between gap-4 p-6 md:p-7 cursor-pointer list-none">
+              <div class="flex items-start md:items-center gap-5 flex-1">
+                <span class="font-serif text-2xl md:text-3xl text-peach-deep/90 font-semibold tabular-nums w-10 md:w-14 flex-shrink-0">06</span>
+                <div class="flex-1">
+                  <p class="text-xs uppercase tracking-wider text-plum/60 mb-1">Неделя 6 · 5 часов</p>
+                  <h3 class="font-serif text-xl md:text-2xl text-plum">Портфолио и трудоустройство</h3>
+                </div>
+              </div>
+              <span class="curriculum-icon mt-1 md:mt-0 text-plum/50 flex-shrink-0" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </span>
+            </summary>
+            <div class="px-6 md:px-7 pb-7 md:pl-[6.5rem]">
+              <ul class="space-y-2 text-ink/75">
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Структура сильного кейса: задача → процесс → результат</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Разбор портфолио дизайнеров из Яндекса и ВК</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Резюме, LinkedIn и тестовые задания</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Подготовка к собеседованию: поведенческое и кейсовое</span></li>
+                <li class="flex gap-3"><span class="text-peach-deep mt-1.5">◆</span><span>Финальная защита своего кейса перед командой</span></li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Instructor -->
+    <section id="prepodavatel" class="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-plum text-cream relative overflow-hidden">
+      <div class="absolute inset-0 pointer-events-none opacity-20" aria-hidden="true">
+        <div class="absolute top-20 right-0 w-96 h-96 bg-peach rounded-full blur-3xl"></div>
+      </div>
+      <div class="relative max-w-6xl mx-auto">
+        <div class="reveal text-center mb-14">
+          <p class="text-xs tracking-[0.22em] text-peach uppercase font-medium mb-4">Преподаватель</p>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl leading-tight tracking-tight">
+            Учитесь у практика, а не у теоретика
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-14 items-center">
+          <div class="reveal md:col-span-2">
+            <div class="relative aspect-[4/5] rounded-3xl overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80" alt="Мария Соколова, Senior Product Designer в Т-Банке" class="w-full h-full object-cover" loading="lazy" />
+              <div class="absolute bottom-5 left-5 right-5 bg-cream/95 text-plum rounded-xl px-4 py-3 backdrop-blur">
+                <p class="font-serif text-lg leading-tight">Мария Соколова</p>
+                <p class="text-xs text-plum/70 mt-0.5">Senior Product Designer, Т-Банк · ex-Яндекс</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal md:col-span-3">
+            <p class="text-lg md:text-xl leading-relaxed mb-5 text-cream/90">
+              6+ лет в продуктовом дизайне. Проектировала ключевые разделы суперапа Т-Банка, вела сервисы в Яндекс.Маркете и консультировала команды в Авито и Ozon.
+            </p>
+            <p class="text-cream/80 leading-relaxed mb-8">
+              Ментор в «Бюро Горбунова», спикер на Design Prom и Heisenbug. В курс вложила всё, что сама бы хотела услышать на старте: без воды, без «сделайте как на Dribbble», только практика и реальные кейсы из российских продуктов.
+            </p>
+
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-[15px] text-cream/90">
+              <li class="flex items-center gap-2.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-peach flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                Продуктовая стратегия
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-peach flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                UX-исследования
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-peach flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                Дизайн-системы
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-peach flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                Fintech и e-commerce
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-peach flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                Менторинг и найм
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-peach flex-shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                Defence-сессии и storytelling
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="otzyvy" class="py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal text-center mb-14 md:mb-20">
+          <p class="text-xs tracking-[0.22em] text-plum/70 uppercase font-medium mb-4">Отзывы выпускников</p>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-plum leading-tight tracking-tight max-w-3xl mx-auto">
+            Истории тех, кто уже прошёл путь
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-14">
+          <!-- Testimonial 1 -->
+          <article class="reveal bg-cream-2/60 rounded-3xl p-7 md:p-8 border border-plum/10 flex flex-col">
+            <div class="flex items-center gap-1 text-peach mb-5" aria-label="5 из 5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <blockquote class="font-serif text-lg text-plum leading-snug mb-6 flex-1">
+              «Пришла с нулевой базой — через два месяца после курса уже вышла джуном в Авито. Особенно зашли разборы портфолио: поняла, почему до этого меня никуда не звали».
+            </blockquote>
+            <div class="flex items-center gap-3 pt-5 border-t border-plum/10">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&q=80" alt="Анна Мельникова" class="w-12 h-12 rounded-full object-cover" loading="lazy" />
+              <div>
+                <p class="font-medium text-plum">Анна Мельникова</p>
+                <p class="text-sm text-ink/60">Product Designer, Авито</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Testimonial 2 -->
+          <article class="reveal bg-cream-2/60 rounded-3xl p-7 md:p-8 border border-plum/10 flex flex-col">
+            <div class="flex items-center gap-1 text-peach mb-5" aria-label="5 из 5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <blockquote class="font-serif text-lg text-plum leading-snug mb-6 flex-1">
+              «Был графическим дизайнером 5 лет, перешёл в продукт через этот курс. Фидбэк Марии на воркшопах — это не „красивее шрифт“, а настоящая взрослая критика. В итоге получил оффер в Озоне на мидла».
+            </blockquote>
+            <div class="flex items-center gap-3 pt-5 border-t border-plum/10">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Дмитрий Ковалёв" class="w-12 h-12 rounded-full object-cover" loading="lazy" />
+              <div>
+                <p class="font-medium text-plum">Дмитрий Ковалёв</p>
+                <p class="text-sm text-ink/60">Middle Product Designer, Озон</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Testimonial 3 -->
+          <article class="reveal bg-cream-2/60 rounded-3xl p-7 md:p-8 border border-plum/10 flex flex-col">
+            <div class="flex items-center gap-1 text-peach mb-5" aria-label="5 из 5">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <blockquote class="font-serif text-lg text-plum leading-snug mb-6 flex-1">
+              «Работаю маркетологом в ВК, давно хотела в дизайн. Курс дал структуру и словарь, которого не хватало — теперь понимаю, о чём говорят продакты и исследователи. Перешла горизонтально на позицию UX-райтера».
+            </blockquote>
+            <div class="flex items-center gap-3 pt-5 border-t border-plum/10">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&q=80" alt="Екатерина Орлова" class="w-12 h-12 rounded-full object-cover" loading="lazy" />
+              <div>
+                <p class="font-medium text-plum">Екатерина Орлова</p>
+                <p class="text-sm text-ink/60">UX Writer, ВКонтакте</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Results -->
+        <div class="reveal bg-plum text-cream rounded-3xl p-8 md:p-12 text-center">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
+            <div>
+              <p class="font-serif text-4xl md:text-5xl text-peach mb-2">87%</p>
+              <p class="text-cream/80 text-sm md:text-base">получили повышение или новую работу в течение 6 месяцев после окончания</p>
+            </div>
+            <div>
+              <p class="font-serif text-4xl md:text-5xl text-peach mb-2">2 400+</p>
+              <p class="text-cream/80 text-sm md:text-base">выпускников с 2020 года в российских и международных продуктах</p>
+            </div>
+            <div>
+              <p class="font-serif text-4xl md:text-5xl text-peach mb-2">4.9 / 5</p>
+              <p class="text-cream/80 text-sm md:text-base">средняя оценка курса по итогам 11 потоков</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="zapis" class="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-cream-2/50">
+      <div class="max-w-3xl mx-auto">
+        <div class="reveal text-center mb-10 md:mb-14">
+          <p class="text-xs tracking-[0.22em] text-plum/70 uppercase font-medium mb-4">Стоимость</p>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-plum leading-tight tracking-tight">
+            Один поток, одна цена, никаких «up-sell»
+          </h2>
+        </div>
+
+        <div class="reveal bg-cream border border-plum/15 rounded-3xl p-8 md:p-12 shadow-[0_30px_80px_-40px_rgba(74,29,61,0.35)]">
+
+          <div class="flex items-baseline justify-center gap-4 mb-2">
+            <span class="font-serif text-5xl md:text-6xl text-plum font-semibold">49 000 ₽</span>
+            <span class="text-lg md:text-xl text-ink/40 line-through">62 000 ₽</span>
+          </div>
+          <p class="text-center text-sm text-peach-deep font-medium mb-8">–20% по промокоду СТАРТ20 до конца набора</p>
+
+          <div class="h-px bg-plum/10 mb-8"></div>
+
+          <ul class="space-y-3.5 mb-10">
+            <li class="flex gap-3 text-[15px] text-ink/80">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-peach-deep flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong class="text-plum">24 урока</strong> с записью в LMS — доступ навсегда</span>
+            </li>
+            <li class="flex gap-3 text-[15px] text-ink/80">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-peach-deep flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong class="text-plum">6 живых воркшопов</strong> с Марией по понедельникам</span>
+            </li>
+            <li class="flex gap-3 text-[15px] text-ink/80">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-peach-deep flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong class="text-plum">Персональный фидбэк</strong> от преподавателя на 3 работы</span>
+            </li>
+            <li class="flex gap-3 text-[15px] text-ink/80">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-peach-deep flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong class="text-plum">Telegram-чат</strong> потока и выпускников — 2 400+ участников</span>
+            </li>
+            <li class="flex gap-3 text-[15px] text-ink/80">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-peach-deep flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong class="text-plum">Сертификат</strong> о прохождении после защиты финального кейса</span>
+            </li>
+            <li class="flex gap-3 text-[15px] text-ink/80">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-peach-deep flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong class="text-plum">Сопровождение при трудоустройстве</strong>: разбор резюме, тестовых, mock-собеседования</span>
+            </li>
+            <li class="flex gap-3 text-[15px] text-ink/80">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-peach-deep flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong class="text-plum">База вакансий</strong> от партнёров — Т-Банк, Авито, Озон, ВК</span>
+            </li>
+            <li class="flex gap-3 text-[15px] text-ink/80">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-peach-deep flex-shrink-0 mt-0.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+              <span><strong class="text-plum">Бонус:</strong> шаблоны брифов, интервью-гайдов и структуры кейса</span>
+            </li>
+          </ul>
+
+          <a href="#" class="block text-center bg-plum text-cream px-7 py-4 rounded-full font-medium hover:bg-plum-2 transition text-lg mb-5">
+            Записаться на поток №12
+          </a>
+
+          <div class="flex items-center justify-center gap-2 text-sm text-ink/60 mb-6">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12 2 8l10-6 10 6-7 4"/><path d="M2 8v6l10 6 10-6V8"/><path d="M12 14v8"/></svg>
+            Возврат в течение 30 дней без объяснения причин
+          </div>
+
+          <div class="border-t border-plum/10 pt-6 text-center">
+            <p class="text-ink/80">
+              <span class="font-semibold text-plum">Рассрочка от 4 900 ₽/мес</span> на 12 месяцев
+            </p>
+            <p class="text-sm text-ink/55 mt-1">Без переплат · Т-Банк, Сбер, Халва</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <div class="reveal text-center mb-14 md:mb-16">
+          <p class="text-xs tracking-[0.22em] text-plum/70 uppercase font-medium mb-4">Частые вопросы</p>
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl text-plum leading-tight tracking-tight">
+            Наверняка у вас есть вопросы
+          </h2>
+        </div>
+
+        <div class="space-y-3">
+          <details class="reveal faq-item border border-plum/15 rounded-2xl bg-cream-2/40 px-6 py-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-serif text-lg md:text-xl text-plum">
+              <span>Нужны ли базовые навыки в дизайне или Figma?</span>
+              <span class="faq-icon text-plum/50 flex-shrink-0" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+            </summary>
+            <div class="mt-4 text-ink/75 leading-relaxed">
+              Не обязательно. Мы стартуем с нуля: в первой неделе даём все нужные базовые действия в Figma. Если у вас есть опыт в смежной области (графдизайн, маркетинг, аналитика) — будет ещё легче. Главное требование — готовность уделять курсу 6–8 часов в неделю.
+            </div>
+          </details>
+
+          <details class="reveal faq-item border border-plum/15 rounded-2xl bg-cream-2/40 px-6 py-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-serif text-lg md:text-xl text-plum">
+              <span>Выдаётся ли сертификат после окончания?</span>
+              <span class="faq-icon text-plum/50 flex-shrink-0" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+            </summary>
+            <div class="mt-4 text-ink/75 leading-relaxed">
+              Да, именной сертификат — после защиты финального кейса на шестой неделе. Будем откровенны: сертификат не устраивает на работу, портфолио устраивает. Но он не помешает, и мы его выдаём.
+            </div>
+          </details>
+
+          <details class="reveal faq-item border border-plum/15 rounded-2xl bg-cream-2/40 px-6 py-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-serif text-lg md:text-xl text-plum">
+              <span>Есть ли рассрочка и можно ли оплатить картой работодателя?</span>
+              <span class="faq-icon text-plum/50 flex-shrink-0" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+            </summary>
+            <div class="mt-4 text-ink/75 leading-relaxed">
+              Рассрочка от 4 900 ₽/мес на 12 месяцев без переплат — через Т-Банк, Сбер и Халву. Для юрлиц выставляем счёт и закрывающие документы — пишите в Telegram-поддержку, оформим за день.
+            </div>
+          </details>
+
+          <details class="reveal faq-item border border-plum/15 rounded-2xl bg-cream-2/40 px-6 py-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-serif text-lg md:text-xl text-plum">
+              <span>Помогаете ли с трудоустройством?</span>
+              <span class="faq-icon text-plum/50 flex-shrink-0" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+            </summary>
+            <div class="mt-4 text-ink/75 leading-relaxed">
+              Мы не обещаем «100% трудоустройство» — это было бы нечестно. Но на шестой неделе разбираем ваше портфолио, резюме и LinkedIn, проводим mock-собеседования и открываем доступ к базе вакансий партнёров (Т-Банк, Авито, Озон, ВК). 87% наших выпускников находят работу или повышение в первые 6 месяцев.
+            </div>
+          </details>
+
+          <details class="reveal faq-item border border-plum/15 rounded-2xl bg-cream-2/40 px-6 py-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-serif text-lg md:text-xl text-plum">
+              <span>Останется ли доступ к записям после курса?</span>
+              <span class="faq-icon text-plum/50 flex-shrink-0" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+            </summary>
+            <div class="mt-4 text-ink/75 leading-relaxed">
+              Да, доступ к LMS — навсегда. Все уроки, воркшопы и материалы остаются с вами. Если мы обновляем программу к следующему потоку, вы получаете обновления бесплатно.
+            </div>
+          </details>
+
+          <details class="reveal faq-item border border-plum/15 rounded-2xl bg-cream-2/40 px-6 py-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-serif text-lg md:text-xl text-plum">
+              <span>Чем вы отличаетесь от курсов по Tilda и веб-дизайну?</span>
+              <span class="faq-icon text-plum/50 flex-shrink-0" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+            </summary>
+            <div class="mt-4 text-ink/75 leading-relaxed">
+              Tilda-курсы учат делать лендинги — это другая профессия. Мы про продуктовый дизайн: проектирование интерфейсов сложных сервисов в продуктовых командах (Figma, исследования, метрики, дизайн-системы). Если цель — оффер в IT-продукт, а не фриланс на лендингах — это сюда.
+            </div>
+          </details>
+
+          <details class="reveal faq-item border border-plum/15 rounded-2xl bg-cream-2/40 px-6 py-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-serif text-lg md:text-xl text-plum">
+              <span>Есть ли чат в Telegram после окончания курса?</span>
+              <span class="faq-icon text-plum/50 flex-shrink-0" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+            </summary>
+            <div class="mt-4 text-ink/75 leading-relaxed">
+              Да, большой общий чат выпускников всех потоков — 2 400+ участников. Там мы публикуем вакансии от партнёров, обсуждаем тестовые, разбираем спорные кейсы и просто дружим. Доступ — пожизненно после окончания курса.
+            </div>
+          </details>
+
+          <details class="reveal faq-item border border-plum/15 rounded-2xl bg-cream-2/40 px-6 py-5">
+            <summary class="flex items-center justify-between gap-4 cursor-pointer list-none font-serif text-lg md:text-xl text-plum">
+              <span>А если мне не подойдёт курс?</span>
+              <span class="faq-icon text-plum/50 flex-shrink-0" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </span>
+            </summary>
+            <div class="mt-4 text-ink/75 leading-relaxed">
+              В течение 30 дней после начала возвращаем деньги без лишних вопросов — просто напишите в Telegram-поддержку. Нам не нужны студенты, которым не откликается.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-plum text-cream relative overflow-hidden">
+      <div class="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] bg-peach rounded-full blur-3xl"></div>
+      </div>
+      <div class="relative max-w-3xl mx-auto text-center">
+        <p class="reveal text-xs tracking-[0.22em] text-peach uppercase font-medium mb-5">Последний шаг</p>
+        <h2 class="reveal font-serif text-4xl sm:text-5xl md:text-6xl leading-tight tracking-tight mb-8">
+          Старт потока 3 июня.<br/><em class="italic font-normal">До закрытия набора:</em>
+        </h2>
+
+        <div class="reveal flex items-center justify-center gap-2 md:gap-4 mb-10" id="final-countdown" aria-live="polite">
+          <div class="bg-cream/10 backdrop-blur rounded-2xl px-4 md:px-6 py-4 md:py-5 min-w-[72px] md:min-w-[96px]">
+            <div class="font-serif text-3xl md:text-5xl font-semibold text-peach tabular-nums" data-unit="days">00</div>
+            <div class="text-[10px] md:text-xs uppercase tracking-wider text-cream/60 mt-1">дней</div>
+          </div>
+          <div class="bg-cream/10 backdrop-blur rounded-2xl px-4 md:px-6 py-4 md:py-5 min-w-[72px] md:min-w-[96px]">
+            <div class="font-serif text-3xl md:text-5xl font-semibold text-peach tabular-nums" data-unit="hours">00</div>
+            <div class="text-[10px] md:text-xs uppercase tracking-wider text-cream/60 mt-1">часов</div>
+          </div>
+          <div class="bg-cream/10 backdrop-blur rounded-2xl px-4 md:px-6 py-4 md:py-5 min-w-[72px] md:min-w-[96px]">
+            <div class="font-serif text-3xl md:text-5xl font-semibold text-peach tabular-nums" data-unit="minutes">00</div>
+            <div class="text-[10px] md:text-xs uppercase tracking-wider text-cream/60 mt-1">минут</div>
+          </div>
+          <div class="bg-cream/10 backdrop-blur rounded-2xl px-4 md:px-6 py-4 md:py-5 min-w-[72px] md:min-w-[96px]">
+            <div class="font-serif text-3xl md:text-5xl font-semibold text-peach tabular-nums" data-unit="seconds">00</div>
+            <div class="text-[10px] md:text-xs uppercase tracking-wider text-cream/60 mt-1">секунд</div>
+          </div>
+        </div>
+
+        <a href="#zapis" class="reveal inline-flex items-center justify-center gap-2 bg-peach text-plum px-8 py-4 rounded-full font-semibold hover:bg-peach-deep transition text-lg">
+          Записаться на поток №12
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+
+        <p class="reveal mt-8 text-sm text-cream/60 max-w-lg mx-auto">
+          На поток берём только 40 человек, чтобы каждый получил персональный фидбэк от Марии.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-ink text-cream/80 py-12 md:py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-10">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="w-8 h-8 rounded-full bg-peach flex items-center justify-center text-plum font-serif text-lg">С</span>
+            <span class="font-serif text-xl text-cream">Старт</span>
+          </div>
+          <p class="text-sm text-cream/60 max-w-sm leading-relaxed">
+            Онлайн-школа продуктового дизайна. Учим тому, что действительно используется в российских продуктовых командах.
+          </p>
+        </div>
+
+        <div>
+          <p class="text-xs uppercase tracking-wider text-cream/40 mb-4">Навигация</p>
+          <ul class="space-y-2.5 text-sm">
+            <li><a href="#programma" class="hover:text-peach transition">Программа</a></li>
+            <li><a href="#prepodavatel" class="hover:text-peach transition">Преподаватель</a></li>
+            <li><a href="#otzyvy" class="hover:text-peach transition">Отзывы</a></li>
+            <li><a href="#faq" class="hover:text-peach transition">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="text-xs uppercase tracking-wider text-cream/40 mb-4">Мы в сети</p>
+          <ul class="space-y-2.5 text-sm">
+            <li>
+              <a href="#" class="inline-flex items-center gap-2 hover:text-peach transition">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm5.097 8.346c.16-.008.324.002.487.036.165.035.326.09.475.17.151.08.287.18.398.3.112.12.196.257.25.405.053.148.075.305.069.463-.008.192-.058.38-.145.553-.354.744-1.48 2.146-2.334 3.224-.403.506-.722.876-.863 1.046-.247.302-.284.452-.16.654.09.147.233.274.425.413.192.139.43.288.68.475.125.093.249.19.359.29.13.117.235.246.306.39.07.144.105.3.1.457a.99.99 0 0 1-.122.47.96.96 0 0 1-.3.35 1.65 1.65 0 0 1-.46.235 2.13 2.13 0 0 1-.586.1c-.35.016-.698-.046-.98-.168-.3-.128-.56-.287-.796-.473-.233-.184-.436-.384-.62-.577-.16-.166-.336-.342-.506-.473-.1-.076-.206-.137-.32-.175a.69.69 0 0 0-.348-.026.56.56 0 0 0-.278.152.72.72 0 0 0-.174.296 1.5 1.5 0 0 0-.068.37 3.5 3.5 0 0 0 0 .422c.008.136.022.266.04.37.018.104.037.184.056.232a.87.87 0 0 1 .036.27.57.57 0 0 1-.086.257.5.5 0 0 1-.19.17c-.08.036-.176.06-.29.072-.123.013-.272.01-.44-.008-.77-.08-1.534-.38-2.183-.786a8.72 8.72 0 0 1-1.767-1.397c-.517-.552-.95-1.168-1.3-1.796-.347-.628-.62-1.266-.844-1.88a10.25 10.25 0 0 1-.506-1.737 8.03 8.03 0 0 1-.144-1.363c0-.18.016-.335.05-.467.032-.13.078-.236.143-.324.066-.088.15-.16.256-.215.105-.055.23-.093.372-.117a.96.96 0 0 1 .34.02c.08.02.148.05.203.093.054.043.1.097.14.162.074.117.127.24.16.368.033.128.046.26.04.39 0 .127-.016.255-.038.378-.022.124-.052.24-.085.35-.033.11-.066.215-.1.31a2.57 2.57 0 0 0-.08.25 1.37 1.37 0 0 0-.035.18.52.52 0 0 0 .007.11.4.4 0 0 0 .028.08c.015.028.037.054.067.074.03.02.068.035.113.042.073.01.154 0 .24-.03.087-.032.18-.085.278-.155.1-.07.2-.16.302-.26.103-.102.208-.217.312-.34.204-.244.403-.516.595-.814.192-.298.378-.62.555-.953a21.01 21.01 0 0 0 .924-1.91c.05-.125.114-.23.2-.312.086-.08.192-.137.316-.173.124-.035.265-.05.422-.044.103.004.204.015.302.032.14.026.273.065.395.115.122.05.232.11.328.176.094.065.174.14.238.22a.78.78 0 0 1 .144.255.72.72 0 0 1 .038.27.94.94 0 0 1-.053.276c-.08.2-.217.43-.395.67-.178.242-.398.496-.622.745-.222.248-.446.49-.645.705-.198.215-.368.4-.48.548-.134.175-.195.345-.16.508.036.163.14.32.324.47.183.15.446.294.74.466.293.172.618.37.938.62.16.125.32.263.473.412.152.15.295.31.427.48.132.17.25.348.353.53.104.18.192.36.266.544.074.18.132.36.173.54.04.18.064.36.068.53.003.17-.01.34-.04.5-.03.155-.08.3-.145.438-.065.137-.15.264-.247.38-.098.115-.21.22-.333.308-.124.088-.26.16-.408.215a1.93 1.93 0 0 1-.497.1c-.175.018-.36.008-.544-.02Z"/></svg>
+                Telegram
+              </a>
+            </li>
+            <li>
+              <a href="#" class="inline-flex items-center gap-2 hover:text-peach transition">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.396 0 15.684 0m3.692 17.123h-1.744c-.66 0-.862-.523-2.05-1.703-1.033-1.01-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.67-1.253.67-1.853 0-3.907-1.118-5.35-3.205-2.19-3.056-2.79-5.358-2.79-5.828 0-.254.1-.492.592-.492h1.744c.44 0 .61.203.78.677.864 2.498 2.303 4.688 2.9 4.688.22 0 .322-.102.322-.66V9.84c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.27.508.22 0 .407-.136.813-.542 1.253-1.405 2.15-3.57 2.15-3.57.118-.254.322-.49.763-.49h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.03-2.354 4.03-.186.305-.254.44 0 .78.186.254.796.78 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.575.744"/></svg>
+                ВКонтакте
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="border-t border-cream/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-cream/50">
+        <p>© 2025 «Старт». Школа продуктового дизайна.</p>
+        <div class="flex gap-5">
+          <a href="#" class="hover:text-peach transition">Политика конфиденциальности</a>
+          <a href="#" class="hover:text-peach transition">Оферта</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

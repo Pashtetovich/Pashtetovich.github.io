@@ -1,0 +1,161 @@
+/* =========================================================
+   Старт — landing page custom styles
+   Complements Tailwind CDN with bespoke behaviours
+   ========================================================= */
+
+:root {
+  --color-cream: #fef9f3;
+  --color-plum: #4a1d3d;
+  --color-peach: #f4a261;
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-feature-settings: "ss01", "ss02", "cv11";
+  text-rendering: optimizeLegibility;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-peach);
+  color: var(--color-plum);
+}
+
+/* Focus states — accessible and on-brand */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-peach);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Hide default marker on <details><summary> */
+summary::-webkit-details-marker {
+  display: none;
+}
+summary {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* FAQ / Curriculum icon rotation */
+details[open] > summary .faq-icon svg {
+  transform: rotate(45deg);
+}
+.faq-icon svg,
+.curriculum-icon svg {
+  transition: transform 0.3s ease;
+}
+details[open] > summary .curriculum-icon svg {
+  transform: rotate(180deg);
+}
+
+/* Curriculum hover */
+.curriculum-item summary:hover h3 {
+  color: #632751;
+}
+
+/* Smooth open animation */
+details[open] > div,
+details[open] > summary ~ ul {
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* IntersectionObserver reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  details[open] > div,
+  details[open] > summary ~ ul {
+    animation: none;
+  }
+  .faq-icon svg,
+  .curriculum-icon svg {
+    transition: none;
+  }
+}
+
+/* Announcement bar: slight pulse on countdown */
+#announcement-countdown {
+  letter-spacing: 0.08em;
+}
+
+/* Ensure images don't stretch on Safari */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Cards/shadow polish */
+.shadow-soft {
+  box-shadow: 0 20px 60px -30px rgba(74, 29, 61, 0.25);
+}
+
+/* Sticky header shadow after scroll */
+header.scrolled {
+  box-shadow: 0 4px 30px -20px rgba(74, 29, 61, 0.2);
+}
+
+/* Price card subtle gradient border */
+#zapis .bg-cream {
+  background: linear-gradient(180deg, #ffffff 0%, #fef9f3 100%);
+}
+
+/* Prevent layout shift for countdown digits */
+[data-unit] {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Mobile tweaks */
+@media (max-width: 640px) {
+  .font-serif {
+    letter-spacing: -0.01em;
+  }
+}
+
+/* Print — minimal */
+@media print {
+  #announcement, header, .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

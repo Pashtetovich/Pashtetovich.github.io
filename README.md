@@ -1,16 +1,20 @@
-# Landing Page Portfolio
+# Web Portfolio
 
-Five self-initiated landing pages across different industries. Built from scratch — no frameworks, no page builders, no templates.
+Self-initiated landing pages and small apps across different industries. Built from scratch — no frameworks, no page builders, no templates.
+
+**Live hub:** https://pashtetovich.github.io/
 
 ## Projects
 
-| # | Project | Industry | Live | Source |
-|---|---------|----------|------|--------|
-| 01 | **FlowTask** | SaaS / Team productivity | `./01-saas-landing/` | [01-saas-landing](./01-saas-landing/) |
-| 02 | **Olivea** | Restaurant / Hospitality | `./02-restaurant-landing/` | [02-restaurant-landing](./02-restaurant-landing/) |
-| 03 | **Kindred&Co** | Creative agency | `./03-agency-landing/` | [03-agency-landing](./03-agency-landing/) |
-| 04 | **Pulse** | Fitness mobile app | `./04-fitness-landing/` | [04-fitness-landing](./04-fitness-landing/) |
-| 05 | **Designing for Impact** | Online course | `./05-course-landing/` | [05-course-landing](./05-course-landing/) |
+| # | Project | Kind | Source |
+|---|---------|------|--------|
+| 01 | **FlowTask** | SaaS landing (EN) | [01-saas-landing](./01-saas-landing/) |
+| 02 | **Olivea** | Restaurant landing (EN) | [02-restaurant-landing](./02-restaurant-landing/) |
+| 03 | **Kindred&Co** | Creative agency landing (EN) | [03-agency-landing](./03-agency-landing/) |
+| 04 | **Pulse** | Fitness app landing (EN) | [04-fitness-landing](./04-fitness-landing/) |
+| 05 | **Designing for Impact** | Online course landing (EN) | [05-course-landing](./05-course-landing/) |
+| 06 | **Верба** | Ресторан · Лендинг (RU) | [06-restaurant-ru](./06-restaurant-ru/) |
+| 07 | **Старт в продуктовом дизайне** | Онлайн-курс · Лендинг (RU) | [07-course-ru](./07-course-ru/) |
 
 ## Stack
 

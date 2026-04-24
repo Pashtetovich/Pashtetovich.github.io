@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ресторан Верба — современная европейская кухня с русскими акцентами в центре Москвы. Авторское меню, камерная атмосфера, бронирование столов.">
+    <title>Верба · Ресторан современной кухни в Москве</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap&subset=cyrillic,cyrillic-ext,latin" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              forest: '#1f3a2e',
+              'forest-dark': '#162a22',
+              cream: '#f5f1e8',
+              'cream-dark': '#ebe4d2',
+              terracotta: '#c0652d',
+              'terracotta-dark': '#a5521f'
+            },
+            fontFamily: {
+              serif: ['"Playfair Display"', 'Georgia', 'serif'],
+              sans: ['Inter', 'system-ui', 'sans-serif']
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="bg-cream text-forest font-sans antialiased">
+
+    <!-- ============ HEADER ============ -->
+    <header id="siteHeader" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+            <a href="#hero" class="flex items-center gap-2 group">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none" class="text-current">
+                    <path d="M16 4C10 10 6 16 6 22c0 4 3 6 6 6s5-2 5-5c0-3-2-5-4-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                    <path d="M16 4c6 6 10 12 10 18 0 4-3 6-6 6s-5-2-5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                </svg>
+                <span class="font-serif text-2xl tracking-wide">Верба</span>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-10 text-sm tracking-wide">
+                <a href="#about" class="nav-link">О нас</a>
+                <a href="#signatures" class="nav-link">Блюда</a>
+                <a href="#menu" class="nav-link">Меню</a>
+                <a href="#gallery" class="nav-link">Галерея</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
+            </nav>
+
+            <a href="#reserve" class="hidden sm:inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-dark text-cream px-5 py-2.5 rounded-full text-sm tracking-wide transition-colors">
+                Забронировать стол
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+
+            <button id="mobileMenuBtn" class="md:hidden text-current" aria-label="Открыть меню">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="md:hidden hidden bg-forest text-cream px-6 py-6 space-y-4 text-base">
+            <a href="#about" class="block py-1">О нас</a>
+            <a href="#signatures" class="block py-1">Блюда</a>
+            <a href="#menu" class="block py-1">Меню</a>
+            <a href="#gallery" class="block py-1">Галерея</a>
+            <a href="#contacts" class="block py-1">Контакты</a>
+            <a href="#reserve" class="block py-1 text-terracotta">Забронировать стол →</a>
+        </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section id="hero" class="relative min-h-screen flex items-center overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&q=80"
+                 alt="Зал ресторана Верба с приглушённым светом"
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-forest-dark/70 via-forest-dark/50 to-forest-dark/90"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto w-full px-6 lg:px-10 pt-28 pb-32">
+            <div class="max-w-3xl text-cream">
+                <div class="reveal flex items-center gap-3 mb-8 text-sm tracking-[0.25em] uppercase text-cream/80">
+                    <span class="inline-block w-10 h-px bg-terracotta"></span>
+                    Ресторан в центре Москвы
+                </div>
+                <h1 class="reveal font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl leading-[1.05] mb-8">
+                    Современная&nbsp;кухня<br>
+                    <span class="italic font-normal text-terracotta">с характером севера</span>
+                </h1>
+                <p class="reveal text-lg lg:text-xl text-cream/85 max-w-xl leading-relaxed mb-10">
+                    Сезонные продукты русских ферм, европейская техника и авторский взгляд шефа Алексея Романова. Место, куда возвращаются за вкусом и тишиной.
+                </p>
+                <div class="reveal flex flex-wrap gap-4">
+                    <a href="#reserve" class="inline-flex items-center gap-2 bg-terracotta hover:bg-terracotta-dark text-cream px-7 py-4 rounded-full tracking-wide transition-colors">
+                        Забронировать
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a href="#menu" class="inline-flex items-center gap-2 border border-cream/40 hover:border-cream text-cream px-7 py-4 rounded-full tracking-wide transition-colors">
+                        Смотреть меню
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <a href="#about" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-cream/70 hover:text-cream flex flex-col items-center gap-3 group" aria-label="Прокрутить вниз">
+            <span class="text-[11px] tracking-[0.3em] uppercase">Листайте</span>
+            <span class="w-px h-12 bg-cream/40 relative overflow-hidden">
+                <span class="scroll-line absolute inset-x-0 top-0 h-full bg-cream"></span>
+            </span>
+        </a>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="py-24 lg:py-32 bg-cream">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                <div class="reveal relative">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=80"
+                         alt="Интерьер ресторана Верба: дубовые столы и тёплый свет"
+                         class="w-full h-[520px] object-cover rounded-sm">
+                    <div class="absolute -bottom-6 -right-6 hidden lg:block bg-forest text-cream px-8 py-6 rounded-sm max-w-xs">
+                        <p class="font-serif text-3xl leading-tight">Открыты<br>с 2017 года</p>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="reveal flex items-center gap-3 mb-6 text-sm tracking-[0.25em] uppercase text-terracotta">
+                        <span class="inline-block w-10 h-px bg-terracotta"></span>
+                        О ресторане
+                    </div>
+                    <h2 class="reveal font-serif text-4xl lg:text-5xl xl:text-6xl leading-tight mb-8">
+                        Вкус, который<br><span class="italic">остаётся с вами</span>
+                    </h2>
+                    <div class="reveal space-y-5 text-forest/80 text-lg leading-relaxed">
+                        <p>
+                            Верба — это спокойное место в двух шагах от Консерватории, где за девять лет сложилась своя культура ужина. Мы верим в простые продукты и честную работу с ними: дичь от фермеров Карелии, рыбу с Мурмана, овощи из-под Калуги.
+                        </p>
+                        <p>
+                            Шеф Алексей Романов переосмысляет русскую кухню через призму современной европейской техники. В меню — знакомые вкусы в непривычных формах: борщ становится чистым бульоном, пельмени наполняются крабом, а томлёный олень встречается с брусничным соусом и чёрным трюфелем.
+                        </p>
+                    </div>
+
+                    <div class="reveal mt-10 flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-full bg-forest/10 flex items-center justify-center">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-0.5L12 3z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div>
+                            <p class="font-serif text-xl">Алексей Романов</p>
+                            <p class="text-sm text-forest/60 tracking-wide">Шеф-повар · Michelin Guide 2023, 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="reveal mt-24 border-t border-forest/15 pt-12 grid grid-cols-2 lg:grid-cols-4 gap-10">
+                <div>
+                    <p class="font-serif text-5xl text-terracotta mb-2">2017</p>
+                    <p class="text-sm tracking-wide text-forest/70">Год открытия</p>
+                </div>
+                <div>
+                    <p class="font-serif text-5xl text-terracotta mb-2">3×</p>
+                    <p class="text-sm tracking-wide text-forest/70">В Michelin Guide Москва</p>
+                </div>
+                <div>
+                    <p class="font-serif text-5xl text-terracotta mb-2">38</p>
+                    <p class="text-sm tracking-wide text-forest/70">Посадочных мест</p>
+                </div>
+                <div>
+                    <p class="font-serif text-5xl text-terracotta mb-2">72</p>
+                    <p class="text-sm tracking-wide text-forest/70">Позиции в меню</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SIGNATURES ============ -->
+    <section id="signatures" class="py-24 lg:py-32 bg-forest text-cream">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
+                <div>
+                    <div class="reveal flex items-center gap-3 mb-6 text-sm tracking-[0.25em] uppercase text-terracotta">
+                        <span class="inline-block w-10 h-px bg-terracotta"></span>
+                        Избранное
+                    </div>
+                    <h2 class="reveal font-serif text-4xl lg:text-5xl xl:text-6xl leading-tight max-w-2xl">
+                        Коронные блюда <span class="italic">сезона</span>
+                    </h2>
+                </div>
+                <p class="reveal max-w-md text-cream/75 leading-relaxed">
+                    Шесть позиций, которые лучше всего рассказывают, чем живёт кухня Вербы этой весной.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dish 1 -->
+                <article class="reveal dish-card group">
+                    <div class="overflow-hidden rounded-sm mb-5">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=80"
+                             alt="Борщ с уткой и вишней"
+                             class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="flex items-start justify-between gap-4 mb-2">
+                        <h3 class="font-serif text-2xl leading-tight">Борщ с уткой<br>и вишней</h3>
+                        <span class="font-serif text-xl text-terracotta whitespace-nowrap mt-1">890&nbsp;₽</span>
+                    </div>
+                    <p class="text-sm text-cream/70 leading-relaxed">Прозрачный бульон с копчёной утиной грудкой, маринованной вишней и свекольной крошкой.</p>
+                </article>
+
+                <!-- Dish 2 -->
+                <article class="reveal dish-card group">
+                    <div class="overflow-hidden rounded-sm mb-5">
+                        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=80"
+                             alt="Севиче из камчатского гребешка"
+                             class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="flex items-start justify-between gap-4 mb-2">
+                        <h3 class="font-serif text-2xl leading-tight">Севиче из камчатского гребешка</h3>
+                        <span class="font-serif text-xl text-terracotta whitespace-nowrap mt-1">1 450&nbsp;₽</span>
+                    </div>
+                    <p class="text-sm text-cream/70 leading-relaxed">Сырой гребешок, юдзу, томлёная тыква, икра форели и масло из кедровых орехов.</p>
+                </article>
+
+                <!-- Dish 3 -->
+                <article class="reveal dish-card group">
+                    <div class="overflow-hidden rounded-sm mb-5">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80"
+                             alt="Томлёный олень с брусникой"
+                             class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="flex items-start justify-between gap-4 mb-2">
+                        <h3 class="font-serif text-2xl leading-tight">Томлёный олень<br>с брусникой</h3>
+                        <span class="font-serif text-xl text-terracotta whitespace-nowrap mt-1">2 650&nbsp;₽</span>
+                    </div>
+                    <p class="text-sm text-cream/70 leading-relaxed">Карельская оленина 18 часов при 72°C, брусничный соус, пюре из корня сельдерея.</p>
+                </article>
+
+                <!-- Dish 4 -->
+                <article class="reveal dish-card group">
+                    <div class="overflow-hidden rounded-sm mb-5">
+                        <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=900&q=80"
+                             alt="Пельмени с крабом"
+                             class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="flex items-start justify-between gap-4 mb-2">
+                        <h3 class="font-serif text-2xl leading-tight">Пельмени<br>с камчатским крабом</h3>
+                        <span class="font-serif text-xl text-terracotta whitespace-nowrap mt-1">1 890&nbsp;₽</span>
+                    </div>
+                    <p class="text-sm text-cream/70 leading-relaxed">Ручная лепка, крабовое мясо, биск из панцирей и сливочная пена с укропным маслом.</p>
+                </article>
+
+                <!-- Dish 5 -->
+                <article class="reveal dish-card group">
+                    <div class="overflow-hidden rounded-sm mb-5">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&q=80"
+                             alt="Расстегай с щукой"
+                             class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="flex items-start justify-between gap-4 mb-2">
+                        <h3 class="font-serif text-2xl leading-tight">Расстегай<br>с щукой и налимом</h3>
+                        <span class="font-serif text-xl text-terracotta whitespace-nowrap mt-1">680&nbsp;₽</span>
+                    </div>
+                    <p class="text-sm text-cream/70 leading-relaxed">Тёплый пирог из дрожжевого теста, двойная начинка, бульон-уха подаётся отдельно.</p>
+                </article>
+
+                <!-- Dish 6 -->
+                <article class="reveal dish-card group">
+                    <div class="overflow-hidden rounded-sm mb-5">
+                        <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?w=900&q=80"
+                             alt="Чизкейк с облепихой"
+                             class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    <div class="flex items-start justify-between gap-4 mb-2">
+                        <h3 class="font-serif text-2xl leading-tight">Чизкейк<br>с облепихой</h3>
+                        <span class="font-serif text-xl text-terracotta whitespace-nowrap mt-1">620&nbsp;₽</span>
+                    </div>
+                    <p class="text-sm text-cream/70 leading-relaxed">Сливочный крем на песочной основе, карамелизированная облепиха и медовый тюиль.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ MENU ============ -->
+    <section id="menu" class="py-24 lg:py-32 bg-cream">
+        <div class="max-w-6xl mx-auto px-6 lg:px-10">
+            <div class="text-center mb-20">
+                <div class="reveal flex items-center justify-center gap-3 mb-6 text-sm tracking-[0.25em] uppercase text-terracotta">
+                    <span class="inline-block w-10 h-px bg-terracotta"></span>
+                    Сезонное меню
+                    <span class="inline-block w-10 h-px bg-terracotta"></span>
+                </div>
+                <h2 class="reveal font-serif text-4xl lg:text-5xl xl:text-6xl leading-tight mb-5">
+                    Весна <span class="italic">2026</span>
+                </h2>
+                <p class="reveal text-forest/70 max-w-xl mx-auto leading-relaxed">Меню обновляется четыре раза в год вместе со сменой сезона и поставщиков.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24">
+                <!-- Starters -->
+                <div class="reveal">
+                    <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-forest/20">
+                        <h3 class="font-serif text-3xl">Закуски</h3>
+                        <span class="text-xs tracking-[0.25em] uppercase text-forest/50">I</span>
+                    </div>
+                    <ul class="space-y-7">
+                        <li class="menu-row">
+                            <div class="menu-row-top">
+                                <span class="menu-title">Селёдка под шубой «как у бабушки»</span>
+                                <span class="menu-dots"></span>
+                                <span class="menu-price">520&nbsp;₽</span>
+                            </div>
+                            <p class="menu-desc">Норвежская сельдь, запечённая свёкла, домашний майонез</p>
+                        </li>
+                        <li class="menu-row">
+                            <div class="menu-row-top">
+                                <span class="menu-title">Севиче из камчатского гребешка</span>
+                                <span class="menu-dots"></span>
+                                <span class="menu-price">1 450&nbsp;₽</span>
+                            </div>
+                            <p class="menu-desc">Юдзу, кедровое масло, икра форели</p>
+                        </li>
+                        <li class="menu-row">
+                            <div class="menu-row-top">
+                                <span class="menu-title">Тартар из говядины с трюфелем</span>
+                                <span class="menu-dots"></span>
+                                <span class="menu-price">1 280&nbsp;₽</span>
+                            </div>
+                            <p class="menu-desc">Чёрный трюфель, перепелиное яйцо, бриошь</p>
+                        </li>
+                        <li class="menu-row">
+                            <div class="menu-row-top">
+                                <span class="menu-title">Паштет из утки с инжиром</span>
+                                <span class="menu-dots"></span>
+                                <span class="menu-price">780&nbsp;₽</span>
+                            </div>
+                            <p class="menu-desc">Утиная печень, портвейн, домашняя фокачча</p>
+                        </li>
+                        <li class="menu-row">
+                            <div class="menu-row-top">
+                                <span class="menu-title">Расстегай с щукой и налимом</span>
+                                <span class="menu-dots"></span>
+                                <span class="menu-price">680&nbsp;₽</span>
+                            </div>
+                            <p class="menu-desc">Дрожжевое тесто, бульон-уха отдельно</p>
+                        </li>
+                        <li class="menu-row">
+                            <div class="menu-row-top">
+                                <span class="menu-title">Салат с томлёными томатами</span>
+                                <span class="menu-dots"></span>
+                                <span class="menu-price">490&nbsp;₽</span>
+                            </div>
+                            <p class="menu-desc">Бычье сердце, буррата, базилик, бальзамик</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Mains -->
+                <div class="reveal">
+                    <div class="flex items-baseline justify-between mb-8 pb-4 border-b border-forest/20">
+                        <h3 class="font-serif text-3xl">Основные блюда</h3>
+                        <span class="text-xs tracking-[0.25em] uppercase text-forest/50">II</span>
+                    </div>
+                    <ul class="space-y-7">
+                        <li class="menu-row">
+                            <div class="menu-row-top">
+                                <span class="menu-title">Томлёный олень с брусникой</span>
+                                <span class="menu-dots"></span>
+                                <span class="menu-price">2 650&nbsp;₽</span>
+                            </div>
+                            <p class="menu-desc">Карельская оленина, пюре из сельдерея, чёрный трюфель</p>
+                        </li>
+                        <li class="menu-row">
+                            <div class="menu-row-top">
+                                <span class="menu-title">Судак на подушке из пшена</span>
+                                <span class="menu-dots"></span>
+                                <span class="menu-price">1 680&nbsp;₽</span>
+                            </div>
+                            <p class="menu-desc">Волжский судак, шафрановый соус, зелёное масло</p>
+                        </li>
+                        <li class="menu-row">
+                            <div class="menu-row-top">
+                                <span class="menu-title">Пельмени с камчатским крабом</span>
+                                <span class="menu-dots"></span>
+                                <span class="menu-price">1 890&nbsp;₽</span>
+                            </div>
+                            <p class="menu-desc">Ручная лепка, биск, сливочная пена</p>
+                        </li>
+                        <li class="menu-row">
+                            <div class="menu-row-top">
+                                <span class="menu-title">Рибай сухой выдержки 45 дней</span>
+                                <span class="menu-dots"></span>
+                                <span class="menu-price">2 800&nbsp;₽</span>
+                            </div>
+                            <p class="menu-desc">Мраморная говядина, соус беарнез, печёный картофель</p>
+                        </li>
+                        <li class="menu-row">
+                            <div class="menu-row-top">
+                                <span class="menu-title">Каре ягнёнка с можжевельником</span>
+                                <span class="menu-dots"></span>
+                                <span class="menu-price">2 450&nbsp;₽</span>
+                            </div>
+                            <p class="menu-desc">Алтайский ягнёнок, ягодный демиглас, ризотто</p>
+                        </li>
+                        <li class="menu-row">
+                            <div class="menu-row-top">
+                                <span class="menu-title">Паппарделле с белыми грибами</span>
+                                <span class="menu-dots"></span>
+                                <span class="menu-price">1 290&nbsp;₽</span>
+                            </div>
+                            <p class="menu-desc">Свежая паста, пармезан 24 месяца, трюфельное масло</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="reveal text-center mt-16">
+                <a href="#reserve" class="inline-flex items-center gap-2 text-terracotta hover:text-terracotta-dark font-medium tracking-wide border-b border-terracotta/40 hover:border-terracotta pb-1 transition-colors">
+                    Полное меню с винной картой
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section id="gallery" class="py-24 lg:py-32 bg-cream-dark">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="mb-16 max-w-2xl">
+                <div class="reveal flex items-center gap-3 mb-6 text-sm tracking-[0.25em] uppercase text-terracotta">
+                    <span class="inline-block w-10 h-px bg-terracotta"></span>
+                    Атмосфера
+                </div>
+                <h2 class="reveal font-serif text-4xl lg:text-5xl xl:text-6xl leading-tight">
+                    Интерьер <span class="italic">и кухня</span> крупным планом
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-6 auto-rows-[180px] md:auto-rows-[220px] gap-4">
+                <div class="reveal relative col-span-6 md:col-span-3 row-span-2 overflow-hidden rounded-sm group">
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80" alt="Зал ресторана вечером" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="reveal relative col-span-3 md:col-span-3 overflow-hidden rounded-sm group">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=900&q=80" alt="Подача холодной закуски" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="reveal relative col-span-3 md:col-span-2 overflow-hidden rounded-sm group">
+                    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=900&q=80" alt="Севиче на тарелке" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="reveal relative col-span-3 md:col-span-1 overflow-hidden rounded-sm group">
+                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=700&q=80" alt="Пельмени в деталях" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="reveal relative col-span-3 md:col-span-2 row-span-2 overflow-hidden rounded-sm group">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80" alt="Основное блюдо с мясом" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="reveal relative col-span-3 md:col-span-2 overflow-hidden rounded-sm group">
+                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&q=80" alt="Стол с подачей" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+                <div class="reveal relative col-span-3 md:col-span-2 overflow-hidden rounded-sm group">
+                    <img src="https://images.unsplash.com/photo-1529042410759-befb1204b468?w=900&q=80" alt="Десерт с облепихой" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ RESERVE ============ -->
+    <section id="reserve" class="py-24 lg:py-32 bg-forest text-cream">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+                <!-- Left: copy + contacts -->
+                <div>
+                    <div class="reveal flex items-center gap-3 mb-6 text-sm tracking-[0.25em] uppercase text-terracotta">
+                        <span class="inline-block w-10 h-px bg-terracotta"></span>
+                        Бронирование
+                    </div>
+                    <h2 class="reveal font-serif text-4xl lg:text-5xl xl:text-6xl leading-tight mb-8">
+                        Забронируйте<br><span class="italic">столик</span>
+                    </h2>
+                    <p class="reveal text-cream/80 text-lg leading-relaxed max-w-md mb-12">
+                        Оставьте заявку — администратор перезвонит в течение 15 минут, чтобы подтвердить бронь и уточнить детали.
+                    </p>
+
+                    <div id="contacts" class="space-y-7">
+                        <div class="reveal flex items-start gap-5">
+                            <div class="w-11 h-11 shrink-0 rounded-full bg-cream/10 flex items-center justify-center">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 22s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs tracking-[0.2em] uppercase text-cream/50 mb-1">Адрес</p>
+                                <p class="text-lg">Большая Никитская ул., 12<br><span class="text-cream/70">Москва, 125009</span></p>
+                            </div>
+                        </div>
+
+                        <div class="reveal flex items-start gap-5">
+                            <div class="w-11 h-11 shrink-0 rounded-full bg-cream/10 flex items-center justify-center">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-3 2c1 3 3 5 6 6l2-3 5 2v4c0 1-1 2-2 2C10 22 2 14 2 6c0-1 1-2 2-2h1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs tracking-[0.2em] uppercase text-cream/50 mb-1">Телефон</p>
+                                <a href="tel:+74951234567" class="text-lg hover:text-terracotta transition-colors">+7 (495) 123-45-67</a>
+                            </div>
+                        </div>
+
+                        <div class="reveal flex items-start gap-5">
+                            <div class="w-11 h-11 shrink-0 rounded-full bg-cream/10 flex items-center justify-center">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs tracking-[0.2em] uppercase text-cream/50 mb-1">Часы работы</p>
+                                <p class="text-lg">Пн – Чт <span class="text-cream/70">12:00 – 23:00</span></p>
+                                <p class="text-lg">Пт – Вс <span class="text-cream/70">12:00 – 01:00</span></p>
+                            </div>
+                        </div>
+
+                        <div class="reveal flex items-start gap-5">
+                            <div class="w-11 h-11 shrink-0 rounded-full bg-cream/10 flex items-center justify-center">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="1.5"/><path d="M4 4l8 7 8-7" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                            </div>
+                            <div>
+                                <p class="text-xs tracking-[0.2em] uppercase text-cream/50 mb-1">Почта</p>
+                                <a href="mailto:hello@verba-rest.ru" class="text-lg hover:text-terracotta transition-colors">hello@verba-rest.ru</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: form -->
+                <div class="reveal">
+                    <div class="bg-cream text-forest p-8 lg:p-10 rounded-sm relative overflow-hidden">
+                        <form id="reserveForm" novalidate class="space-y-5">
+                            <h3 class="font-serif text-2xl mb-2">Оставить заявку</h3>
+                            <p class="text-sm text-forest/60 mb-6">Обязательные поля отмечены звёздочкой <span class="text-terracotta">*</span></p>
+
+                            <div class="grid sm:grid-cols-2 gap-5">
+                                <div class="field">
+                                    <label for="name">Имя <span class="text-terracotta">*</span></label>
+                                    <input type="text" id="name" name="name" required placeholder="Анна Петрова" autocomplete="name">
+                                    <span class="error-msg" data-for="name">Пожалуйста, укажите имя</span>
+                                </div>
+                                <div class="field">
+                                    <label for="phone">Телефон <span class="text-terracotta">*</span></label>
+                                    <input type="tel" id="phone" name="phone" required placeholder="+7 (___) ___-__-__" autocomplete="tel">
+                                    <span class="error-msg" data-for="phone">Укажите номер для связи</span>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email">
+                                <span class="error-msg" data-for="email">Проверьте адрес почты</span>
+                            </div>
+
+                            <div class="grid sm:grid-cols-3 gap-5">
+                                <div class="field">
+                                    <label for="date">Дата <span class="text-terracotta">*</span></label>
+                                    <input type="date" id="date" name="date" required>
+                                    <span class="error-msg" data-for="date">Выберите корректную дату</span>
+                                </div>
+                                <div class="field">
+                                    <label for="time">Время <span class="text-terracotta">*</span></label>
+                                    <select id="time" name="time" required>
+                                        <option value="">—</option>
+                                        <option>12:00</option><option>13:00</option><option>14:00</option>
+                                        <option>15:00</option><option>16:00</option><option>17:00</option>
+                                        <option>18:00</option><option>19:00</option><option>20:00</option>
+                                        <option>21:00</option><option>22:00</option>
+                                    </select>
+                                    <span class="error-msg" data-for="time">Выберите время</span>
+                                </div>
+                                <div class="field">
+                                    <label for="guests">Гостей <span class="text-terracotta">*</span></label>
+                                    <select id="guests" name="guests" required>
+                                        <option value="">—</option>
+                                        <option>1</option><option>2</option><option>3</option>
+                                        <option>4</option><option>5</option><option>6</option>
+                                        <option>7+</option>
+                                    </select>
+                                    <span class="error-msg" data-for="guests">Укажите количество</span>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label for="notes">Пожелания</label>
+                                <textarea id="notes" name="notes" rows="3" placeholder="День рождения, аллергии, особые просьбы..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-forest hover:bg-forest-dark text-cream py-4 rounded-full tracking-wide transition-colors flex items-center justify-center gap-2">
+                                Отправить заявку
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+
+                            <p class="text-xs text-forest/55 text-center leading-relaxed">
+                                Нажимая «Отправить», вы соглашаетесь на обработку персональных данных.
+                            </p>
+                        </form>
+
+                        <!-- Success state -->
+                        <div id="reserveSuccess" class="hidden absolute inset-0 bg-cream flex flex-col items-center justify-center text-center p-8 animate-fade-in">
+                            <div class="w-16 h-16 rounded-full bg-forest text-cream flex items-center justify-center mb-6">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </div>
+                            <h3 class="font-serif text-3xl mb-3">Заявка отправлена</h3>
+                            <p class="text-forest/75 max-w-xs leading-relaxed">Мы перезвоним в течение 15 минут, чтобы подтвердить бронь. Спасибо, что выбрали Вербу.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="bg-forest-dark text-cream/80 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="grid md:grid-cols-4 gap-12 pb-14 border-b border-cream/10">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-2 mb-5 text-cream">
+                        <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                            <path d="M16 4C10 10 6 16 6 22c0 4 3 6 6 6s5-2 5-5c0-3-2-5-4-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                            <path d="M16 4c6 6 10 12 10 18 0 4-3 6-6 6s-5-2-5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                        </svg>
+                        <span class="font-serif text-2xl">Верба</span>
+                    </div>
+                    <p class="max-w-sm text-sm leading-relaxed">
+                        Ресторан современной европейской кухни с русскими акцентами. Авторское меню шефа Алексея Романова в самом центре Москвы.
+                    </p>
+
+                    <div class="flex items-center gap-3 mt-8">
+                        <a href="#" aria-label="Telegram" class="social-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 4.5L2.5 11.8c-1.3.5-1.3 1.2-.2 1.5l4.8 1.5 11.2-7c.5-.3 1-.2.6.2l-9 8.2-.3 4.6c.5 0 .8-.2 1.1-.5l2.7-2.6 5.6 4.1c1 .6 1.8.3 2-1l3.6-17c.4-1.6-.7-2.3-1.7-1.9z"/></svg>
+                        </a>
+                        <a href="#" aria-label="ВКонтакте" class="social-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.8 17.1c-5.6 0-8.9-3.9-9-10.3h2.8c.1 4.7 2.2 6.7 3.9 7.1V6.8h2.7v4c1.7-.2 3.4-2.1 4-4h2.6c-.4 2.4-2.3 4.3-3.6 5.1 1.3.6 3.5 2.3 4.4 5.2h-2.9c-.7-2.2-2.3-3.9-4.5-4.1v4.1h-.4z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="social-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="text-xs tracking-[0.2em] uppercase text-cream/50 mb-4">Контакты</p>
+                    <p class="text-sm leading-relaxed">Большая Никитская ул., 12<br>Москва</p>
+                    <a href="tel:+74951234567" class="block mt-3 text-sm hover:text-terracotta transition-colors">+7 (495) 123-45-67</a>
+                    <a href="mailto:hello@verba-rest.ru" class="block mt-1 text-sm hover:text-terracotta transition-colors">hello@verba-rest.ru</a>
+                </div>
+
+                <div>
+                    <p class="text-xs tracking-[0.2em] uppercase text-cream/50 mb-4">Часы</p>
+                    <p class="text-sm leading-relaxed">Пн – Чт · 12:00 – 23:00</p>
+                    <p class="text-sm leading-relaxed">Пт – Вс · 12:00 – 01:00</p>
+                    <p class="text-sm leading-relaxed text-cream/55 mt-3">Кухня закрывается за час до окончания работы</p>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4 text-xs text-cream/50">
+                <p>© 2026 Ресторан «Верба» · Все права защищены</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-cream transition-colors">Политика конфиденциальности</a>
+                    <a href="#" class="hover:text-cream transition-colors">Условия бронирования</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
