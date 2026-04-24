@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pulse — the training app built for people who mean it. Smart workout plans, real-time heart rate, community leaderboards. Available on iOS and Android." />
+  <title>PULSE — Train Like You Mean It.</title>
+
+  <!-- Tailwind (CDN, no build step) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Anton for display, Inter for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink:    '#0a0a0a',
+            coal:   '#151515',
+            smoke:  '#1f1f1f',
+            ash:    '#a1a1a1',
+            lime:   '#c7ff00',
+            'lime-dim': '#9fd200'
+          },
+          fontFamily: {
+            display: ['Anton', 'Inter', 'system-ui', 'sans-serif'],
+            sans:    ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-ink text-white font-sans antialiased selection:bg-lime selection:text-ink">
+
+  <!-- ============ NAV ============ -->
+  <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 h-16 md:h-20 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2 group" aria-label="Pulse home">
+        <!-- Pulse mark -->
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true" class="text-lime">
+          <path d="M1 13H6L9 5L13 21L17 9L20 13H25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="font-display text-2xl tracking-[0.08em]">PULSE</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-ash">
+        <a href="#features"  class="hover:text-white transition-colors">Features</a>
+        <a href="#workouts"  class="hover:text-white transition-colors">Workouts</a>
+        <a href="#pricing"   class="hover:text-white transition-colors">Pricing</a>
+        <a href="#download"  class="hover:text-white transition-colors">Download</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="#download" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition text-xs font-semibold">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.564 13.093c-.022-2.29 1.868-3.39 1.955-3.443-1.064-1.556-2.72-1.769-3.312-1.795-1.41-.144-2.75.83-3.467.83-.713 0-1.818-.808-2.986-.786-1.536.022-2.95.893-3.74 2.266-1.593 2.76-.407 6.852 1.143 9.1.76 1.098 1.666 2.333 2.852 2.289 1.148-.047 1.584-.742 2.972-.742 1.388 0 1.778.742 2.989.718 1.233-.022 2.016-1.114 2.77-2.218.873-1.273 1.233-2.507 1.255-2.571-.028-.013-2.408-.925-2.431-3.648zM15.16 6.35c.633-.77 1.063-1.838.945-2.9-.914.037-2.024.61-2.68 1.379-.586.681-1.1 1.77-.962 2.816 1.021.079 2.063-.52 2.697-1.295z"/></svg>
+          App Store
+        </a>
+        <a href="#download" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-lime text-ink hover:bg-white transition text-xs font-bold">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.537-3.538l2.307 1.336c.784.453.784 1.583 0 2.035l-2.307 1.336-2.705-2.705 2.705-2.002zM5.864 2.658L16.8 8.99l-2.302 2.303L5.864 2.658z"/></svg>
+          Get the app
+        </a>
+        <button id="navToggle" class="md:hidden p-2 -mr-2 text-white" aria-label="Open menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/5 bg-ink/95 backdrop-blur">
+      <nav class="px-5 py-5 flex flex-col gap-4 text-sm font-medium">
+        <a href="#features" class="text-ash hover:text-white">Features</a>
+        <a href="#workouts" class="text-ash hover:text-white">Workouts</a>
+        <a href="#pricing"  class="text-ash hover:text-white">Pricing</a>
+        <a href="#download" class="text-ash hover:text-white">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="relative overflow-hidden pt-28 md:pt-36 pb-20 md:pb-28">
+      <!-- Radial glow background -->
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-grid"  aria-hidden="true"></div>
+      <div class="hero-noise" aria-hidden="true"></div>
+
+      <div class="relative max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <!-- Left: copy -->
+        <div class="lg:col-span-7 reveal">
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-[11px] font-semibold tracking-[0.18em] text-ash uppercase">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime opacity-60"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-lime"></span>
+            </span>
+            New — Season 04 drops today
+          </span>
+
+          <h1 class="mt-6 font-display text-[3.2rem] leading-[0.92] sm:text-7xl lg:text-[7.5rem] tracking-tight uppercase">
+            Train like<br />
+            you <span class="text-lime">mean</span><br />
+            it.
+          </h1>
+
+          <p class="mt-6 max-w-xl text-base md:text-lg text-ash leading-relaxed">
+            Pulse is the training app built for people who don't settle. Smart plans that adapt to you, real-time heart rate, coach-led sessions, and a community that shows up. Every rep, logged. Every record, broken.
+          </p>
+
+          <!-- App store badges -->
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href="#download" class="group inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white text-ink hover:bg-lime transition-colors font-semibold">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.564 13.093c-.022-2.29 1.868-3.39 1.955-3.443-1.064-1.556-2.72-1.769-3.312-1.795-1.41-.144-2.75.83-3.467.83-.713 0-1.818-.808-2.986-.786-1.536.022-2.95.893-3.74 2.266-1.593 2.76-.407 6.852 1.143 9.1.76 1.098 1.666 2.333 2.852 2.289 1.148-.047 1.584-.742 2.972-.742 1.388 0 1.778.742 2.989.718 1.233-.022 2.016-1.114 2.77-2.218.873-1.273 1.233-2.507 1.255-2.571-.028-.013-2.408-.925-2.431-3.648zM15.16 6.35c.633-.77 1.063-1.838.945-2.9-.914.037-2.024.61-2.68 1.379-.586.681-1.1 1.77-.962 2.816 1.021.079 2.063-.52 2.697-1.295z"/></svg>
+              <span class="flex flex-col leading-none text-left">
+                <span class="text-[10px] font-medium tracking-wider uppercase opacity-70">Download on</span>
+                <span class="text-base font-bold">App Store</span>
+              </span>
+            </a>
+            <a href="#download" class="group inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/15 hover:bg-white/10 transition font-semibold">
+              <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#c7ff00" d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z"/><path fill="#fff" d="M14.5 11.293l2.302-2.302 2.705 2.002 2.307 1.336c.784.453.784 1.583 0 2.035l-2.307 1.336-2.705-2.705L14.5 11.293z"/><path fill="#fff" opacity=".7" d="M5.864 2.658L16.8 8.99l-2.302 2.303L5.864 2.658zM14.5 12.707l2.302 2.302-10.937 6.333 8.635-8.635z"/></svg>
+              <span class="flex flex-col leading-none text-left">
+                <span class="text-[10px] font-medium tracking-wider uppercase opacity-70">Get it on</span>
+                <span class="text-base font-bold">Google Play</span>
+              </span>
+            </a>
+          </div>
+
+          <!-- Trust row -->
+          <div class="mt-10 flex items-center gap-5">
+            <div class="flex -space-x-3">
+              <img class="w-9 h-9 rounded-full border-2 border-ink object-cover" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=200&q=80" alt="" loading="lazy" />
+              <img class="w-9 h-9 rounded-full border-2 border-ink object-cover" src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?w=200&q=80" alt="" loading="lazy" />
+              <img class="w-9 h-9 rounded-full border-2 border-ink object-cover" src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=200&q=80" alt="" loading="lazy" />
+            </div>
+            <div class="text-sm">
+              <div class="flex items-center gap-1 text-lime">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <span class="text-white font-semibold ml-1">4.9</span>
+              </div>
+              <div class="text-ash text-xs mt-0.5">Loved by 2M+ athletes worldwide</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: phone mockup -->
+        <div class="lg:col-span-5 flex justify-center lg:justify-end reveal">
+          <div id="phoneWrap" class="phone-wrap">
+            <!-- Floating badge: streak -->
+            <div class="floater floater-left">
+              <div class="text-[10px] font-bold tracking-wider text-ash uppercase">Streak</div>
+              <div class="flex items-baseline gap-1 mt-0.5">
+                <span class="font-display text-3xl leading-none text-white">47</span>
+                <span class="text-lime text-xs font-bold">days</span>
+              </div>
+              <div class="text-[10px] text-ash mt-1">🔥 personal best</div>
+            </div>
+
+            <!-- Floating badge: heart rate -->
+            <div class="floater floater-right">
+              <div class="flex items-center gap-1.5 text-lime">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7-4.35-7-10a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 5.65-7 10-7 10-1.34 0-2.66-.5-4-1z"/></svg>
+                <span class="text-[10px] font-bold tracking-wider uppercase">BPM Live</span>
+              </div>
+              <div class="font-display text-3xl leading-none text-white mt-0.5">148</div>
+              <svg viewBox="0 0 80 24" class="mt-1 w-20 h-5 text-lime" aria-hidden="true">
+                <path d="M0 12 H14 L18 4 L22 20 L28 8 L34 14 H46 L50 6 L54 18 L60 12 H80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+
+            <!-- Phone frame -->
+            <div class="phone">
+              <div class="phone-notch" aria-hidden="true"></div>
+              <div class="phone-side phone-side-mute" aria-hidden="true"></div>
+              <div class="phone-side phone-side-vol1" aria-hidden="true"></div>
+              <div class="phone-side phone-side-vol2" aria-hidden="true"></div>
+              <div class="phone-side phone-side-power" aria-hidden="true"></div>
+
+              <div class="phone-screen">
+                <!-- Status bar -->
+                <div class="flex items-center justify-between px-5 pt-3 text-[10px] font-semibold text-white">
+                  <span>9:41</span>
+                  <div class="flex items-center gap-1">
+                    <svg width="13" height="8" viewBox="0 0 16 10" fill="currentColor" aria-hidden="true"><rect x="0" y="7" width="2" height="3" rx="0.5"/><rect x="4" y="5" width="2" height="5" rx="0.5"/><rect x="8" y="2" width="2" height="8" rx="0.5"/><rect x="12" y="0" width="2" height="10" rx="0.5"/></svg>
+                    <svg width="13" height="9" viewBox="0 0 16 11" fill="currentColor" aria-hidden="true"><path d="M8 2.5c1.8 0 3.5.7 4.8 1.9l1.4-1.4A9 9 0 0 0 8 .5a9 9 0 0 0-6.2 2.5l1.4 1.4A7 7 0 0 1 8 2.5z"/><path d="M8 5.5a4 4 0 0 1 2.8 1.1l1.4-1.4A6 6 0 0 0 8 3.5a6 6 0 0 0-4.2 1.7l1.4 1.4A4 4 0 0 1 8 5.5z"/><circle cx="8" cy="9" r="1.2"/></svg>
+                    <svg width="22" height="10" viewBox="0 0 26 12" fill="none" aria-hidden="true"><rect x="0.5" y="0.5" width="22" height="11" rx="2.5" stroke="currentColor" opacity=".6"/><rect x="2" y="2" width="18" height="8" rx="1" fill="currentColor"/><rect x="23" y="4" width="2" height="4" rx="1" fill="currentColor" opacity=".6"/></svg>
+                  </div>
+                </div>
+
+                <!-- App header -->
+                <div class="flex items-center justify-between px-5 pt-5">
+                  <div>
+                    <div class="text-[10px] text-ash uppercase tracking-widest">Tuesday</div>
+                    <div class="font-display text-2xl leading-none mt-1">TODAY'S RUN</div>
+                  </div>
+                  <div class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/></svg>
+                  </div>
+                </div>
+
+                <!-- Progress ring card -->
+                <div class="mx-5 mt-4 rounded-2xl bg-gradient-to-br from-white/[0.06] to-white/[0.02] border border-white/10 p-4">
+                  <div class="flex items-center gap-4">
+                    <!-- Rings -->
+                    <div class="relative w-[108px] h-[108px] shrink-0">
+                      <svg viewBox="0 0 120 120" class="w-full h-full -rotate-90">
+                        <!-- track -->
+                        <circle cx="60" cy="60" r="52" stroke="rgba(255,255,255,.08)" stroke-width="9" fill="none"/>
+                        <circle cx="60" cy="60" r="38" stroke="rgba(255,255,255,.08)" stroke-width="9" fill="none"/>
+                        <circle cx="60" cy="60" r="24" stroke="rgba(255,255,255,.08)" stroke-width="9" fill="none"/>
+                        <!-- progress -->
+                        <circle class="ring ring-outer" cx="60" cy="60" r="52" stroke="#c7ff00" stroke-width="9" fill="none" stroke-linecap="round"/>
+                        <circle class="ring ring-mid"   cx="60" cy="60" r="38" stroke="#ffffff" stroke-width="9" fill="none" stroke-linecap="round"/>
+                        <circle class="ring ring-inner" cx="60" cy="60" r="24" stroke="#888888" stroke-width="9" fill="none" stroke-linecap="round"/>
+                      </svg>
+                      <div class="absolute inset-0 flex flex-col items-center justify-center">
+                        <div class="font-display text-xl leading-none">78<span class="text-sm text-ash">%</span></div>
+                        <div class="text-[9px] text-ash uppercase tracking-widest mt-0.5">Goal</div>
+                      </div>
+                    </div>
+                    <div class="flex-1 space-y-2.5">
+                      <div class="flex items-center justify-between">
+                        <span class="text-[10px] text-ash uppercase tracking-wider">Pace</span>
+                        <span class="text-xs font-semibold">6:24 /mi</span>
+                      </div>
+                      <div class="h-1 rounded-full bg-white/10 overflow-hidden">
+                        <div class="h-full w-[72%] bg-lime rounded-full"></div>
+                      </div>
+                      <div class="flex items-center justify-between">
+                        <span class="text-[10px] text-ash uppercase tracking-wider">Zone 3</span>
+                        <span class="text-xs font-semibold">Aerobic</span>
+                      </div>
+                      <div class="h-1 rounded-full bg-white/10 overflow-hidden">
+                        <div class="h-full w-[54%] bg-white rounded-full"></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Stats row -->
+                  <div class="grid grid-cols-3 mt-4 pt-4 border-t border-white/10">
+                    <div>
+                      <div class="font-display text-lg leading-none">27</div>
+                      <div class="text-[9px] text-ash uppercase tracking-widest mt-1">Min</div>
+                    </div>
+                    <div class="border-l border-white/10 pl-3">
+                      <div class="font-display text-lg leading-none">4.2</div>
+                      <div class="text-[9px] text-ash uppercase tracking-widest mt-1">Miles</div>
+                    </div>
+                    <div class="border-l border-white/10 pl-3">
+                      <div class="font-display text-lg leading-none text-lime">412</div>
+                      <div class="text-[9px] text-ash uppercase tracking-widest mt-1">Kcal</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Next up -->
+                <div class="mx-5 mt-3 rounded-2xl bg-white/[0.04] border border-white/10 p-3 flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-xl bg-lime/15 flex items-center justify-center shrink-0">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c7ff00" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="text-[10px] text-ash uppercase tracking-widest">Up next</div>
+                    <div class="text-sm font-semibold leading-tight truncate">Core &amp; Mobility · 12 min</div>
+                  </div>
+                  <button class="shrink-0 w-8 h-8 rounded-full bg-lime text-ink flex items-center justify-center" aria-label="Start">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                  </button>
+                </div>
+
+                <!-- Tab bar -->
+                <div class="absolute bottom-3 inset-x-5 rounded-2xl bg-coal/80 backdrop-blur border border-white/10 flex items-center justify-around py-2.5">
+                  <button class="tab-btn tab-active" aria-label="Home"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg></button>
+                  <button class="tab-btn" aria-label="Workouts"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6h12v12H6zM3 9v6M21 9v6"/></svg></button>
+                  <button class="tab-btn" aria-label="Stats"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18M7 14l4-4 4 4 5-7"/></svg></button>
+                  <button class="tab-btn" aria-label="Profile"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STATS STRIP ============ -->
+    <section class="relative border-y border-white/5 bg-coal/50">
+      <div class="max-w-7xl mx-auto px-5 md:px-8 grid grid-cols-2 md:grid-cols-4 divide-x divide-white/5 stats-strip">
+        <div class="py-10 md:py-14 px-4 text-center md:text-left">
+          <div class="font-display text-5xl md:text-6xl text-lime leading-none">
+            <span class="count" data-target="2" data-suffix="M+">0</span>
+          </div>
+          <div class="mt-2 text-[11px] md:text-xs tracking-[0.2em] uppercase text-ash">Athletes</div>
+        </div>
+        <div class="py-10 md:py-14 px-4 text-center md:text-left">
+          <div class="font-display text-5xl md:text-6xl text-lime leading-none">
+            <span class="count" data-target="500" data-suffix="+">0</span>
+          </div>
+          <div class="mt-2 text-[11px] md:text-xs tracking-[0.2em] uppercase text-ash">Workouts</div>
+        </div>
+        <div class="py-10 md:py-14 px-4 text-center md:text-left">
+          <div class="font-display text-5xl md:text-6xl text-lime leading-none">
+            <span class="count" data-target="4.9" data-decimals="1">0</span>
+            <span class="text-3xl align-top">★</span>
+          </div>
+          <div class="mt-2 text-[11px] md:text-xs tracking-[0.2em] uppercase text-ash">App Rating</div>
+        </div>
+        <div class="py-10 md:py-14 px-4 text-center md:text-left">
+          <div class="font-display text-5xl md:text-6xl text-lime leading-none">
+            <span class="count" data-target="15" data-suffix="+">0</span>
+          </div>
+          <div class="mt-2 text-[11px] md:text-xs tracking-[0.2em] uppercase text-ash">Elite Coaches</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section id="features" class="relative py-20 md:py-32">
+      <div class="max-w-7xl mx-auto px-5 md:px-8">
+        <div class="max-w-3xl reveal">
+          <span class="eyebrow">— Features</span>
+          <h2 class="section-title mt-3">Built for<br />the <span class="text-lime">work.</span></h2>
+          <p class="mt-5 text-ash max-w-xl">Every feature is there because it earns its place. No bloat, no vanity metrics — just the tools that help you show up stronger than yesterday.</p>
+        </div>
+
+        <div class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- card -->
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><path d="M22 6l-4 4-3-3"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Smart workout plans</h3>
+            <p class="feature-copy">Plans that adjust weekly based on your recovery, volume, and goals. No more cookie-cutter programs.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 12h4l2-7 4 14 2-7h6"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Real-time heart rate</h3>
+            <p class="feature-copy">Live BPM, zone tracking, and HRV with any Bluetooth strap or watch. See your effort, not just the clock.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-7"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Progress tracking</h3>
+            <p class="feature-copy">PRs, volume trends, body metrics. Every lift is logged, every record is visible. Watch the line go up.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8 21h8M12 17v4M7 4h10v7a5 5 0 0 1-10 0V4z"/><path d="M17 5h2a2 2 0 0 1 0 4h-2M7 5H5a2 2 0 0 0 0 4h2"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Community leaderboards</h3>
+            <p class="feature-copy">Compete with friends, your city, or the world. Weekly challenges with real bragging rights.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Coach-led sessions</h3>
+            <p class="feature-copy">Audio and video sessions from Olympic coaches and elite trainers. Real voices, real pushes.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <div class="feature-icon">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3v3M12 18v3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M3 12h3M18 12h3M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/><circle cx="12" cy="12" r="4"/>
+              </svg>
+            </div>
+            <h3 class="feature-title">Offline mode</h3>
+            <p class="feature-copy">Download sessions once, train anywhere. Mountains, basements, airplane mode — we don't care.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ WORKOUT PROGRAMS ============ -->
+    <section id="workouts" class="relative py-20 md:py-32 bg-coal/40 border-y border-white/5">
+      <div class="max-w-7xl mx-auto px-5 md:px-8">
+        <div class="flex items-end justify-between flex-wrap gap-6 reveal">
+          <div class="max-w-2xl">
+            <span class="eyebrow">— Programs</span>
+            <h2 class="section-title mt-3">Pick your <span class="text-lime">battle.</span></h2>
+          </div>
+          <a href="#download" class="text-sm font-semibold inline-flex items-center gap-2 text-ash hover:text-white transition">
+            Explore all programs
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+
+        <div class="mt-12 grid gap-5 md:grid-cols-3">
+          <!-- Program 1 -->
+          <article class="program-card reveal">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80" alt="Athlete lifting heavy barbell in dim gym" class="program-img" loading="lazy" />
+            <div class="program-overlay"></div>
+            <div class="program-body">
+              <div class="program-meta">
+                <span class="chip">30 Days</span>
+                <span class="chip chip-accent">Hard</span>
+              </div>
+              <h3 class="program-title">30-Day Shred</h3>
+              <p class="program-desc">Daily high-intensity sessions designed to strip body fat and build real conditioning.</p>
+              <div class="program-foot">
+                <span>Strength + HIIT</span>
+                <span class="arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Program 2 -->
+          <article class="program-card reveal">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1200&q=80" alt="Runner in motion on open road" class="program-img" loading="lazy" />
+            <div class="program-overlay"></div>
+            <div class="program-body">
+              <div class="program-meta">
+                <span class="chip">12 Weeks</span>
+                <span class="chip">Intermediate</span>
+              </div>
+              <h3 class="program-title">Sub-20 5K</h3>
+              <p class="program-desc">Structured run blocks, threshold intervals, and recovery — built to crack a 20-minute 5K.</p>
+              <div class="program-foot">
+                <span>Running</span>
+                <span class="arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Program 3 -->
+          <article class="program-card reveal">
+            <img src="https://images.unsplash.com/photo-1534368959876-26bf04f2c947?w=1200&q=80" alt="Athlete mid-yoga flow at sunrise" class="program-img" loading="lazy" />
+            <div class="program-overlay"></div>
+            <div class="program-body">
+              <div class="program-meta">
+                <span class="chip">8 Weeks</span>
+                <span class="chip">All levels</span>
+              </div>
+              <h3 class="program-title">Mobility Reset</h3>
+              <p class="program-desc">Daily 15-minute flows to unlock hips, shoulders, and spine. Rebuild the body you train in.</p>
+              <div class="program-foot">
+                <span>Mobility</span>
+                <span class="arrow">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRANSFORMATIONS / SOCIAL PROOF ============ -->
+    <section class="relative py-20 md:py-32">
+      <div class="max-w-7xl mx-auto px-5 md:px-8">
+        <div class="max-w-3xl reveal">
+          <span class="eyebrow">— Transformations</span>
+          <h2 class="section-title mt-3">The work <span class="text-lime">works.</span></h2>
+          <p class="mt-5 text-ash max-w-xl">Real athletes. Real timelines. Real results. No before-and-after trickery — just people who showed up for themselves.</p>
+        </div>
+
+        <div class="mt-14 grid gap-5 md:grid-cols-3">
+          <figure class="testimonial reveal">
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1579758629938-03607ccdbaba?w=300&q=80" alt="" class="w-12 h-12 rounded-full object-cover border border-white/10" loading="lazy" />
+              <div>
+                <div class="font-semibold">Marcus A.</div>
+                <div class="text-xs text-ash">Houston, TX</div>
+              </div>
+            </div>
+            <blockquote class="mt-5 text-[15px] leading-relaxed">
+              "I stopped thinking about it and just followed the plan. Six months later I'm hitting PRs I didn't think were for me."
+            </blockquote>
+            <div class="mt-5 pt-4 border-t border-white/10 flex items-baseline gap-3">
+              <span class="font-display text-3xl text-lime leading-none">−18 lbs</span>
+              <span class="text-xs text-ash uppercase tracking-widest">in 90 days</span>
+            </div>
+          </figure>
+
+          <figure class="testimonial reveal">
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=300&q=80" alt="" class="w-12 h-12 rounded-full object-cover border border-white/10" loading="lazy" />
+              <div>
+                <div class="font-semibold">Jules K.</div>
+                <div class="text-xs text-ash">Brooklyn, NY</div>
+              </div>
+            </div>
+            <blockquote class="mt-5 text-[15px] leading-relaxed">
+              "The zone training ruined slow jogging for me in the best way. I finally understand what 'working out' actually means."
+            </blockquote>
+            <div class="mt-5 pt-4 border-t border-white/10 flex items-baseline gap-3">
+              <span class="font-display text-3xl text-lime leading-none">19:42</span>
+              <span class="text-xs text-ash uppercase tracking-widest">first sub-20 5K</span>
+            </div>
+          </figure>
+
+          <figure class="testimonial reveal">
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=300&q=80" alt="" class="w-12 h-12 rounded-full object-cover border border-white/10" loading="lazy" />
+              <div>
+                <div class="font-semibold">Priya R.</div>
+                <div class="text-xs text-ash">Toronto, ON</div>
+              </div>
+            </div>
+            <blockquote class="mt-5 text-[15px] leading-relaxed">
+              "Coach-led sessions feel like someone's actually in the room. I haven't missed a week since February."
+            </blockquote>
+            <div class="mt-5 pt-4 border-t border-white/10 flex items-baseline gap-3">
+              <span class="font-display text-3xl text-lime leading-none">220 days</span>
+              <span class="text-xs text-ash uppercase tracking-widest">streak &amp; climbing</span>
+            </div>
+          </figure>
+        </div>
+
+        <!-- Press row -->
+        <div class="mt-20 reveal">
+          <div class="text-center text-[11px] tracking-[0.25em] uppercase text-ash">As seen in</div>
+          <div class="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-5 text-ash/70">
+            <span class="press-logo">Men's Health</span>
+            <span class="press-logo italic">Runner's World</span>
+            <span class="press-logo tracking-[0.3em]">GQ</span>
+            <span class="press-logo">SHAPE</span>
+            <span class="press-logo">Outside</span>
+            <span class="press-logo italic">Women's Health</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRICING ============ -->
+    <section id="pricing" class="relative py-20 md:py-32 bg-coal/40 border-y border-white/5">
+      <div class="max-w-6xl mx-auto px-5 md:px-8">
+        <div class="text-center max-w-2xl mx-auto reveal">
+          <span class="eyebrow">— Pricing</span>
+          <h2 class="section-title mt-3">Simple. <span class="text-lime">Brutal.</span></h2>
+          <p class="mt-5 text-ash">One free tier, one pro tier. Cancel anytime. No tricks, no "starter" paywalls.</p>
+        </div>
+
+        <div class="mt-14 grid gap-5 md:grid-cols-2 max-w-4xl mx-auto">
+          <!-- Free -->
+          <div class="price-card reveal">
+            <div class="flex items-baseline justify-between">
+              <h3 class="font-display text-3xl uppercase tracking-tight">Free</h3>
+              <div class="text-ash text-sm">Forever</div>
+            </div>
+            <div class="mt-4 flex items-baseline gap-1.5">
+              <span class="font-display text-6xl leading-none">$0</span>
+              <span class="text-ash text-sm">/ month</span>
+            </div>
+            <p class="mt-3 text-ash text-sm">Get started with the essentials.</p>
+            <ul class="mt-8 space-y-3 text-sm">
+              <li class="price-item">50+ starter workouts</li>
+              <li class="price-item">Basic progress tracking</li>
+              <li class="price-item">Community access</li>
+              <li class="price-item">1 active program</li>
+            </ul>
+            <a href="#download" class="mt-8 inline-flex w-full items-center justify-center py-3 rounded-xl border border-white/15 hover:bg-white/5 transition font-semibold text-sm">
+              Start free
+            </a>
+          </div>
+
+          <!-- Pro -->
+          <div class="price-card price-card-pro reveal">
+            <div class="flex items-baseline justify-between">
+              <h3 class="font-display text-3xl uppercase tracking-tight">Pro</h3>
+              <div class="chip chip-accent">Most popular</div>
+            </div>
+            <div class="mt-4 flex items-baseline gap-1.5">
+              <span class="font-display text-6xl leading-none">$12</span>
+              <span class="text-ash text-sm">/ month</span>
+            </div>
+            <p class="mt-3 text-ash text-sm">Everything you need to level up — billed monthly, cancel anytime.</p>
+            <ul class="mt-8 space-y-3 text-sm">
+              <li class="price-item price-item-pro">500+ workouts &amp; all programs</li>
+              <li class="price-item price-item-pro">Adaptive plans &amp; HRV insights</li>
+              <li class="price-item price-item-pro">Coach-led audio &amp; video</li>
+              <li class="price-item price-item-pro">Leaderboards &amp; challenges</li>
+              <li class="price-item price-item-pro">Offline downloads</li>
+              <li class="price-item price-item-pro">Priority support</li>
+            </ul>
+            <a href="#download" class="mt-8 inline-flex w-full items-center justify-center py-3 rounded-xl bg-lime text-ink hover:bg-white transition font-bold text-sm">
+              Go Pro — 7 days free
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DOWNLOAD CTA ============ -->
+    <section id="download" class="relative py-24 md:py-40 overflow-hidden">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <div class="relative max-w-5xl mx-auto px-5 md:px-8 text-center">
+        <span class="eyebrow reveal">— Ready?</span>
+        <h2 class="reveal font-display text-6xl sm:text-8xl md:text-[10rem] leading-[0.9] uppercase tracking-tight mt-3">
+          <span class="text-lime">READY?</span><br />
+          LET'S WORK.
+        </h2>
+        <p class="reveal mt-6 text-ash max-w-xl mx-auto">
+          Download Pulse and start today. No credit card required for the free tier. 7 days free on Pro — cancel in two taps.
+        </p>
+
+        <div class="reveal mt-10 flex flex-wrap items-center justify-center gap-3">
+          <a href="#" class="group inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-white text-ink hover:bg-lime transition-colors font-semibold">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.564 13.093c-.022-2.29 1.868-3.39 1.955-3.443-1.064-1.556-2.72-1.769-3.312-1.795-1.41-.144-2.75.83-3.467.83-.713 0-1.818-.808-2.986-.786-1.536.022-2.95.893-3.74 2.266-1.593 2.76-.407 6.852 1.143 9.1.76 1.098 1.666 2.333 2.852 2.289 1.148-.047 1.584-.742 2.972-.742 1.388 0 1.778.742 2.989.718 1.233-.022 2.016-1.114 2.77-2.218.873-1.273 1.233-2.507 1.255-2.571-.028-.013-2.408-.925-2.431-3.648zM15.16 6.35c.633-.77 1.063-1.838.945-2.9-.914.037-2.024.61-2.68 1.379-.586.681-1.1 1.77-.962 2.816 1.021.079 2.063-.52 2.697-1.295z"/></svg>
+            <span class="flex flex-col leading-none text-left">
+              <span class="text-[10px] font-medium tracking-wider uppercase opacity-70">Download on</span>
+              <span class="text-base font-bold">App Store</span>
+            </span>
+          </a>
+          <a href="#" class="group inline-flex items-center gap-3 px-6 py-3.5 rounded-xl bg-white/5 border border-white/15 hover:bg-white/10 transition font-semibold">
+            <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#c7ff00" d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z"/><path fill="#fff" d="M14.5 11.293l2.302-2.302 2.705 2.002 2.307 1.336c.784.453.784 1.583 0 2.035l-2.307 1.336-2.705-2.705L14.5 11.293z"/><path fill="#fff" opacity=".7" d="M5.864 2.658L16.8 8.99l-2.302 2.303L5.864 2.658zM14.5 12.707l2.302 2.302-10.937 6.333 8.635-8.635z"/></svg>
+            <span class="flex flex-col leading-none text-left">
+              <span class="text-[10px] font-medium tracking-wider uppercase opacity-70">Get it on</span>
+              <span class="text-base font-bold">Google Play</span>
+            </span>
+          </a>
+        </div>
+
+        <div class="reveal mt-6 text-xs tracking-widest uppercase text-ash">
+          Available on iOS 15+ and Android 9+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="border-t border-white/5 bg-ink">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 grid gap-10 md:grid-cols-5">
+      <div class="md:col-span-2">
+        <a href="#top" class="flex items-center gap-2">
+          <svg width="24" height="24" viewBox="0 0 26 26" fill="none" aria-hidden="true" class="text-lime">
+            <path d="M1 13H6L9 5L13 21L17 9L20 13H25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="font-display text-2xl tracking-[0.08em]">PULSE</span>
+        </a>
+        <p class="mt-4 text-sm text-ash max-w-xs">Training app for people who mean it. Built by athletes, for athletes.</p>
+        <div class="mt-6 flex items-center gap-3">
+          <a href="#" aria-label="Instagram" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="TikTok" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 3v3a4 4 0 0 0 4 4v3a7 7 0 0 1-4-1.27V16a6 6 0 1 1-6-6h1v3h-1a3 3 0 1 0 3 3V3h3z"/></svg></a>
+          <a href="#" aria-label="YouTube" class="social-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.5-.5-5.2a2.9 2.9 0 0 0-2-2C18.7 4.3 12 4.3 12 4.3s-6.7 0-8.5.5a2.9 2.9 0 0 0-2 2C1 8.5 1 12 1 12s0 3.5.5 5.2a2.9 2.9 0 0 0 2 2c1.8.5 8.5.5 8.5.5s6.7 0 8.5-.5a2.9 2.9 0 0 0 2-2c.5-1.7.5-5.2.5-5.2zM10 15.5v-7l6 3.5-6 3.5z"/></svg></a>
+          <a href="#" aria-label="X / Twitter" class="social-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.84l-5.36-6.86L4.64 22H1.38l8.02-9.16L1 2h7l4.84 6.22L18.244 2zm-2.4 18h1.88L7.23 4H5.22l10.62 16z"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Product</h4>
+        <ul class="footer-list">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#workouts">Workouts</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#download">Download</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Company</h4>
+        <ul class="footer-list">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Coaches</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Support</h4>
+        <ul class="footer-list">
+          <li><a href="#">Help center</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-5 md:px-8 py-6 flex flex-wrap items-center justify-between gap-3 text-xs text-ash">
+        <div>© <span id="year">2026</span> Pulse Fitness, Inc. All rights reserved.</div>
+        <div class="flex items-center gap-1.5">
+          <span class="relative flex h-1.5 w-1.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-lime opacity-60"></span>
+            <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-lime"></span>
+          </span>
+          All systems operational
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Designing for Impact — A 6-week cohort for product designers</title>
+  <meta name="description" content="A 6-week cohort course for product designers who want to do work that moves the needle. Learn research, systems thinking, and executive communication." />
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind theme extension -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream:   '#fef9f3',
+            cream2:  '#f9f0e2',
+            plum:    '#4a1d3d',
+            plum2:   '#6b2c4d',
+            peach:   '#f4a261',
+            peach2:  '#e76f51',
+            ink:     '#1f1219',
+            mute:    '#6b5560',
+          },
+          fontFamily: {
+            serif: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+            sans:  ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'soft': '0 1px 2px rgba(74,29,61,0.04), 0 8px 30px -12px rgba(74,29,61,0.12)',
+            'lift': '0 10px 40px -12px rgba(74,29,61,0.25)',
+          },
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-cream text-ink font-sans antialiased selection:bg-peach/30">
+
+  <!-- ═══════ ANNOUNCEMENT BAR ═══════ -->
+  <div id="announce" class="bg-plum text-cream text-[13px] sm:text-sm">
+    <div class="max-w-7xl mx-auto px-4 py-2.5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center">
+      <span class="inline-flex items-center gap-2">
+        <span aria-hidden="true">🎓</span>
+        <span>Cohort 12 enrollment closes in</span>
+      </span>
+      <span class="font-mono tabular-nums tracking-wider text-peach" data-countdown="top" aria-live="polite">
+        <span data-d>00</span>d <span data-h>00</span>h <span data-m>00</span>m <span data-s>00</span>s
+      </span>
+      <span class="hidden sm:inline text-cream/70">·</span>
+      <span>Save 20% with code <span class="font-semibold text-peach">LAUNCH</span></span>
+    </div>
+  </div>
+
+  <!-- ═══════ NAV ═══════ -->
+  <header class="sticky top-0 z-40 backdrop-blur bg-cream/80 border-b border-plum/10">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-2 group">
+        <span class="h-8 w-8 rounded-full bg-plum text-cream grid place-items-center font-serif font-bold">I</span>
+        <span class="font-serif text-2xl font-semibold tracking-tight text-plum">Impact</span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-8 text-sm text-ink/75">
+        <li><a class="hover:text-plum transition" href="#curriculum">Curriculum</a></li>
+        <li><a class="hover:text-plum transition" href="#instructor">Instructor</a></li>
+        <li><a class="hover:text-plum transition" href="#faq">FAQ</a></li>
+        <li><a class="hover:text-plum transition" href="#enroll">Enroll</a></li>
+      </ul>
+
+      <a href="#enroll" class="inline-flex items-center gap-1.5 text-sm font-medium bg-plum text-cream px-4 py-2 rounded-full hover:bg-plum2 transition shadow-soft">
+        Enroll now
+        <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </nav>
+  </header>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="relative overflow-hidden">
+    <!-- decorative blobs -->
+    <div aria-hidden="true" class="pointer-events-none absolute -top-20 -left-20 h-80 w-80 rounded-full bg-peach/20 blur-3xl"></div>
+    <div aria-hidden="true" class="pointer-events-none absolute -bottom-40 -right-20 h-96 w-96 rounded-full bg-plum/10 blur-3xl"></div>
+
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 pt-20 md:pt-28 pb-20 md:pb-28 text-center reveal">
+      <p class="text-xs md:text-sm font-semibold tracking-[0.22em] text-plum2 uppercase mb-6">
+        6-Week Cohort &nbsp;·&nbsp; Starts June 3
+      </p>
+
+      <h1 class="font-serif font-semibold tracking-tight text-plum text-5xl sm:text-6xl md:text-7xl leading-[1.02]">
+        Design work that <em class="italic text-peach2">moves</em> the needle.
+      </h1>
+
+      <p class="mt-7 text-lg md:text-xl text-ink/75 max-w-2xl mx-auto leading-relaxed">
+        A cohort course for product designers ready to stop shipping pixels and start shipping outcomes — with research, systems thinking, and the kind of executive communication that gets your work funded.
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row gap-3 items-center justify-center">
+        <a href="#enroll" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-plum text-cream px-7 py-4 rounded-full font-medium text-base hover:bg-plum2 transition shadow-lift">
+          Enroll for Cohort 12
+          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#curriculum" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-transparent text-plum px-7 py-4 rounded-full font-medium text-base border border-plum/25 hover:bg-plum/5 transition">
+          See curriculum
+        </a>
+      </div>
+
+      <!-- Social proof -->
+      <div class="mt-14 flex flex-col items-center gap-3">
+        <div class="flex items-center gap-1" aria-label="Rated 4.9 out of 5">
+          <!-- 5 stars -->
+          <svg class="w-5 h-5 text-peach" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.86-4.25 4.14 1 5.86L10 14.9l-5.25 2.76 1-5.86L1.5 7.66l5.9-.86L10 1.5z"/></svg>
+          <svg class="w-5 h-5 text-peach" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.86-4.25 4.14 1 5.86L10 14.9l-5.25 2.76 1-5.86L1.5 7.66l5.9-.86L10 1.5z"/></svg>
+          <svg class="w-5 h-5 text-peach" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.86-4.25 4.14 1 5.86L10 14.9l-5.25 2.76 1-5.86L1.5 7.66l5.9-.86L10 1.5z"/></svg>
+          <svg class="w-5 h-5 text-peach" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.86-4.25 4.14 1 5.86L10 14.9l-5.25 2.76 1-5.86L1.5 7.66l5.9-.86L10 1.5z"/></svg>
+          <svg class="w-5 h-5 text-peach" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.6 5.3 5.9.86-4.25 4.14 1 5.86L10 14.9l-5.25 2.76 1-5.86L1.5 7.66l5.9-.86L10 1.5z"/></svg>
+          <span class="ml-2 text-sm text-ink/70 font-medium">4.9 / 5 from 480 alumni reviews</span>
+        </div>
+        <p class="text-sm text-ink/60 max-w-xl">
+          Joined by <span class="font-semibold text-ink/80">2,400+ designers</span> from
+          <span class="font-medium text-ink/80">Google</span>, <span class="font-medium text-ink/80">Stripe</span>, <span class="font-medium text-ink/80">Airbnb</span>, <span class="font-medium text-ink/80">Notion</span>, <span class="font-medium text-ink/80">Figma</span>, and <span class="font-medium text-ink/80">Shopify</span>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ WHAT YOU'LL LEARN ═══════ -->
+  <section id="learn" class="bg-cream2/60 border-y border-plum/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-20 md:py-28">
+      <div class="max-w-2xl mb-14 reveal">
+        <p class="text-xs font-semibold tracking-[0.22em] text-plum2 uppercase mb-3">What you'll learn</p>
+        <h2 class="font-serif font-semibold text-plum text-4xl md:text-5xl leading-tight">Six outcomes. Not six topics.</h2>
+        <p class="mt-4 text-ink/70 text-lg">Every module is designed around a capability you'll walk out with, not a list of tools or Figma tricks.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- card 1 -->
+        <div class="reveal bg-cream rounded-2xl p-7 border border-plum/10 hover:border-plum/30 transition shadow-soft">
+          <div class="w-11 h-11 rounded-xl bg-plum/8 grid place-items-center mb-5 text-plum">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 3v3M3 12h3M18 12h3M12 18v3M5.6 5.6l2 2M16.4 16.4l2 2M5.6 18.4l2-2M16.4 7.6l2-2" stroke-linecap="round"/><circle cx="12" cy="12" r="3.5"/></svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold text-plum mb-2">Frame problems before jumping to screens</h3>
+          <p class="text-ink/70 text-[15px] leading-relaxed">Learn the diagnostic moves that separate senior designers from pixel-pushers — and avoid building the wrong thing beautifully.</p>
+        </div>
+        <!-- card 2 -->
+        <div class="reveal bg-cream rounded-2xl p-7 border border-plum/10 hover:border-plum/30 transition shadow-soft">
+          <div class="w-11 h-11 rounded-xl bg-plum/8 grid place-items-center mb-5 text-plum">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-3.5-3.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold text-plum mb-2">Run research that changes decisions</h3>
+          <p class="text-ink/70 text-[15px] leading-relaxed">Lightweight, evidence-producing methods you can run in a week — even at companies with no research team.</p>
+        </div>
+        <!-- card 3 -->
+        <div class="reveal bg-cream rounded-2xl p-7 border border-plum/10 hover:border-plum/30 transition shadow-soft">
+          <div class="w-11 h-11 rounded-xl bg-plum/8 grid place-items-center mb-5 text-plum">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.5"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.5"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.5"/></svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold text-plum mb-2">Design systems that scale</h3>
+          <p class="text-ink/70 text-[15px] leading-relaxed">Tokens, components, and governance — build libraries your team actually adopts instead of quietly forks.</p>
+        </div>
+        <!-- card 4 -->
+        <div class="reveal bg-cream rounded-2xl p-7 border border-plum/10 hover:border-plum/30 transition shadow-soft">
+          <div class="w-11 h-11 rounded-xl bg-plum/8 grid place-items-center mb-5 text-plum">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 19V5m0 14h16M8 15v-4M12 15V8M16 15v-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold text-plum mb-2">Present work executives actually read</h3>
+          <p class="text-ink/70 text-[15px] leading-relaxed">Narrative structure, decision docs, and async artifacts that earn buy-in without another 90-minute review.</p>
+        </div>
+        <!-- card 5 -->
+        <div class="reveal bg-cream rounded-2xl p-7 border border-plum/10 hover:border-plum/30 transition shadow-soft">
+          <div class="w-11 h-11 rounded-xl bg-plum/8 grid place-items-center mb-5 text-plum">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 7h7v7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold text-plum mb-2">Measure design impact in business terms</h3>
+          <p class="text-ink/70 text-[15px] leading-relaxed">Tie your work to activation, retention, and revenue — the language your PM, your CEO, and your next recruiter speak.</p>
+        </div>
+        <!-- card 6 -->
+        <div class="reveal bg-cream rounded-2xl p-7 border border-plum/10 hover:border-plum/30 transition shadow-soft">
+          <div class="w-11 h-11 rounded-xl bg-plum/8 grid place-items-center mb-5 text-plum">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M5 4h14v5a7 7 0 01-14 0V4z"/><path d="M9 20h6M12 16v4" stroke-linecap="round"/></svg>
+          </div>
+          <h3 class="font-serif text-xl font-semibold text-plum mb-2">Build a portfolio that gets you hired</h3>
+          <p class="text-ink/70 text-[15px] leading-relaxed">Case studies structured around outcomes — the kind hiring managers bookmark instead of skim past.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CURRICULUM ═══════ -->
+  <section id="curriculum" class="bg-cream">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-20 md:py-28">
+      <div class="max-w-2xl mb-14 reveal">
+        <p class="text-xs font-semibold tracking-[0.22em] text-plum2 uppercase mb-3">Curriculum</p>
+        <h2 class="font-serif font-semibold text-plum text-4xl md:text-5xl leading-tight">Six weeks, carefully paced.</h2>
+        <p class="mt-4 text-ink/70 text-lg">Roughly 6–8 hours a week. One live session, one office hour, and a hands-on project you'll actually ship.</p>
+      </div>
+
+      <ol class="space-y-3" id="curriculum-list">
+        <!-- Week 1 -->
+        <li class="accordion reveal border border-plum/12 rounded-2xl bg-cream shadow-soft overflow-hidden">
+          <button type="button" class="accordion-trigger w-full flex items-start gap-5 text-left p-6 md:p-7" aria-expanded="false">
+            <span class="shrink-0 mt-0.5 w-12 h-12 rounded-xl bg-plum/8 text-plum grid place-items-center font-serif text-lg font-semibold">01</span>
+            <span class="flex-1 min-w-0">
+              <span class="block font-serif text-xl md:text-2xl font-semibold text-plum">Problem framing &amp; discovery</span>
+              <span class="block mt-1 text-ink/70 text-[15px]">Before you open Figma, learn to diagnose — customer jobs, decision backcasting, and writing problem statements that survive a PM challenge.</span>
+            </span>
+            <span class="shrink-0 hidden sm:inline-flex text-xs font-medium text-ink/55 mt-2 mr-1 whitespace-nowrap">~7 hrs</span>
+            <span class="accordion-chevron shrink-0 w-6 h-6 rounded-full grid place-items-center text-plum mt-1 transition-transform">
+              <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="accordion-panel">
+            <div class="px-6 md:px-7 pb-7 pt-1 md:pl-[4.75rem]">
+              <ul class="space-y-2 text-[15px] text-ink/75">
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 1.1 — The diagnostic mindset</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 1.2 — Jobs-to-be-done, without the cult</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 1.3 — Writing problem statements that stick</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 1.4 — Backcasting from the decision</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Project — Re-frame a product bet from your own work</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <!-- Week 2 -->
+        <li class="accordion reveal border border-plum/12 rounded-2xl bg-cream shadow-soft overflow-hidden">
+          <button type="button" class="accordion-trigger w-full flex items-start gap-5 text-left p-6 md:p-7" aria-expanded="false">
+            <span class="shrink-0 mt-0.5 w-12 h-12 rounded-xl bg-plum/8 text-plum grid place-items-center font-serif text-lg font-semibold">02</span>
+            <span class="flex-1 min-w-0">
+              <span class="block font-serif text-xl md:text-2xl font-semibold text-plum">Lean research for designers</span>
+              <span class="block mt-1 text-ink/70 text-[15px]">Five-day studies, synthesis you can actually share, and moving from "interesting" findings to evidence that changes a roadmap.</span>
+            </span>
+            <span class="shrink-0 hidden sm:inline-flex text-xs font-medium text-ink/55 mt-2 mr-1 whitespace-nowrap">~8 hrs</span>
+            <span class="accordion-chevron shrink-0 w-6 h-6 rounded-full grid place-items-center text-plum mt-1 transition-transform">
+              <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="accordion-panel">
+            <div class="px-6 md:px-7 pb-7 pt-1 md:pl-[4.75rem]">
+              <ul class="space-y-2 text-[15px] text-ink/75">
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 2.1 — Choosing the right method (in under 5 min)</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 2.2 — Interviews that surface disconfirming evidence</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 2.3 — Synthesis without 400 sticky notes</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Project — Run a 5-day study end-to-end</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <!-- Week 3 -->
+        <li class="accordion reveal border border-plum/12 rounded-2xl bg-cream shadow-soft overflow-hidden">
+          <button type="button" class="accordion-trigger w-full flex items-start gap-5 text-left p-6 md:p-7" aria-expanded="false">
+            <span class="shrink-0 mt-0.5 w-12 h-12 rounded-xl bg-plum/8 text-plum grid place-items-center font-serif text-lg font-semibold">03</span>
+            <span class="flex-1 min-w-0">
+              <span class="block font-serif text-xl md:text-2xl font-semibold text-plum">Systems &amp; scalable craft</span>
+              <span class="block mt-1 text-ink/70 text-[15px]">From tokens to governance — how to design a system people adopt, not one they quietly fork in another file.</span>
+            </span>
+            <span class="shrink-0 hidden sm:inline-flex text-xs font-medium text-ink/55 mt-2 mr-1 whitespace-nowrap">~7 hrs</span>
+            <span class="accordion-chevron shrink-0 w-6 h-6 rounded-full grid place-items-center text-plum mt-1 transition-transform">
+              <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="accordion-panel">
+            <div class="px-6 md:px-7 pb-7 pt-1 md:pl-[4.75rem]">
+              <ul class="space-y-2 text-[15px] text-ink/75">
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 3.1 — Token architecture that survives a rebrand</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 3.2 — Component API design</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 3.3 — Governance &amp; contribution rituals</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 3.4 — Measuring system adoption</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Project — Audit and improve one component family</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <!-- Week 4 -->
+        <li class="accordion reveal border border-plum/12 rounded-2xl bg-cream shadow-soft overflow-hidden">
+          <button type="button" class="accordion-trigger w-full flex items-start gap-5 text-left p-6 md:p-7" aria-expanded="false">
+            <span class="shrink-0 mt-0.5 w-12 h-12 rounded-xl bg-plum/8 text-plum grid place-items-center font-serif text-lg font-semibold">04</span>
+            <span class="flex-1 min-w-0">
+              <span class="block font-serif text-xl md:text-2xl font-semibold text-plum">Communicating with executives</span>
+              <span class="block mt-1 text-ink/70 text-[15px]">Narrative structure, writing for async audiences, and the one-pager templates our alumni use at Stripe and Shopify.</span>
+            </span>
+            <span class="shrink-0 hidden sm:inline-flex text-xs font-medium text-ink/55 mt-2 mr-1 whitespace-nowrap">~6 hrs</span>
+            <span class="accordion-chevron shrink-0 w-6 h-6 rounded-full grid place-items-center text-plum mt-1 transition-transform">
+              <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="accordion-panel">
+            <div class="px-6 md:px-7 pb-7 pt-1 md:pl-[4.75rem]">
+              <ul class="space-y-2 text-[15px] text-ink/75">
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 4.1 — Writing the one-pager</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 4.2 — Decision docs that resolve, not re-open</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 4.3 — Reading the room in design reviews</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Project — Ship a real decision doc for review</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <!-- Week 5 -->
+        <li class="accordion reveal border border-plum/12 rounded-2xl bg-cream shadow-soft overflow-hidden">
+          <button type="button" class="accordion-trigger w-full flex items-start gap-5 text-left p-6 md:p-7" aria-expanded="false">
+            <span class="shrink-0 mt-0.5 w-12 h-12 rounded-xl bg-plum/8 text-plum grid place-items-center font-serif text-lg font-semibold">05</span>
+            <span class="flex-1 min-w-0">
+              <span class="block font-serif text-xl md:text-2xl font-semibold text-plum">Measuring design impact</span>
+              <span class="block mt-1 text-ink/70 text-[15px]">From lagging to leading indicators — defining success metrics, reading dashboards with intent, and telling the impact story afterward.</span>
+            </span>
+            <span class="shrink-0 hidden sm:inline-flex text-xs font-medium text-ink/55 mt-2 mr-1 whitespace-nowrap">~7 hrs</span>
+            <span class="accordion-chevron shrink-0 w-6 h-6 rounded-full grid place-items-center text-plum mt-1 transition-transform">
+              <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="accordion-panel">
+            <div class="px-6 md:px-7 pb-7 pt-1 md:pl-[4.75rem]">
+              <ul class="space-y-2 text-[15px] text-ink/75">
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 5.1 — North-star metrics, demystified</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 5.2 — Leading vs lagging indicators</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 5.3 — Running honest A/B reads</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Project — Write the impact story for a past ship</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <!-- Week 6 -->
+        <li class="accordion reveal border border-plum/12 rounded-2xl bg-cream shadow-soft overflow-hidden">
+          <button type="button" class="accordion-trigger w-full flex items-start gap-5 text-left p-6 md:p-7" aria-expanded="false">
+            <span class="shrink-0 mt-0.5 w-12 h-12 rounded-xl bg-plum/8 text-plum grid place-items-center font-serif text-lg font-semibold">06</span>
+            <span class="flex-1 min-w-0">
+              <span class="block font-serif text-xl md:text-2xl font-semibold text-plum">Portfolio &amp; positioning</span>
+              <span class="block mt-1 text-ink/70 text-[15px]">Outcome-led case studies, interview prep, and a live portfolio review with hiring managers from partner companies.</span>
+            </span>
+            <span class="shrink-0 hidden sm:inline-flex text-xs font-medium text-ink/55 mt-2 mr-1 whitespace-nowrap">~8 hrs</span>
+            <span class="accordion-chevron shrink-0 w-6 h-6 rounded-full grid place-items-center text-plum mt-1 transition-transform">
+              <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 8l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </button>
+          <div class="accordion-panel">
+            <div class="px-6 md:px-7 pb-7 pt-1 md:pl-[4.75rem]">
+              <ul class="space-y-2 text-[15px] text-ink/75">
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 6.1 — Case study architecture</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 6.2 — Writing the 3-line project blurb</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 6.3 — The portfolio interview walkthrough</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Lesson 6.4 — Negotiating the next role</li>
+                <li class="flex gap-3"><span class="w-1.5 h-1.5 rounded-full bg-peach mt-2"></span>Final — Live portfolio review with 3 hiring managers</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══════ INSTRUCTOR ═══════ -->
+  <section id="instructor" class="bg-plum text-cream relative overflow-hidden">
+    <div aria-hidden="true" class="absolute inset-0 opacity-[0.05] pointer-events-none" style="background-image:radial-gradient(circle at 1px 1px,#fef9f3 1px,transparent 0);background-size:22px 22px;"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-20 md:py-28 grid md:grid-cols-12 gap-10 md:gap-14 items-center">
+      <div class="md:col-span-5 reveal">
+        <div class="relative">
+          <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-lift border border-cream/10">
+            <img
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=80"
+              alt="Portrait of instructor Maya Okafor"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div class="hidden sm:block absolute -bottom-5 -right-5 bg-peach text-plum rounded-2xl px-5 py-4 shadow-lift">
+            <p class="font-serif text-2xl font-semibold leading-none">12 yrs</p>
+            <p class="text-xs uppercase tracking-widest mt-1">in product design</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="md:col-span-7 reveal">
+        <p class="text-xs font-semibold tracking-[0.22em] text-peach uppercase mb-3">Your instructor</p>
+        <h2 class="font-serif font-semibold text-4xl md:text-5xl leading-tight">Maya Okafor</h2>
+        <p class="mt-1 text-cream/75 text-lg">Former Principal Designer at Linear · Ex-Airbnb · Ex-Intercom</p>
+
+        <div class="mt-6 space-y-4 text-cream/80 text-[17px] leading-relaxed">
+          <p>Maya spent a decade inside product-led companies — the last four as Principal Designer at Linear, where she led the redesign of the workflows used by every engineering team on the product. Before that, she shipped check-in at Airbnb and rebuilt onboarding at Intercom.</p>
+          <p>She started teaching in 2020 after coaching a handful of designers through promotions and role changes at FAANG. Four years and 2,400+ students later, Designing for Impact is what she wishes she'd been taught at year five.</p>
+        </div>
+
+        <ul class="mt-8 grid sm:grid-cols-2 gap-x-8 gap-y-3 text-[15px]">
+          <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-peach shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>Taught 2,400+ designers across 11 cohorts</li>
+          <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-peach shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>Speaker at Config, Clarity, Interaction Week</li>
+          <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-peach shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>Advisor to 6 seed-to-Series-B design teams</li>
+          <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-peach shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>Writes a weekly essay to 32k designers</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ TESTIMONIALS ═══════ -->
+  <section class="bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-20 md:py-28">
+      <div class="max-w-2xl mb-14 reveal">
+        <p class="text-xs font-semibold tracking-[0.22em] text-plum2 uppercase mb-3">Graduates</p>
+        <h2 class="font-serif font-semibold text-plum text-4xl md:text-5xl leading-tight">From "good designer" to the person the room looks at.</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <!-- T1 -->
+        <figure class="reveal bg-cream2/70 border border-plum/10 rounded-2xl p-7 flex flex-col shadow-soft">
+          <svg class="w-8 h-8 text-peach mb-4" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M10 9H6a4 4 0 00-4 4v6a4 4 0 004 4h2v-6H6v-4h4V9zm16 0h-4a4 4 0 00-4 4v6a4 4 0 004 4h2v-6h-2v-4h4V9z"/></svg>
+          <blockquote class="font-serif text-lg md:text-[19px] text-ink leading-snug">
+            "Three weeks in, I re-wrote the brief for a project that had been stuck for a quarter. It shipped six weeks later. I don't think I'd have had the vocabulary without this course."
+          </blockquote>
+          <figcaption class="mt-6 flex items-center gap-3 pt-5 border-t border-plum/10">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80" alt="" class="w-11 h-11 rounded-full object-cover" loading="lazy" />
+            <div>
+              <p class="font-semibold text-plum">Priya Shah</p>
+              <p class="text-sm text-ink/60">Senior Product Designer, Stripe</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- T2 -->
+        <figure class="reveal bg-cream2/70 border border-plum/10 rounded-2xl p-7 flex flex-col shadow-soft">
+          <svg class="w-8 h-8 text-peach mb-4" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M10 9H6a4 4 0 00-4 4v6a4 4 0 004 4h2v-6H6v-4h4V9zm16 0h-4a4 4 0 00-4 4v6a4 4 0 004 4h2v-6h-2v-4h4V9z"/></svg>
+          <blockquote class="font-serif text-lg md:text-[19px] text-ink leading-snug">
+            "The executive communication module paid for the course ten times over. My staff PM told me my last one-pager was the clearest he'd seen in two years."
+          </blockquote>
+          <figcaption class="mt-6 flex items-center gap-3 pt-5 border-t border-plum/10">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="" class="w-11 h-11 rounded-full object-cover" loading="lazy" />
+            <div>
+              <p class="font-semibold text-plum">David Chen</p>
+              <p class="text-sm text-ink/60">Staff Designer, Notion</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- T3 -->
+        <figure class="reveal bg-cream2/70 border border-plum/10 rounded-2xl p-7 flex flex-col shadow-soft">
+          <svg class="w-8 h-8 text-peach mb-4" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M10 9H6a4 4 0 00-4 4v6a4 4 0 004 4h2v-6H6v-4h4V9zm16 0h-4a4 4 0 00-4 4v6a4 4 0 004 4h2v-6h-2v-4h4V9z"/></svg>
+          <blockquote class="font-serif text-lg md:text-[19px] text-ink leading-snug">
+            "I joined hoping to level up. I left with a new job at 40% more. Maya's portfolio review is worth the sticker price alone — it's brutally specific, and that's exactly what I needed."
+          </blockquote>
+          <figcaption class="mt-6 flex items-center gap-3 pt-5 border-t border-plum/10">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80" alt="" class="w-11 h-11 rounded-full object-cover" loading="lazy" />
+            <div>
+              <p class="font-semibold text-plum">Elena Rivas</p>
+              <p class="text-sm text-ink/60">Product Designer, Figma</p>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Results strip -->
+      <div class="reveal mt-12 bg-plum text-cream rounded-2xl p-8 md:p-10 grid md:grid-cols-3 gap-6 md:gap-8 text-center md:text-left shadow-lift">
+        <div>
+          <p class="font-serif text-5xl font-semibold text-peach">87<span class="text-3xl align-top">%</span></p>
+          <p class="mt-2 text-cream/80 text-sm leading-snug">got a promotion or a new role within 6 months of graduating.</p>
+        </div>
+        <div>
+          <p class="font-serif text-5xl font-semibold text-peach">2,400+</p>
+          <p class="mt-2 text-cream/80 text-sm leading-snug">designers have joined across 11 previous cohorts.</p>
+        </div>
+        <div>
+          <p class="font-serif text-5xl font-semibold text-peach">4.9<span class="text-3xl">/5</span></p>
+          <p class="mt-2 text-cream/80 text-sm leading-snug">average rating across 480 end-of-cohort reviews.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PRICING ═══════ -->
+  <section id="enroll" class="bg-cream2/60 border-y border-plum/10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-20 md:py-28">
+      <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+        <p class="text-xs font-semibold tracking-[0.22em] text-plum2 uppercase mb-3">Enroll</p>
+        <h2 class="font-serif font-semibold text-plum text-4xl md:text-5xl leading-tight">One cohort. Forty seats.</h2>
+        <p class="mt-4 text-ink/70 text-lg">Small enough that Maya reviews every final project personally.</p>
+      </div>
+
+      <div class="reveal relative bg-cream rounded-3xl border border-plum/15 shadow-lift overflow-hidden">
+        <div aria-hidden="true" class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-peach via-peach2 to-plum"></div>
+
+        <div class="grid md:grid-cols-5 gap-0">
+          <div class="md:col-span-3 p-8 md:p-12 border-b md:border-b-0 md:border-r border-plum/10">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="inline-flex items-center gap-1.5 text-xs font-semibold tracking-wider uppercase bg-peach/20 text-plum2 px-3 py-1 rounded-full">Cohort 12 · June 3</span>
+              <span class="inline-flex items-center gap-1.5 text-xs font-medium text-ink/60">40 seats total</span>
+            </div>
+
+            <h3 class="font-serif text-3xl md:text-4xl font-semibold text-plum">The full experience</h3>
+            <p class="mt-2 text-ink/70">Live sessions, office hours, Slack community, hiring manager reviews, and lifetime access to course materials.</p>
+
+            <ul class="mt-8 space-y-3 text-[15px] text-ink/80">
+              <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-peach2 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>6 weeks of live instruction with Maya</li>
+              <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-peach2 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>Weekly office hours &amp; 1:1 critique windows</li>
+              <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-peach2 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>Private Slack with 2,400+ alumni</li>
+              <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-peach2 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>Portfolio review with 3 hiring managers</li>
+              <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-peach2 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>Lifetime access to lessons, templates &amp; updates</li>
+              <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-peach2 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>Certificate of completion</li>
+              <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-peach2 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>Job board access &amp; referral network</li>
+              <li class="flex gap-3 items-start"><svg class="w-5 h-5 text-peach2 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10l3 3 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>Pay in 3 interest-free installments</li>
+            </ul>
+          </div>
+
+          <div class="md:col-span-2 p-8 md:p-12 bg-cream2/50">
+            <div>
+              <p class="text-sm text-ink/60">With code <span class="font-semibold text-plum">LAUNCH</span></p>
+              <div class="mt-1 flex items-baseline gap-3">
+                <span class="font-serif text-5xl md:text-6xl font-semibold text-plum">$1,599</span>
+                <span class="font-serif text-2xl text-ink/40 line-through">$1,999</span>
+              </div>
+              <p class="mt-1 text-sm text-peach2 font-medium">You save $400</p>
+            </div>
+
+            <p class="mt-4 text-sm text-ink/60">or <span class="font-semibold text-plum">3 × $533</span> interest-free</p>
+
+            <a href="#" class="mt-7 w-full inline-flex items-center justify-center gap-2 bg-plum text-cream px-6 py-4 rounded-full font-medium text-base hover:bg-plum2 transition shadow-lift">
+              Reserve your seat
+              <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+
+            <div class="mt-6 flex items-start gap-3 text-sm text-ink/65">
+              <span class="mt-0.5 inline-flex items-center justify-center w-8 h-8 rounded-full bg-peach/20 text-plum2 shrink-0">
+                <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 2l7 3v5c0 4-3 7-7 8-4-1-7-4-7-8V5l7-3z"/><path d="M7 10l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <p><span class="font-semibold text-ink/80">30-day money-back guarantee.</span> If by week 2 it's not for you, we refund in full — no forms, no questions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FAQ ═══════ -->
+  <section id="faq" class="bg-cream">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-20 md:py-28">
+      <div class="max-w-2xl mb-12 reveal">
+        <p class="text-xs font-semibold tracking-[0.22em] text-plum2 uppercase mb-3">Frequently asked</p>
+        <h2 class="font-serif font-semibold text-plum text-4xl md:text-5xl leading-tight">Questions, answered.</h2>
+      </div>
+
+      <div class="divide-y divide-plum/10 border-y border-plum/10" id="faq-list">
+
+        <details class="faq group py-1 reveal">
+          <summary class="flex items-center justify-between gap-6 py-5 cursor-pointer select-none">
+            <span class="font-serif text-lg md:text-xl text-plum font-medium">How much time per week should I budget?</span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-plum/20 grid place-items-center text-plum transition-transform">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke-linecap="round"/></svg>
+            </span>
+          </summary>
+          <div class="pb-6 text-ink/75 text-[15px] leading-relaxed max-w-3xl">
+            Expect 6–8 hours a week: one 90-minute live session, one 60-minute office hour, and the rest on lessons and your project. Most students work full-time jobs while taking the course.
+          </div>
+        </details>
+
+        <details class="faq group py-1 reveal">
+          <summary class="flex items-center justify-between gap-6 py-5 cursor-pointer select-none">
+            <span class="font-serif text-lg md:text-xl text-plum font-medium">Are the live sessions recorded?</span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-plum/20 grid place-items-center text-plum transition-transform">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke-linecap="round"/></svg>
+            </span>
+          </summary>
+          <div class="pb-6 text-ink/75 text-[15px] leading-relaxed max-w-3xl">
+            Yes. Every session is recorded within 24 hours and uploaded to the course portal. Live attendance isn't required — we have students on every timezone from Auckland to San Francisco.
+          </div>
+        </details>
+
+        <details class="faq group py-1 reveal">
+          <summary class="flex items-center justify-between gap-6 py-5 cursor-pointer select-none">
+            <span class="font-serif text-lg md:text-xl text-plum font-medium">Do I need prior experience?</span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-plum/20 grid place-items-center text-plum transition-transform">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke-linecap="round"/></svg>
+            </span>
+          </summary>
+          <div class="pb-6 text-ink/75 text-[15px] leading-relaxed max-w-3xl">
+            This is an intermediate-to-senior course. You should have at least 2 years of product design experience and be comfortable in Figma. If you're unsure, reply to the confirmation email and we'll help you figure out fit.
+          </div>
+        </details>
+
+        <details class="faq group py-1 reveal">
+          <summary class="flex items-center justify-between gap-6 py-5 cursor-pointer select-none">
+            <span class="font-serif text-lg md:text-xl text-plum font-medium">What's the refund policy?</span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-plum/20 grid place-items-center text-plum transition-transform">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke-linecap="round"/></svg>
+            </span>
+          </summary>
+          <div class="pb-6 text-ink/75 text-[15px] leading-relaxed max-w-3xl">
+            Full refund any time before the end of week 2. Email us — no forms, no questions. After week 2, we'll work with you on credit toward a future cohort.
+          </div>
+        </details>
+
+        <details class="faq group py-1 reveal">
+          <summary class="flex items-center justify-between gap-6 py-5 cursor-pointer select-none">
+            <span class="font-serif text-lg md:text-xl text-plum font-medium">Will my employer reimburse this?</span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-plum/20 grid place-items-center text-plum transition-transform">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke-linecap="round"/></svg>
+            </span>
+          </summary>
+          <div class="pb-6 text-ink/75 text-[15px] leading-relaxed max-w-3xl">
+            Most employers do. We provide a pre-written reimbursement request with ROI framing that's been approved at Google, Stripe, Microsoft, Shopify and dozens of smaller teams. Ask us and we'll send it.
+          </div>
+        </details>
+
+        <details class="faq group py-1 reveal">
+          <summary class="flex items-center justify-between gap-6 py-5 cursor-pointer select-none">
+            <span class="font-serif text-lg md:text-xl text-plum font-medium">Is there a certificate?</span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-plum/20 grid place-items-center text-plum transition-transform">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke-linecap="round"/></svg>
+            </span>
+          </summary>
+          <div class="pb-6 text-ink/75 text-[15px] leading-relaxed max-w-3xl">
+            Yes — a signed certificate of completion, and a LinkedIn credential you can add to your profile. More useful in practice is the alumni network, which regularly gets members referral intros.
+          </div>
+        </details>
+
+        <details class="faq group py-1 reveal">
+          <summary class="flex items-center justify-between gap-6 py-5 cursor-pointer select-none">
+            <span class="font-serif text-lg md:text-xl text-plum font-medium">Do you help with job placement?</span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-plum/20 grid place-items-center text-plum transition-transform">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke-linecap="round"/></svg>
+            </span>
+          </summary>
+          <div class="pb-6 text-ink/75 text-[15px] leading-relaxed max-w-3xl">
+            We're not a bootcamp — we won't guarantee a job. But we run an active internal job board, partner with hiring managers at 40+ companies, and 87% of alumni get a promotion or new role within 6 months.
+          </div>
+        </details>
+
+        <details class="faq group py-1 reveal">
+          <summary class="flex items-center justify-between gap-6 py-5 cursor-pointer select-none">
+            <span class="font-serif text-lg md:text-xl text-plum font-medium">What if I need a payment plan?</span>
+            <span class="faq-icon shrink-0 w-8 h-8 rounded-full border border-plum/20 grid place-items-center text-plum transition-transform">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 4v12M4 10h12" stroke-linecap="round"/></svg>
+            </span>
+          </summary>
+          <div class="pb-6 text-ink/75 text-[15px] leading-relaxed max-w-3xl">
+            Pay in 3 interest-free monthly installments is available at checkout. For designers in lower-income regions or between roles, we also run a limited number of full scholarships each cohort — write to us.
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FINAL CTA ═══════ -->
+  <section class="bg-plum text-cream relative overflow-hidden">
+    <div aria-hidden="true" class="absolute -top-40 -left-20 h-96 w-96 rounded-full bg-peach/10 blur-3xl"></div>
+    <div aria-hidden="true" class="absolute -bottom-40 -right-20 h-96 w-96 rounded-full bg-peach/10 blur-3xl"></div>
+
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 py-24 md:py-32 text-center reveal">
+      <p class="text-xs font-semibold tracking-[0.22em] text-peach uppercase mb-5">Cohort 12 · Starts June 3</p>
+      <h2 class="font-serif font-semibold text-4xl md:text-6xl leading-[1.05]">
+        Enroll before the door <em class="italic text-peach">closes</em>.
+      </h2>
+
+      <div class="mt-10 inline-flex items-stretch gap-2 sm:gap-3 font-mono tabular-nums" data-countdown="bottom">
+        <div class="bg-cream/10 border border-cream/15 rounded-2xl px-4 sm:px-6 py-4 min-w-[72px]">
+          <p class="text-3xl sm:text-4xl font-semibold text-cream" data-d>00</p>
+          <p class="text-[10px] uppercase tracking-[0.2em] text-cream/60 mt-1">Days</p>
+        </div>
+        <div class="bg-cream/10 border border-cream/15 rounded-2xl px-4 sm:px-6 py-4 min-w-[72px]">
+          <p class="text-3xl sm:text-4xl font-semibold text-cream" data-h>00</p>
+          <p class="text-[10px] uppercase tracking-[0.2em] text-cream/60 mt-1">Hours</p>
+        </div>
+        <div class="bg-cream/10 border border-cream/15 rounded-2xl px-4 sm:px-6 py-4 min-w-[72px]">
+          <p class="text-3xl sm:text-4xl font-semibold text-cream" data-m>00</p>
+          <p class="text-[10px] uppercase tracking-[0.2em] text-cream/60 mt-1">Min</p>
+        </div>
+        <div class="bg-cream/10 border border-cream/15 rounded-2xl px-4 sm:px-6 py-4 min-w-[72px]">
+          <p class="text-3xl sm:text-4xl font-semibold text-cream" data-s>00</p>
+          <p class="text-[10px] uppercase tracking-[0.2em] text-cream/60 mt-1">Sec</p>
+        </div>
+      </div>
+
+      <div class="mt-10">
+        <a href="#enroll" class="inline-flex items-center justify-center gap-2 bg-peach text-plum px-8 py-4 rounded-full font-semibold text-base hover:bg-peach2 hover:text-cream transition shadow-lift">
+          Reserve your seat — $1,599
+          <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 10h10M11 6l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <p class="mt-6 text-sm text-cream/60">Limited to 40 students per cohort to ensure personal feedback.</p>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="bg-cream border-t border-plum/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <span class="h-8 w-8 rounded-full bg-plum text-cream grid place-items-center font-serif font-bold">I</span>
+        <span class="font-serif text-xl font-semibold text-plum">Impact</span>
+      </div>
+
+      <ul class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-ink/65">
+        <li><a class="hover:text-plum transition" href="#curriculum">Curriculum</a></li>
+        <li><a class="hover:text-plum transition" href="#instructor">Instructor</a></li>
+        <li><a class="hover:text-plum transition" href="#faq">FAQ</a></li>
+        <li><a class="hover:text-plum transition" href="#">Contact</a></li>
+        <li><a class="hover:text-plum transition" href="#">Privacy</a></li>
+      </ul>
+
+      <p class="text-sm text-ink/55">© <span id="year"></span> Designing for Impact. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

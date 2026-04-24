@@ -1,0 +1,110 @@
+/* ─────────────────────────────────────────
+   Designing for Impact — custom styles
+   Works alongside Tailwind (CDN).
+───────────────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  color: #1f1219;
+  background: #fef9f3;
+}
+
+/* Fraunces optical-size tuning for very large headings */
+h1, h2 {
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  letter-spacing: -0.015em;
+}
+
+/* ─── Focus states — visible but on-brand ─── */
+:focus-visible {
+  outline: 2px solid #6b2c4d;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline-color: #f4a261;
+}
+
+/* ─── Reveal-on-scroll animation ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ─── Custom curriculum accordion ─── */
+.accordion-trigger {
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  color: inherit;
+}
+.accordion-trigger:hover .accordion-chevron {
+  background: rgba(74, 29, 61, 0.08);
+}
+.accordion-panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.accordion.is-open .accordion-panel {
+  max-height: 600px;
+}
+.accordion.is-open .accordion-chevron {
+  transform: rotate(180deg);
+  background: rgba(74, 29, 61, 0.1);
+}
+
+/* ─── Native <details> FAQ polish ─── */
+details.faq > summary {
+  list-style: none;
+}
+details.faq > summary::-webkit-details-marker {
+  display: none;
+}
+details.faq[open] .faq-icon {
+  transform: rotate(45deg);
+  background: #4a1d3d;
+  color: #fef9f3;
+  border-color: #4a1d3d;
+}
+details.faq > div {
+  animation: faqFade 0.3s ease both;
+}
+@keyframes faqFade {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(244, 162, 97, 0.35);
+  color: #1f1219;
+}
+
+/* ─── Print polish (nice-to-have) ─── */
+@media print {
+  .reveal { opacity: 1 !important; transform: none !important; }
+  header, #announce, .sticky { position: static !important; }
+}
